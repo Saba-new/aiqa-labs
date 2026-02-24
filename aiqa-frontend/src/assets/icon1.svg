@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" width="150" height="150">
+  <defs>
+    <linearGradient id="iconGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#AC6AFF;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#7B68EE;stop-opacity:0.05" />
+    </linearGradient>
+  </defs>
+  <rect width="150" height="150" rx="16" fill="url(#iconGrad1)"/>
+  <!-- Code brackets -->
+  <text x="20" y="95" fill="#AC6AFF" font-size="55" font-family="monospace" font-weight="bold" fill-opacity="0.9">&lt;/&gt;</text>
+  <!-- Decorative dots -->
+  <circle cx="20" cy="30" r="5" fill="#AC6AFF" fill-opacity="0.6"/>
+  <circle cx="35" cy="30" r="5" fill="#7B68EE" fill-opacity="0.5"/>
+  <circle cx="50" cy="30" r="5" fill="#AC6AFF" fill-opacity="0.3"/>
+  <!-- Underline bar -->
+  <rect x="20" y="105" width="110" height="3" rx="2" fill="url(#iconGrad1)" fill-opacity="0.6" stroke="#AC6AFF" stroke-width="1"/>
+  <!-- Gear icon small -->
+  <circle cx="120" cy="30" r="12" fill="none" stroke="#AC6AFF" stroke-opacity="0.5" stroke-width="2"/>
+  <circle cx="120" cy="30" r="6" fill="#AC6AFF" fill-opacity="0.4"/>
+</svg>

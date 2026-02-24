@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#AC6AFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7B2CBF;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Outer glow ring -->
+  <circle cx="60" cy="60" r="50" fill="none" stroke="#AC6AFF" stroke-opacity="0.2" stroke-width="1"/>
+  <circle cx="60" cy="60" r="40" fill="none" stroke="#AC6AFF" stroke-opacity="0.15" stroke-width="1"/>
+  <!-- Star shape -->
+  <polygon 
+    points="60,15 69,45 101,45 76,63 85,94 60,75 35,94 44,63 19,45 51,45"
+    fill="url(#starGrad)" 
+    filter="url(#glow)"
+    fill-opacity="0.9"/>
+  <!-- Inner bright star -->
+  <polygon 
+    points="60,32 65,50 84,50 70,61 75,79 60,68 45,79 50,61 36,50 55,50"
+    fill="#ffffff" 
+    fill-opacity="0.3"/>
+  <!-- Center glow -->
+  <circle cx="60" cy="60" r="10" fill="#AC6AFF" fill-opacity="0.5" filter="url(#glow)"/>
+  <!-- Sparkle dots -->
+  <circle cx="20" cy="20" r="3" fill="#AC6AFF" fill-opacity="0.6"/>
+  <circle cx="100" cy="20" r="2" fill="#7B68EE" fill-opacity="0.5"/>
+  <circle cx="15" cy="75" r="2" fill="#AC6AFF" fill-opacity="0.4"/>
+  <circle cx="105" cy="75" r="3" fill="#AC6AFF" fill-opacity="0.5"/>
+</svg>

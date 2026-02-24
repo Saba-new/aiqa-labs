@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 160" width="230" height="160">
+  <defs>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#AC6AFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00FFCC;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#AC6AFF;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#AC6AFF;stop-opacity:0.02" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="230" height="160" rx="10" fill="#1a1a2e" fill-opacity="0.5"/>
+  <!-- Grid lines -->
+  <line x1="20" y1="30" x2="220" y2="30" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"/>
+  <line x1="20" y1="60" x2="220" y2="60" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"/>
+  <line x1="20" y1="90" x2="220" y2="90" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"/>
+  <line x1="20" y1="120" x2="220" y2="120" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1"/>
+  <!-- Area fill under line -->
+  <path d="M20,110 L60,80 L100,95 L140,50 L180,65 L220,35 L220,140 L20,140 Z" fill="url(#areaGrad)"/>
+  <!-- Main line chart -->
+  <polyline points="20,110 60,80 100,95 140,50 180,65 220,35" fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Data points -->
+  <circle cx="20" cy="110" r="4" fill="#AC6AFF"/>
+  <circle cx="60" cy="80" r="4" fill="#AC6AFF"/>
+  <circle cx="100" cy="95" r="4" fill="#AC6AFF"/>
+  <circle cx="140" cy="50" r="5" fill="#00FFCC"/>
+  <circle cx="180" cy="65" r="4" fill="#AC6AFF"/>
+  <circle cx="220" cy="35" r="4" fill="#00FFCC"/>
+  <!-- Pulse on peak -->
+  <circle cx="140" cy="50" r="10" fill="none" stroke="#00FFCC" stroke-opacity="0.4" stroke-width="1.5"/>
+  <!-- Y axis labels -->
+  <text x="8" y="34" fill="#ffffff" fill-opacity="0.4" font-size="8" font-family="sans-serif">100</text>
+  <text x="8" y="64" fill="#ffffff" fill-opacity="0.4" font-size="8" font-family="sans-serif">75</text>
+  <text x="8" y="94" fill="#ffffff" fill-opacity="0.4" font-size="8" font-family="sans-serif">50</text>
+  <text x="8" y="124" fill="#ffffff" fill-opacity="0.4" font-size="8" font-family="sans-serif">25</text>
+  <!-- Stat badge -->
+  <rect x="150" y="38" width="55" height="20" rx="4" fill="#AC6AFF" fill-opacity="0.3"/>
+  <text x="177" y="51" text-anchor="middle" fill="#AC6AFF" font-size="9" font-family="sans-serif" font-weight="bold">+42% ↑</text>
+</svg>

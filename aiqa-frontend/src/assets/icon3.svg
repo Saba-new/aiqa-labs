@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" width="150" height="150">
+  <defs>
+    <linearGradient id="iconGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7B2CBF;stop-opacity:0.25" />
+      <stop offset="100%" style="stop-color:#AC6AFF;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  <rect width="150" height="150" rx="16" fill="url(#iconGrad3)"/>
+  <!-- Transform arrows - circular -->
+  <path d="M75,30 A45,45 0 0,1 120,75" fill="none" stroke="#AC6AFF" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="122,60 128,78 112,72" fill="#AC6AFF"/>
+  <path d="M75,120 A45,45 0 0,1 30,75" fill="none" stroke="#7B2CBF" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="28,90 22,72 38,78" fill="#7B2CBF"/>
+  <!-- Center hexagon -->
+  <polygon points="75,55 92,65 92,85 75,95 58,85 58,65" fill="none" stroke="url(#iconGrad3)" stroke-width="2" stroke-opacity="2"/>
+  <polygon points="75,55 92,65 92,85 75,95 58,85 58,65" fill="#AC6AFF" fill-opacity="0.2" stroke="#AC6AFF" stroke-width="1.5"/>
+  <!-- Lightning inside hex -->
+  <text x="68" y="82" fill="#AC6AFF" font-size="20" font-family="sans-serif">⚡</text>
+</svg>

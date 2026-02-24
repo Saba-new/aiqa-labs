@@ -1,59 +1,56 @@
-import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import React, { useState, useEffect } from 'react';
+import { Image, Drawer } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import Logo from "../assets/logo.png";
 
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false)
+function Header() {
+    const [drawerVisible, setDrawerVisible] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    const toggleDrawer = () => {
+        setDrawerVisible(!drawerVisible);
+    };
 
-  const navLinks = [
-    { path: '/', label: 'HOME' },
-    { path: '/about', label: 'ABOUT' },
-    { path: '/services', label: 'SERVICES' },
-    { path: '/platform', label: 'PROJECTS' },
-    { path: '/industries', label: 'TECHNOLOGIES' },
-    { path: '/contact', label: 'CONTACT' },
-  ]
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
 
-  return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass py-4' : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="/" className="text-2xl font-bold gradient-text">
-          AIQA
-        </a>
+    return (
+        <div className='header-bg'>
+            <div className='header-inner' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 16px' }}>
+                <MenuOutlined style={{marginRight : 20}} className='mobile-only' onClick={toggleDrawer} />
+                <Link to='/'><Image width={130} src={Logo} alt="Company Logo" preview={false} /></Link>
+                <div className='header-links desktop-only'>
+                    
+                    <Link to='/platform' className="header-link">Platform</Link>
+                    <Link to='/services' className="header-link">Services</Link>
+                    <Link to='/industries' className="header-link">Industries</Link>
+                    <Link to='/about' className="header-link">About</Link>
+                </div>
+            </div>
 
-        <div className="hidden md:flex space-x-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.path}
-              href={link.path}
-              className="text-sm font-medium transition-colors hover:text-primary text-gray-300"
+            <div className='desktop-only' style={{ textAlign: 'right', padding: '0 16px' }}>
+                <button className='get-started-button-1' onClick={() => navigate("/contact")}>
+                    Get Started
+                </button>
+            </div>
+            <Drawer
+                title="Menu"
+                placement="left"
+                onClose={toggleDrawer}
+                open={drawerVisible}
             >
-              {link.label}
-            </a>
-          ))}
+                <div className="drawer-links">
+                    <Link to='/platform' onClick={toggleDrawer}>Platform</Link>
+                    <Link to='/services' onClick={toggleDrawer}>Services</Link>
+                    <Link to='/industries' onClick={toggleDrawer}>Industries</Link>
+                    <Link to='/about' onClick={toggleDrawer}>About</Link>
+                </div>
+            </Drawer>
         </div>
-
-        <a href="/contact">
-          <button className="bg-primary hover:bg-purple-600 text-white px-6 py-2 rounded-full transition-all duration-300 glow">
-            Get Started
-          </button>
-        </a>
-      </div>
-    </motion.nav>
-  )
+    );
 }
 
-export default Navbar
+export default Header;
