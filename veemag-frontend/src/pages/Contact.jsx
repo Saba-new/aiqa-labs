@@ -139,10 +139,10 @@ const Contact = () => {
           <h3 className="text-2xl font-bold mb-4">Or reach us directly</h3>
           <div className="flex justify-center space-x-8">
             <div>
-              <p className="text-gray-400">📧 veemag@gmail.com</p>
+              <p className="text-gray-400">📧 contact@aiqa.co.in</p>
             </div>
             <div>
-              <p className="text-gray-400">📞 +1234567890</p>
+              <p className="text-gray-400">📞 +91 1234567890</p>
             </div>
           </div>
         </motion.div>

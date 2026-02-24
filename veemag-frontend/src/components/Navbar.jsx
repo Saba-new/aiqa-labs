@@ -31,7 +31,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a href="/" className="text-2xl font-bold gradient-text">
-          VEEMAG
+          AIQA
         </a>
 
         <div className="hidden md:flex space-x-8">

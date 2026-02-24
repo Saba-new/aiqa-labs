@@ -63,14 +63,14 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Get in touch</h4>
             <div className="space-y-2">
-              <p className="text-gray-400 text-sm">veemag@gmail.com</p>
-              <p className="text-gray-400 text-sm">+1234567890</p>
+              <p className="text-gray-400 text-sm">contact@aiqa.co.in</p>
+              <p className="text-gray-400 text-sm">+91 1234567890</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
-          <p>© Copyright. All rights reserved veemag</p>
+          <p>© Copyright. All rights reserved AIQA</p>
           <a href="#" className="hover:text-primary transition-colors mt-2 md:mt-0">Terms & Conditions</a>
         </div>
       </div>
