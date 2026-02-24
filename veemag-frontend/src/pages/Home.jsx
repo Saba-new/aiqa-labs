@@ -3,26 +3,26 @@ import { motion } from 'framer-motion'
 
 const Home = () => {
   const stats = [
-    { value: '9+', label: 'Years', title: 'Experience', desc: 'Driving innovation in tech industry' },
-    { value: '10+', label: 'Industries', title: 'Served', desc: 'Empowering diverse sectors with technology' },
-    { value: '100%', label: 'Client', title: 'Satisfaction', desc: 'Delivering excellence in every project' },
+    { value: '9+', label: 'Years', title: 'Experience', desc: 'Driving innovation in the tech industry.' },
+    { value: '10+', label: 'Industries', title: 'Served', desc: 'Empowering diverse sectors with technology.' },
+    { value: '100%', label: 'Client', title: 'Satisfaction', desc: 'Delivering excellence in every project.' },
   ]
 
   const features = [
     {
-      title: 'Seamless Integration',
-      description: 'With smart automation and top-notch security, perfect solution for teams looking to work smarter.',
-      icon: '🔗'
+      title: 'Flexible Protocol Integration',
+      description: 'TwinV supports seamless integration with any communication protocol, ensuring compatibility with diverse IoT devices and enabling future-ready scalability.',
+      icon: '🔌'
     },
     {
-      title: 'Smart Automation',
-      description: 'Automate complex workflows and boost productivity with AI-powered intelligent automation tools.',
+      title: 'AI-Powered Predictions',
+      description: 'Leverage advanced AI and machine learning to predict potential issues, optimize resources, and drive intelligent decision-making.',
       icon: '⚡'
     },
     {
-      title: 'Top-notch Security',
-      description: 'Enterprise-grade security measures to protect your valuable data and maintain compliance.',
-      icon: '🔒'
+      title: 'Real-Time Insights',
+      description: 'Gain real-time visibility into asset performance to enable proactive maintenance and boost efficiency.',
+      icon: '📊'
     },
   ]
 
@@ -36,16 +36,16 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
           >
-            Explore the Possibilities of{' '}
+            Gateway to{' '}
             <span style={{ 
               background: 'linear-gradient(135deg, #AC6AFF 0%, #7B68EE 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-              AI Power
+              limitless
             </span>{' '}
-            with VEEMAG
+            Digital Twin Possibilities
           </motion.h1>
 
           <motion.p
@@ -54,7 +54,9 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-300 mb-8"
           >
-            AI Application for seamless collaboration
+            Transform how you manage, simulate, and optimize your digital world.
+            <br />
+            Leverage advanced technology to unlock endless opportunities and step into the future today.
           </motion.p>
 
           <motion.div
@@ -63,7 +65,6 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <button
-              onClick={() => navigate('/contact')}
               className="bg-primary hover:bg-purple-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all glow hover:scale-105"
               style={{ textTransform: 'uppercase' }}
             >
@@ -113,12 +114,13 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-center mb-16"
           >
-            Why Choose <span style={{ 
+            TwinV is the All-in-One Platform for{' '}
+            <span style={{ 
               background: 'linear-gradient(135deg, #AC6AFF 0%, #7B68EE 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
-            }}>VEEMAG</span>
+            }}>IoT and Digital Twins</span>
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -151,19 +153,20 @@ const Home = () => {
             className="text-center"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Welcome to <span style={{ 
+              Comprehensive{' '}
+              <span style={{ 
                 background: 'linear-gradient(135deg, #AC6AFF 0%, #7B68EE 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text'
-              }}>VEEMAG R&D Ventures</span>
+              }}>IoT Solutions</span>{' '}
+              for Every Stage of Development
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed">
-              Step into the forefront of innovation and sustainability at VEEMAG R&D Ventures, 
-              where our pioneering spirit knows no bounds. Here, we're not just shaping the future; 
-              we're sculpting it with the transformative power of Artificial Intelligence (AI). 
-              With a relentless commitment to driving positive change, we're illuminating the path 
-              towards a more sustainable world, one groundbreaking discovery at a time.
+              We specialize in delivering end-to-end IoT solutions, combining hardware and
+              software expertise. Whether you're building a product from scratch, modernizing
+              existing systems, or enhancing functionality, we provide the innovation and
+              support your business needs to thrive.
             </p>
           </motion.div>
         </div>
