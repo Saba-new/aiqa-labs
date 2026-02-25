@@ -12,14 +12,11 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #0a0a0a;
+  background: #05050f;
   color: #ffffff;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
 }
 
 html {
@@ -28,13 +25,7 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Optimize all elements for smooth scrolling */
-*, *::before, *::after {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
+/* Smooth scroll support */
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {

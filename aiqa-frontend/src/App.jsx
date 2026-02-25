@@ -15,7 +15,7 @@ import Contact from './pages/Contact'
 
 function App() {
   return (
-    <div className="relative min-h-screen" style={{ background: '#0a0a0a' }}>
+    <div className="relative min-h-screen">
       <ParticleHoverBg />
       <Navbar />
       <Routes>
