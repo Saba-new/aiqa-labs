@@ -20,13 +20,81 @@ const Industries = () => {
   ]
 
   const industries = [
-    { name: 'FinTech', icon: '💰', desc: 'Custom financial software for digital payments and banking.' },
-    { name: 'Real Estate', icon: '🏢', desc: 'Develop modern real estate solutions using cutting-edge technologies.' },
-    { name: 'Healthcare', icon: '🏥', desc: 'Custom EHR, EMR, ERX, and other medical solutions.' },
-    { name: 'Transportation and Mobility', icon: '🚗', desc: 'Custom TMS, WMS, FMS, vehicle management, and blockchain systems.' },
-    { name: 'Software', icon: '💻', desc: 'Build software of any complexity, from SaaS systems to product ecosystems.' },
-    { name: 'Manufacturing', icon: '🏭', desc: 'Optimize production with custom manufacturing software solutions.' },
-    { name: 'Smart Home and Appliances', icon: '🏠', desc: 'Increase the value of smart home products with user-centered software.' },
+    {
+      name: 'FinTech',
+      desc: 'Custom financial software for digital payments, banking, and secure transactions.',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AC6AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2" />
+          <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+          <line x1="12" y1="12" x2="12" y2="16" />
+          <line x1="10" y1="14" x2="14" y2="14" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Real Estate',
+      desc: 'Develop modern real estate solutions using cutting-edge technologies.',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AC6AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Healthcare',
+      desc: 'Custom EHR, EMR, ERX, and other medical software solutions.',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AC6AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Transportation & Mobility',
+      desc: 'Custom TMS, WMS, FMS, vehicle management, and blockchain systems.',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AC6AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="1" y="3" width="15" height="13" rx="2" />
+          <path d="M16 8h4l3 5v3h-7V8z" />
+          <circle cx="5.5" cy="18.5" r="2.5" />
+          <circle cx="18.5" cy="18.5" r="2.5" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Software',
+      desc: 'Build software of any complexity, from SaaS systems to product ecosystems.',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AC6AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Manufacturing',
+      desc: 'Optimize production with custom manufacturing software solutions.',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AC6AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 20h20" />
+          <path d="M6 20V10l6-6 6 6v10" />
+          <rect x="9" y="14" width="6" height="6" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Smart Home & Appliances',
+      desc: 'Increase the value of smart home products with user-centered software.',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AC6AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+      ),
+    },
   ]
 
   const techStack = [
@@ -109,8 +177,10 @@ const Industries = () => {
                 whileHover={{ scale: 1.05, borderColor: '#AC6AFF' }}
                 className="glass p-8 rounded-2xl transition-all duration-300 cursor-pointer"
               >
-                <div className="text-5xl mb-4">{industry.icon}</div>
-                <h3 className="text-2xl font-bold mb-3">{industry.name}</h3>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: 'rgba(172,106,255,0.1)', border: '1px solid rgba(172,106,255,0.2)' }}>
+                  {industry.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{industry.name}</h3>
                 <p className="text-gray-400">{industry.desc}</p>
               </motion.div>
             ))}

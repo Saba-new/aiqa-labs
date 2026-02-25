@@ -140,7 +140,9 @@ const Services = () => {
                 <ul className="space-y-3">
                   {service.description.map((desc, i) => (
                     <li key={i} className="flex items-start text-gray-400">
-                      <span className="text-secondary mr-2">✓</span>
+                      <svg className="mt-1 mr-2 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#07B4EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
                       <span>{desc}</span>
                     </li>
                   ))}
