@@ -1,7 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 const Industries = () => {
+  const navigate = useNavigate()
   const stats = [
     {
       title: 'Industry-Specific Innovation',
@@ -57,9 +59,10 @@ const Industries = () => {
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
+            onClick={() => navigate('/contact')}
             className="bg-primary hover:bg-purple-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all glow"
           >
-            GET STARTED
+            Get Started
           </motion.button>
         </motion.div>
 
@@ -125,8 +128,11 @@ const Industries = () => {
               <h3 className="text-2xl font-bold mb-2">Ready to Build Your Domain-Specific Solution?</h3>
               <p className="text-gray-400">We specialize in crafting high-quality products tailored to industry standards and your unique business needs.</p>
             </div>
-            <button className="bg-primary hover:bg-purple-600 text-white px-8 py-3 rounded-full font-semibold transition-all glow whitespace-nowrap">
-              GET STARTED
+            <button
+              onClick={() => navigate('/contact')}
+              className="bg-primary hover:bg-purple-600 text-white px-8 py-3 rounded-full font-semibold transition-all glow whitespace-nowrap"
+            >
+              Get Started
             </button>
           </div>
         </motion.div>

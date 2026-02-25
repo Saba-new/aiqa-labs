@@ -1,7 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
 const Services = () => {
+  const navigate = useNavigate()
   const stats = [
     {
       title: 'Custom software development',
@@ -82,9 +84,10 @@ const Services = () => {
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
+            onClick={() => navigate('/contact')}
             className="mt-8 bg-primary hover:bg-purple-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all glow"
           >
-            GET STARTED
+            Get Started
           </motion.button>
         </motion.div>
 
@@ -159,8 +162,11 @@ const Services = () => {
               <h3 className="text-2xl font-bold mb-2">Not sure which solution fits your needs?</h3>
               <p className="text-gray-400">Let's find the perfect match together.</p>
             </div>
-            <button className="bg-primary hover:bg-purple-600 text-white px-8 py-3 rounded-full font-semibold transition-all glow">
-              GET STARTED
+            <button
+              onClick={() => navigate('/contact')}
+              className="bg-primary hover:bg-purple-600 text-white px-8 py-3 rounded-full font-semibold transition-all glow"
+            >
+              Get Started
             </button>
           </div>
         </motion.div>
