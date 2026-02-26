@@ -560,101 +560,58 @@ function Home() {
       </section>
 
       {/* ── TESTIMONIALS ──────────────────────────────────────────── */}
-      <section style={{ padding: '90px 10% 100px', position: 'relative', overflow: 'hidden' }}>
-        {/* subtle radial glow */}
-        <div style={{ position: 'absolute', top: '40%', left: '50%', transform: 'translate(-50%,-50%)', width: 600, height: 600, background: 'radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <section style={{ padding: '90px 0 100px', position: 'relative', overflow: 'hidden' }}>
+        {/* bg glow */}
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
+        {/* header */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}
-          style={{ textAlign: 'center', marginBottom: 60 }}
+          style={{ textAlign: 'center', marginBottom: 56, padding: '0 10%' }}
         >
-          <div className="section-label" style={{ justifyContent: 'center', display: 'flex' }}>What Clients Say</div>
+          <div className="section-label" style={{ justifyContent: 'center', display: 'flex' }}>Client Voices</div>
           <h2 style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', fontWeight: 800, color: '#fff', margin: '14px 0 12px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
             Trusted by Teams Building the Future
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.95rem', maxWidth: 480, margin: '0 auto' }}>
-            From startups to enterprises — here's what our partners say about working with AIQA Labs.
+          <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.93rem', maxWidth: 460, margin: '0 auto' }}>
+            Real results from real partners — across industries, stages, and scales.
           </p>
         </motion.div>
 
-        {/* masonry-style testimonial grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, alignItems: 'start' }}>
-          {[
-            {
-              quote: "AIQA Labs transformed our entire fleet monitoring system. The IoT integration was seamless — we went from manual checks to real-time dashboards in under 6 weeks. Genuinely impressive execution.",
-              name: 'Rajan Mehta', role: 'CTO', company: 'LogiTrack Systems', initials: 'RM', color: '#AC6AFF', stars: 5,
-            },
-            {
-              quote: "Their team didn't just build software — they actually understood our clinical workflows. The EHR module reduced our data entry overhead by 40%. Rare to find that depth of domain knowledge.",
-              name: 'Dr. Priya Anand', role: 'Chief Medical Officer', company: 'NovaCare Health', initials: 'PA', color: '#10B981', stars: 5,
-            },
-            {
-              quote: "We evaluated five vendors. AIQA was the only one that asked the right questions before writing a single line of code. That mindset made all the difference.",
-              name: 'Marcus Webb', role: 'Head of Product', company: 'Stackfield Inc.', initials: 'MW', color: '#07B4EB', stars: 5,
-            },
-            {
-              quote: "Our smart appliance product launched on time — first time in company history. AIQA's hardware-software integration team is something truly special.",
-              name: 'Leena Varghese', role: 'VP Engineering', company: 'BrightNest Technologies', initials: 'LV', color: '#F59E0B', stars: 5,
-            },
-            {
-              quote: "The energy monitoring platform they built for us is scalable, elegant, and reliable. Three months in, zero downtime. The team treats your product as their own.",
-              name: 'Aditya Srinivas', role: 'Founder & CEO', company: 'GreenGrid Solutions', initials: 'AS', color: '#AC6AFF', stars: 5,
-            },
-            {
-              quote: "Post-launch support from AIQA is what really stands out. They're not a 'build and disappear' team. Always responsive, always iterating. That's exactly what a scaling startup needs.",
-              name: 'Sofia Cortez', role: 'Director of Operations', company: 'Urbane PropTech', initials: 'SC', color: '#10B981', stars: 5,
-            },
-          ].map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              style={{
-                background: 'rgba(255,255,255,0.028)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                borderRadius: 16,
-                padding: '28px 28px 24px',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              {/* top accent line */}
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent 0%, ${t.color}50 50%, transparent 100%)` }} />
-
-              {/* stars */}
-              <div style={{ display: 'flex', gap: 3, marginBottom: 18 }}>
-                {Array.from({ length: t.stars }).map((_, si) => (
-                  <svg key={si} width="13" height="13" viewBox="0 0 24 24" fill={t.color} stroke="none">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                ))}
+        {/* Row 1 — scrolls left */}
+        {(() => {
+          const row1 = [
+            { quote: "AIQA Labs transformed our entire fleet monitoring system. The IoT integration was seamless — real-time dashboards in under 6 weeks. Genuinely impressive.", name: 'Rajan Mehta', role: 'CTO · LogiTrack Systems', initials: 'RM', color: '#AC6AFF' },
+            { quote: "Their team actually understood our clinical workflows. The EHR module cut our data entry overhead by 40%. Rare depth of domain knowledge.", name: 'Dr. Priya Anand', role: 'CMO · NovaCare Health', initials: 'PA', color: '#10B981' },
+            { quote: "We evaluated five vendors. AIQA was the only one that asked the right questions before writing a single line of code. That mindset made all the difference.", name: 'Marcus Webb', role: 'Head of Product · Stackfield Inc.', initials: 'MW', color: '#07B4EB' },
+            { quote: "Our smart appliance product launched on time — first time in company history. Their hardware-software integration team is something truly special.", name: 'Leena Varghese', role: 'VP Engineering · BrightNest', initials: 'LV', color: '#F59E0B' },
+          ]
+          const cards = [...row1, ...row1]
+          return (
+            <div className="testi-runway" style={{ marginBottom: 14 }}>
+              <div className="testi-track">
+                {cards.map((t, i) => <TestiCard key={i} t={t} />)}
               </div>
+            </div>
+          )
+        })()}
 
-              {/* quote mark */}
-              <div style={{ fontFamily: 'Georgia, serif', fontSize: '3.5rem', lineHeight: 0.6, color: `${t.color}25`, marginBottom: 12, userSelect: 'none' }}>&ldquo;</div>
-
-              {/* quote text */}
-              <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.88rem', lineHeight: 1.75, marginBottom: 24, fontStyle: 'normal' }}>
-                {t.quote}
-              </p>
-
-              {/* author row */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 18 }}>
-                <div style={{
-                  width: 38, height: 38, borderRadius: '50%',
-                  background: `${t.color}20`, border: `1.5px solid ${t.color}45`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.72rem', fontWeight: 700, color: t.color, flexShrink: 0,
-                }}>{t.initials}</div>
-                <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff' }}>{t.name}</div>
-                  <div style={{ fontSize: '0.73rem', color: 'rgba(255,255,255,0.35)', marginTop: 2 }}>{t.role} · {t.company}</div>
-                </div>
+        {/* Row 2 — scrolls right */}
+        {(() => {
+          const row2 = [
+            { quote: "The energy monitoring platform is scalable, elegant, and reliable. Three months in — zero downtime. They treat your product as their own.", name: 'Aditya Srinivas', role: 'CEO · GreenGrid Solutions', initials: 'AS', color: '#AC6AFF' },
+            { quote: "Post-launch support is what stands out. They're not a 'build and disappear' team. Always responsive, always iterating. Perfect for a scaling startup.", name: 'Sofia Cortez', role: 'Director of Ops · Urbane PropTech', initials: 'SC', color: '#10B981' },
+            { quote: "From discovery to deployment, the process was airtight. Weekly demos, clear scope, zero surprises. That kind of discipline is hard to find.", name: 'Tariq Hassan', role: 'CTO · FinBridge Payments', initials: 'TH', color: '#07B4EB' },
+            { quote: "They built our entire SaaS backend from scratch. The architecture is clean, documented, and our in-house team picked it up with zero friction.", name: 'Nadia Osei', role: 'Founder · Loopstack', initials: 'NO', color: '#F59E0B' },
+          ]
+          const cards = [...row2, ...row2]
+          return (
+            <div className="testi-runway">
+              <div className="testi-track-rev">
+                {cards.map((t, i) => <TestiCard key={i} t={t} />)}
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          )
+        })()}
       </section>
 
       {/* ── FAQ ────────────────────────────────────────────────────── */}
@@ -719,6 +676,46 @@ function Home() {
         </div>
       </section>
     </>
+  )
+}
+
+function TestiCard({ t }) {
+  return (
+    <div className="testi-card">
+      {/* colored top accent */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent 0%, ${t.color}55 50%, transparent 100%)` }} />
+      {/* faint corner glow */}
+      <div style={{ position: 'absolute', top: -40, right: -40, width: 120, height: 120, borderRadius: '50%', background: `radial-gradient(circle, ${t.color}12 0%, transparent 70%)`, pointerEvents: 'none' }} />
+
+      {/* stars */}
+      <div style={{ display: 'flex', gap: 3, marginBottom: 14 }}>
+        {[1,2,3,4,5].map(s => (
+          <svg key={s} width="11" height="11" viewBox="0 0 24 24" fill={t.color} stroke="none">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+        ))}
+      </div>
+
+      {/* quote */}
+      <p style={{ color: 'rgba(255,255,255,0.58)', fontSize: '0.86rem', lineHeight: 1.75, marginBottom: 20, position: 'relative' }}>
+        <span style={{ fontFamily: 'Georgia, serif', fontSize: '1.5rem', color: `${t.color}40`, verticalAlign: '-4px', marginRight: 3, lineHeight: 0 }}>"</span>
+        {t.quote}
+      </p>
+
+      {/* author */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, borderTop: '1px solid rgba(255,255,255,0.055)', paddingTop: 16 }}>
+        <div style={{
+          width: 34, height: 34, borderRadius: '50%', flexShrink: 0,
+          background: `${t.color}18`, border: `1.5px solid ${t.color}40`,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.68rem', fontWeight: 700, color: t.color,
+        }}>{t.initials}</div>
+        <div>
+          <div style={{ fontSize: '0.83rem', fontWeight: 700, color: '#fff' }}>{t.name}</div>
+          <div style={{ fontSize: '0.71rem', color: 'rgba(255,255,255,0.3)', marginTop: 1 }}>{t.role}</div>
+        </div>
+      </div>
+    </div>
   )
 }
 
