@@ -563,57 +563,7 @@ function Home() {
       </section>
 
       {/* ── TESTIMONIALS ──────────────────────────────────────────── */}
-      <section style={{ padding: '90px 0 100px', position: 'relative', overflow: 'hidden' }}>
-        {/* bg glow */}
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
-
-        {/* header */}
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}
-          style={{ textAlign: 'center', marginBottom: 56, padding: '0 10%' }}
-        >
-          <div className="section-label" style={{ justifyContent: 'center', display: 'flex' }}>Client Voices</div>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', fontWeight: 800, color: '#fff', margin: '14px 0 12px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
-            Trusted by Teams Building the Future
-          </h2>
-          <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.93rem', maxWidth: 460, margin: '0 auto' }}>
-            Real results from real partners — across industries, stages, and scales.
-          </p>
-        </motion.div>
-
-        {/* Row 1 — scrolls left */}
-        {(() => {
-          const row1 = [
-            { quote: "AIQA transformed our operations with their innovative IoT solutions. Their platform is intuitive, efficient, and has significantly boosted our productivity. Highly recommended!", name: 'Jane Doe', role: 'CEO · Tech Innovations', avatar: profile1, color: '#AC6AFF' },
-            { quote: "The team at AIQA delivered beyond our expectations. Their digital twin technology provided real-time insights that were crucial for our decision-making process. A true partner in innovation.", name: 'John Smith', role: 'CTO · Global Enterprises', avatar: profile2, color: '#10B981' },
-            { quote: "Working with AIQA was a game-changer. Their tailored software development and consulting services helped us streamline our processes and achieve remarkable growth. Exceptional service!", name: 'Emily White', role: 'Director · Future Systems', avatar: profile3, color: '#07B4EB' },
-          ]
-          const cards = [...row1, ...row1]
-          return (
-            <div className="testi-runway" style={{ marginBottom: 14 }}>
-              <div className="testi-track">
-                {cards.map((t, i) => <TestiCard key={i} t={t} />)}
-              </div>
-            </div>
-          )
-        })()}
-
-        {/* Row 2 — scrolls right */}
-        {(() => {
-          const row2 = [
-            { quote: "Working with AIQA was a game-changer. Their tailored software development and consulting services helped us streamline our processes and achieve remarkable growth. Exceptional service!", name: 'Emily White', role: 'Director · Future Systems', avatar: profile3, color: '#F59E0B' },
-            { quote: "AIQA transformed our operations with their innovative IoT solutions. Their platform is intuitive, efficient, and has significantly boosted our productivity. Highly recommended!", name: 'Jane Doe', role: 'CEO · Tech Innovations', avatar: profile1, color: '#07B4EB' },
-            { quote: "The team at AIQA delivered beyond our expectations. Their digital twin technology provided real-time insights that were crucial for our decision-making process. A true partner in innovation.", name: 'John Smith', role: 'CTO · Global Enterprises', avatar: profile2, color: '#AC6AFF' },
-          ]
-          const cards = [...row2, ...row2]
-          return (
-            <div className="testi-runway">
-              <div className="testi-track-rev">
-                {cards.map((t, i) => <TestiCard key={i} t={t} />)}
-              </div>
-            </div>
-          )
-        })()}
-      </section>
+      <TestiSpotlight />
 
       {/* ── FAQ ────────────────────────────────────────────────────── */}
       <section style={{ padding: '80px 10% 110px' }}>
@@ -680,41 +630,180 @@ function Home() {
   )
 }
 
-function TestiCard({ t }) {
+const TESTIMONIALS = [
+  { quote: "AIQA transformed our operations with their innovative IoT solutions. Their platform is intuitive, efficient, and has significantly boosted our productivity. Highly recommended!", name: 'Jane Doe', title: 'CEO, Tech Innovations', avatar: profile1, color: '#AC6AFF' },
+  { quote: "The team at AIQA delivered beyond our expectations. Their digital twin technology provided real-time insights that were crucial for our decision-making process. A true partner in innovation.", name: 'John Smith', title: 'CTO, Global Enterprises', avatar: profile2, color: '#10B981' },
+  { quote: "Working with AIQA was a game-changer. Their tailored software development and consulting services helped us streamline our processes and achieve remarkable growth. Exceptional service!", name: 'Emily White', title: 'Director, Future Systems', avatar: profile3, color: '#07B4EB' },
+]
+
+function TestiSpotlight() {
+  const [active, setActive] = useState(0)
+  const [dir, setDir] = useState(1)
+  const t = TESTIMONIALS[active]
+
+  const go = (next) => {
+    setDir(next > active ? 1 : -1)
+    setActive(next)
+  }
+  const prev = () => go((active - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)
+  const next = () => go((active + 1) % TESTIMONIALS.length)
+
   return (
-    <div className="testi-card">
-      {/* colored top accent */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: `linear-gradient(90deg, transparent 0%, ${t.color}55 50%, transparent 100%)` }} />
-      {/* faint corner glow */}
-      <div style={{ position: 'absolute', top: -40, right: -40, width: 120, height: 120, borderRadius: '50%', background: `radial-gradient(circle, ${t.color}12 0%, transparent 70%)`, pointerEvents: 'none' }} />
+    <section style={{ padding: '90px 10% 100px', position: 'relative', overflow: 'hidden' }}>
+      {/* ambient glow behind active card */}
+      <div style={{
+        position: 'absolute', top: '50%', left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 700, height: 500,
+        background: `radial-gradient(ellipse, ${t.color}0D 0%, transparent 70%)`,
+        pointerEvents: 'none', transition: 'background 0.6s ease',
+      }} />
 
-      {/* stars */}
-      <div style={{ display: 'flex', gap: 3, marginBottom: 14 }}>
-        {[1,2,3,4,5].map(s => (
-          <svg key={s} width="11" height="11" viewBox="0 0 24 24" fill={t.color} stroke="none">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-          </svg>
-        ))}
-      </div>
+      {/* header */}
+      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
+        style={{ textAlign: 'center', marginBottom: 64 }}
+      >
+        <div className="section-label" style={{ justifyContent: 'center', display: 'flex' }}>Client Voices</div>
+        <h2 style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', fontWeight: 800, color: '#fff', margin: '14px 0 0', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+          Trusted by Teams Building the Future
+        </h2>
+      </motion.div>
 
-      {/* quote */}
-      <p style={{ color: 'rgba(255,255,255,0.58)', fontSize: '0.86rem', lineHeight: 1.75, marginBottom: 20, position: 'relative' }}>
-        <span style={{ fontFamily: 'Georgia, serif', fontSize: '1.5rem', color: `${t.color}40`, verticalAlign: '-4px', marginRight: 3, lineHeight: 0 }}>"</span>
-        {t.quote}
-      </p>
+      {/* spotlight card */}
+      <div style={{ maxWidth: 820, margin: '0 auto', position: 'relative' }}>
 
-      {/* author */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, borderTop: '1px solid rgba(255,255,255,0.055)', paddingTop: 16 }}>
-        {t.avatar
-          ? <img src={t.avatar} alt={t.name} style={{ width: 34, height: 34, borderRadius: '50%', flexShrink: 0, objectFit: 'cover', border: `1.5px solid ${t.color}40` }} />
-          : <div style={{ width: 34, height: 34, borderRadius: '50%', flexShrink: 0, background: `${t.color}18`, border: `1.5px solid ${t.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.68rem', fontWeight: 700, color: t.color }}>{t.initials}</div>
-        }
-        <div>
-          <div style={{ fontSize: '0.83rem', fontWeight: 700, color: '#fff' }}>{t.name}</div>
-          <div style={{ fontSize: '0.71rem', color: 'rgba(255,255,255,0.3)', marginTop: 1 }}>{t.role}</div>
+        {/* large decorative quote marks — background */}
+        <div style={{
+          position: 'absolute', top: -24, left: 0,
+          fontFamily: 'Georgia, serif', fontSize: '9rem', lineHeight: 1,
+          color: `${t.color}10`, userSelect: 'none', pointerEvents: 'none',
+          transition: 'color 0.5s ease', fontWeight: 900,
+        }}>"</div>
+
+        <AnimatePresence mode="wait" custom={dir}>
+          <motion.div
+            key={active}
+            custom={dir}
+            initial={{ opacity: 0, x: dir * 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: dir * -40 }}
+            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              background: 'rgba(255,255,255,0.025)',
+              border: `1px solid ${t.color}28`,
+              borderRadius: 24,
+              padding: '52px 56px 44px',
+              position: 'relative',
+              overflow: 'hidden',
+            }}
+          >
+            {/* top colored accent */}
+            <div style={{ position: 'absolute', top: 0, left: '15%', right: '15%', height: 1, background: `linear-gradient(90deg, transparent, ${t.color}70, transparent)` }} />
+            {/* inner corner shimmer */}
+            <div style={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', background: `radial-gradient(circle, ${t.color}0F 0%, transparent 70%)`, pointerEvents: 'none' }} />
+
+            {/* stars */}
+            <div style={{ display: 'flex', gap: 5, marginBottom: 28 }}>
+              {[1,2,3,4,5].map(s => (
+                <svg key={s} width="14" height="14" viewBox="0 0 24 24" fill={t.color} stroke="none">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              ))}
+            </div>
+
+            {/* quote */}
+            <p style={{
+              fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
+              color: 'rgba(255,255,255,0.82)',
+              lineHeight: 1.8,
+              fontWeight: 400,
+              letterSpacing: '0.005em',
+              marginBottom: 40,
+            }}>
+              {t.quote}
+            </p>
+
+            {/* author row */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16, borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 28 }}>
+              <img src={t.avatar} alt={t.name} style={{
+                width: 52, height: 52, borderRadius: '50%', objectFit: 'cover', flexShrink: 0,
+                border: `2px solid ${t.color}50`,
+                boxShadow: `0 0 18px ${t.color}28`,
+              }} />
+              <div>
+                <div style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', letterSpacing: '-0.01em' }}>{t.name}</div>
+                <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.38)', marginTop: 3 }}>{t.title}</div>
+              </div>
+              {/* colored tag pill */}
+              <div style={{ marginLeft: 'auto' }}>
+                <span style={{
+                  fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+                  padding: '4px 12px', borderRadius: 20,
+                  background: `${t.color}15`, border: `1px solid ${t.color}35`, color: t.color,
+                }}>Verified Client</span>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* navigation row */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, marginTop: 36 }}>
+          {/* prev */}
+          <button onClick={prev} style={{
+            width: 40, height: 40, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)',
+            background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.5)',
+            fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            transition: 'all 0.2s', lineHeight: 1,
+          }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = t.color; e.currentTarget.style.color = t.color }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)' }}
+          >←</button>
+
+          {/* dots */}
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            {TESTIMONIALS.map((item, i) => (
+              <button key={i} onClick={() => go(i)} style={{
+                width: i === active ? 24 : 7,
+                height: 7, borderRadius: 4, border: 'none', cursor: 'pointer',
+                background: i === active ? t.color : 'rgba(255,255,255,0.18)',
+                transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)',
+                padding: 0,
+              }} />
+            ))}
+          </div>
+
+          {/* next */}
+          <button onClick={next} style={{
+            width: 40, height: 40, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.1)',
+            background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.5)',
+            fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            transition: 'all 0.2s', lineHeight: 1,
+          }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = t.color; e.currentTarget.style.color = t.color }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)' }}
+          >→</button>
+        </div>
+
+        {/* thumbnail strip */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 12, marginTop: 28 }}>
+          {TESTIMONIALS.map((item, i) => (
+            <button key={i} onClick={() => go(i)} style={{
+              background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+              opacity: i === active ? 1 : 0.35,
+              transition: 'opacity 0.3s, transform 0.3s',
+              transform: i === active ? 'scale(1.12)' : 'scale(1)',
+            }}>
+              <img src={item.avatar} alt={item.name} style={{
+                width: 36, height: 36, borderRadius: '50%', objectFit: 'cover',
+                border: i === active ? `2px solid ${item.color}` : '2px solid transparent',
+                boxShadow: i === active ? `0 0 12px ${item.color}50` : 'none',
+                transition: 'all 0.3s',
+              }} />
+            </button>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
