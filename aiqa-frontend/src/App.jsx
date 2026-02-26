@@ -12,6 +12,7 @@ import Services from './pages/Services'
 import Industries from './pages/Industries'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Careers from './pages/Careers'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/industries" element={<Industries />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/careers" element={<Careers />} />
       </Routes>
       <Footer />
       <ToastContainer theme="dark" />

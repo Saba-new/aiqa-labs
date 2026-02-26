@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Col, Image } from 'antd'
+import { Link } from 'react-router-dom'
 import Logo from "../assets/logo.png"
 import rightArrow from "../assets/rightArrow.png"
 
@@ -21,14 +22,14 @@ function Footer() {
                 <Col className='footer-class-2' xl={12} md={12} lg={12} xs={24} sm={24}>
                     <div className='footer-inner'>
                         <div className="footer-column">
-                            <a href="services">Services</a>
-                            <a href="industries">Industries</a>
-                            <a href="platform">Platform</a>
+                            <Link to="/services">Services</Link>
+                            <Link to="/industries">Industries</Link>
+                            <Link to="/platform">Platform</Link>
                         </div>
                         <div className="footer-column">
-                            <a href="about">About</a>
-                            <a href="careers">Careers</a>
-                            <a href="contact">Contact</a>
+                            <Link to="/about">About</Link>
+                            <Link to="/careers">Careers</Link>
+                            <Link to="/contact">Contact</Link>
                         </div>
                         <div className="footer-column">
                             <a href="linkedin">LinkedIn</a>
