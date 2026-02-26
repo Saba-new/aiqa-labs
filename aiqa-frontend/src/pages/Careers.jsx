@@ -61,13 +61,56 @@ const ROLES = [
   },
 ]
 
+const IconRocket = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+  </svg>
+)
+const IconLightbulb = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+    <path d="M9 18h6"/>
+    <path d="M10 22h4"/>
+  </svg>
+)
+const IconGlobe = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+    <path d="M2 12h20"/>
+  </svg>
+)
+const IconTrendingUp = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+    <polyline points="16 7 22 7 22 13"/>
+  </svg>
+)
+const IconUsers = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+    <circle cx="9" cy="7" r="4"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+  </svg>
+)
+const IconAward = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="8" r="6"/>
+    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+  </svg>
+)
+
 const PERKS = [
-  { icon: '🚀', title: 'Work on Real Products', desc: 'No filler projects. You own a vertical and ship things that go into production for real enterprise clients from day one.' },
-  { icon: '🧠', title: 'Deep Domain Learning', desc: "AIQA spans FinTech, Healthcare, Manufacturing, and Smart Home. You'll develop expertise that generic agencies can't offer." },
-  { icon: '🌍', title: 'Flexible Work', desc: 'Hybrid and remote-friendly roles. We judge output, not where you sit. Async-first culture with clear ownership.' },
-  { icon: '📈', title: 'Fast Growth Track', desc: 'Flat hierarchies, early ownership, and a fast-growing company. If you perform, the path upward is short.' },
-  { icon: '🤝', title: 'Collaborative Culture', desc: 'Small, senior teams. No siloed handoffs. Engineers talk to clients, designers ship code, PMs write specs.' },
-  { icon: '💰', title: 'Competitive Compensation', desc: 'Market-leading salaries, performance bonuses, and equity participation for senior roles.' },
+  { icon: <IconRocket />, title: 'Work on Real Products', desc: 'No filler projects. You own a vertical and ship things that go into production for real enterprise clients from day one.' },
+  { icon: <IconLightbulb />, title: 'Deep Domain Learning', desc: "AIQA spans FinTech, Healthcare, Manufacturing, and Smart Home. You'll develop expertise that generic agencies can't offer." },
+  { icon: <IconGlobe />, title: 'Flexible Work', desc: 'Hybrid and remote-friendly roles. We judge output, not where you sit. Async-first culture with clear ownership.' },
+  { icon: <IconTrendingUp />, title: 'Fast Growth Track', desc: 'Flat hierarchies, early ownership, and a fast-growing company. If you perform, the path upward is short.' },
+  { icon: <IconUsers />, title: 'Collaborative Culture', desc: 'Small, senior teams. No siloed handoffs. Engineers talk to clients, designers ship code, PMs write specs.' },
+  { icon: <IconAward />, title: 'Competitive Compensation', desc: 'Market-leading salaries, performance bonuses, and equity participation for senior roles.' },
 ]
 
 function ApplyModal({ role, onClose }) {
@@ -387,7 +430,7 @@ function Careers() {
                 position: 'relative', overflow: 'hidden',
               }}
             >
-              <div style={{ fontSize: '1.8rem', marginBottom: 14 }}>{perk.icon}</div>
+              <div style={{ width: 46, height: 46, borderRadius: 12, background: 'rgba(172,106,255,0.1)', border: '1px solid rgba(172,106,255,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18, color: '#AC6AFF', flexShrink: 0 }}>{perk.icon}</div>
               <div style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: 10 }}>{perk.title}</div>
               <p style={{ fontSize: '0.84rem', color: 'rgba(255,255,255,0.42)', lineHeight: 1.7 }}>{perk.desc}</p>
             </motion.div>
