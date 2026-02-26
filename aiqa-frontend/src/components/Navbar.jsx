@@ -38,7 +38,7 @@ function Header() {
         <img
           src={Logo}
           alt="AIQA"
-          style={{ height: 18, maxHeight: 18, width: 'auto', display: 'block', objectFit: 'contain' }}
+          style={{ height: 16, maxHeight: 16, width: 'auto', display: 'block', objectFit: 'contain' }}
         />
       </Link>
 
