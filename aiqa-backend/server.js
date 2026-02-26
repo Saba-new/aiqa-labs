@@ -3,11 +3,15 @@ import cors from 'cors'
 import helmet from 'helmet'
 import dotenv from 'dotenv'
 import rateLimit from 'express-rate-limit'
+import { fileURLToPath } from 'url'
+import path from 'path'
 
 import contactRouter from './routes/contact.js'
 import contentRouter from './routes/content.js'
 
-dotenv.config()
+// Load .env from the same directory as server.js, regardless of cwd
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: path.join(__dirname, '.env') })
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -18,7 +22,10 @@ app.use(helmet())
 // ── CORS — allow the React dev server and production domain ───────────────
 const allowedOrigins = [
   'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3002',
   'http://localhost:5173',
+  'http://localhost:4173',
   process.env.FRONTEND_URL,
 ].filter(Boolean)
 

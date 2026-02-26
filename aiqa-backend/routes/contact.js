@@ -24,13 +24,13 @@ const validateContact = [
     .isEmail().withMessage('Please enter a valid email address.')
     .normalizeEmail(),
   body('subject')
+    .optional({ nullable: true, checkFalsy: true })
     .trim()
-    .notEmpty().withMessage('Subject is required.')
     .isLength({ max: 200 }).withMessage('Subject must be under 200 characters.'),
   body('message')
     .trim()
     .notEmpty().withMessage('Message is required.')
-    .isLength({ min: 10, max: 2000 }).withMessage('Message must be between 10 and 2000 characters.'),
+    .isLength({ min: 2, max: 2000 }).withMessage('Message must be under 2000 characters.'),
 ]
 
 // ── POST /api/contact ─────────────────────────────────────────────────────
@@ -41,13 +41,15 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
     return res.status(422).json({ errors: errors.array() })
   }
 
-  const { name, email, subject, message } = req.body
+  const { name, email, message } = req.body
+  const subject = req.body.subject || 'Website Enquiry'
 
-  // Create transporter
+  // Create transporter — family:4 forces IPv4 to avoid ::1 ECONNREFUSED on some systems
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT) || 587,
     secure: process.env.SMTP_SECURE === 'true', // true for port 465
+    family: 4,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
