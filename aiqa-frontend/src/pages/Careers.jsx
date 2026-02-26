@@ -91,9 +91,10 @@ function ApplyModal({ role, onClose }) {
         name: form.name,
         email: form.email,
         phone: form.phone,
-        message: `[Job Application: ${role}]\n\n${form.message}`,
+        subject: `Job Application: ${role}`,
+        message: form.message || '(No cover note provided)',
       }
-      const res = await axios.post('http://website-be.aiqa.co.in:5500/api/v1/contact', payload, {
+      const res = await axios.post('http://localhost:5000/api/contact', payload, {
         headers: { 'Content-Type': 'application/json' },
       })
       if (res.status === 200) {

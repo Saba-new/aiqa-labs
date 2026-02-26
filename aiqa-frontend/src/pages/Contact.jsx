@@ -17,7 +17,7 @@ const Contact = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const response = await axios.post('http://website-be.aiqa.co.in:5500/api/v1/contact', formData, {
+      const response = await axios.post('http://localhost:5000/api/contact', formData, {
         headers: { 'Content-Type': 'application/json' },
       })
       if (response.status === 200) {
