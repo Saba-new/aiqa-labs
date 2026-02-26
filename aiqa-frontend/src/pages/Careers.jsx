@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const ROLES = [
   {
@@ -68,7 +70,129 @@ const PERKS = [
   { icon: '💰', title: 'Competitive Compensation', desc: 'Market-leading salaries, performance bonuses, and equity participation for senior roles.' },
 ]
 
-function RoleCard({ role, index }) {
+function ApplyModal({ role, onClose }) {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
+  const [loading, setLoading] = useState(false)
+
+  const inputStyle = {
+    width: '100%', boxSizing: 'border-box',
+    background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)',
+    borderRadius: 10, padding: '11px 15px', color: '#fff', fontSize: '0.9rem',
+    outline: 'none', fontFamily: 'inherit', transition: 'border-color 0.2s',
+  }
+  const focusStyle = (e) => (e.target.style.borderColor = 'rgba(139,92,246,0.55)')
+  const blurStyle  = (e) => (e.target.style.borderColor = 'rgba(255,255,255,0.09)')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      const payload = {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: `[Job Application: ${role}]\n\n${form.message}`,
+      }
+      const res = await axios.post('http://website-be.aiqa.co.in:5500/api/v1/contact', payload, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      if (res.status === 200) {
+        toast.success('Application submitted! We will be in touch.')
+        onClose()
+      }
+    } catch {
+      toast.error('Failed to submit. Please try again or email careers@aiqa.co.in')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <AnimatePresence>
+      {/* backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+        onClick={onClose}
+        style={{
+          position: 'fixed', inset: 0, zIndex: 1000,
+          background: 'rgba(6,6,18,0.82)', backdropFilter: 'blur(6px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px',
+        }}
+      >
+        {/* modal panel */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.94, y: 20 }}
+          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            background: '#0d0d1f', border: '1px solid rgba(139,92,246,0.25)',
+            borderRadius: 20, padding: '40px 40px 36px', width: '100%', maxWidth: 480,
+            position: 'relative', boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
+          }}
+        >
+          {/* top accent */}
+          <div style={{ position: 'absolute', top: 0, left: '20%', right: '20%', height: 1, background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.6), transparent)', borderRadius: 1 }} />
+
+          {/* close */}
+          <button onClick={onClose} style={{
+            position: 'absolute', top: 16, right: 18, background: 'none', border: 'none',
+            color: 'rgba(255,255,255,0.3)', fontSize: '1.4rem', cursor: 'pointer',
+            lineHeight: 1, padding: 4, transition: 'color 0.2s',
+          }}
+            onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.3)'}
+          >×</button>
+
+          <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(172,106,255,0.7)', marginBottom: 8 }}>Apply Now</div>
+          <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#fff', marginBottom: 6, letterSpacing: '-0.01em', lineHeight: 1.3 }}>{role}</h3>
+          <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', marginBottom: 28 }}>Fill in your details and we'll get back to you within 2 business days.</p>
+
+          <form onSubmit={handleSubmit}>
+            {[{ label: 'Full Name', name: 'name', type: 'text', placeholder: 'Your full name', required: true },
+              { label: 'Email', name: 'email', type: 'email', placeholder: 'your@email.com', required: true },
+              { label: 'Phone', name: 'phone', type: 'tel', placeholder: '+91 00000 00000', required: true },
+            ].map(f => (
+              <div key={f.name} style={{ marginBottom: 14 }}>
+                <label style={{ display: 'block', fontSize: '0.68rem', fontWeight: 600, color: 'rgba(255,255,255,0.45)', marginBottom: 6, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
+                  {f.label} {f.required && <span style={{ color: '#f87171' }}>*</span>}
+                </label>
+                <input
+                  type={f.type} name={f.name} value={form[f.name]} required={f.required}
+                  placeholder={f.placeholder}
+                  onChange={e => setForm({ ...form, [e.target.name]: e.target.value })}
+                  style={inputStyle} onFocus={focusStyle} onBlur={blurStyle}
+                />
+              </div>
+            ))}
+
+            <div style={{ marginBottom: 24 }}>
+              <label style={{ display: 'block', fontSize: '0.68rem', fontWeight: 600, color: 'rgba(255,255,255,0.45)', marginBottom: 6, letterSpacing: '0.07em', textTransform: 'uppercase' }}>Cover Note</label>
+              <textarea
+                name="message" value={form.message} rows={4}
+                placeholder="Tell us briefly why you're a great fit..."
+                onChange={e => setForm({ ...form, message: e.target.value })}
+                style={{ ...inputStyle, resize: 'vertical' }}
+                onFocus={focusStyle} onBlur={blurStyle}
+              />
+            </div>
+
+            <button
+              type="submit" disabled={loading}
+              className="get-started-button"
+              style={{ width: '100%', opacity: loading ? 0.65 : 1, cursor: loading ? 'not-allowed' : 'pointer', justifyContent: 'center' }}
+            >
+              {loading ? 'Submitting…' : 'Submit Application'}
+            </button>
+          </form>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
+
+function RoleCard({ role, index, onApply }) {
   const [open, setOpen] = useState(false)
   return (
     <motion.div
@@ -136,20 +260,20 @@ function RoleCard({ role, index }) {
                   }}>{s}</span>
                 ))}
               </div>
-              <a
-                href={`mailto:careers@aiqa.co.in?subject=Application: ${encodeURIComponent(role.title)}`}
+              <button
+                onClick={() => onApply(role.title)}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   padding: '10px 22px', borderRadius: 10,
                   background: `${role.color}20`, border: `1px solid ${role.color}45`,
                   color: role.color, fontSize: '0.85rem', fontWeight: 700,
-                  textDecoration: 'none', transition: 'background 0.2s',
+                  cursor: 'pointer', transition: 'background 0.2s',
                 }}
                 onMouseEnter={e => e.currentTarget.style.background = `${role.color}30`}
                 onMouseLeave={e => e.currentTarget.style.background = `${role.color}20`}
               >
                 Apply for this role →
-              </a>
+              </button>
             </div>
           </motion.div>
         )}
@@ -160,6 +284,7 @@ function RoleCard({ role, index }) {
 
 function Careers() {
   const navigate = useNavigate()
+  const [applyRole, setApplyRole] = useState(null)
 
   return (
     <>
@@ -300,7 +425,7 @@ function Careers() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {ROLES.map((role, i) => (
-            <RoleCard key={i} role={role} index={i} />
+            <RoleCard key={i} role={role} index={i} onApply={setApplyRole} />
           ))}
         </div>
       </section>
@@ -330,25 +455,27 @@ function Careers() {
               to build — we'll reach out if there's a match, now or in future.
             </p>
           </div>
-          <a
-            href="mailto:careers@aiqa.co.in?subject=Open Application - AIQA Labs"
+          <button
+            onClick={() => setApplyRole('Open Application')}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
               padding: '14px 28px', borderRadius: 12,
               background: 'linear-gradient(135deg, #8B5CF6, #07B4EB)',
               color: '#fff', fontSize: '0.95rem', fontWeight: 700,
-              textDecoration: 'none', whiteSpace: 'nowrap',
+              border: 'none', cursor: 'pointer', whiteSpace: 'nowrap',
               boxShadow: '0 0 32px rgba(139,92,246,0.3)',
-              transition: 'opacity 0.2s',
-              flexShrink: 0,
+              transition: 'opacity 0.2s', flexShrink: 0,
             }}
             onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
             Send an open application →
-          </a>
+          </button>
         </motion.div>
       </section>
+
+      {/* Application modal */}
+      {applyRole && <ApplyModal role={applyRole} onClose={() => setApplyRole(null)} />}
     </>
   )
 }
