@@ -136,12 +136,20 @@ const Industries = () => {
             Expert Solutions for Every Industry.
           </h2>
         </motion.div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           {valueProps.map((item, i) => (
-            <motion.div key={i} className="bento-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
+            <motion.div
+              key={i}
+              className="node-card"
+              data-num={`0${i + 1}`}
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
               <span className="card-num">0{i + 1}</span>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#fff', margin: '14px 0 10px' }}>{item.title}</h3>
-              <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.91rem' }}>{item.description}</p>
+              <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#fff', margin: '10px 0 8px' }}>{item.title}</h3>
+              <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.72, fontSize: '0.91rem', maxWidth: 620 }}>{item.description}</p>
             </motion.div>
           ))}
         </div>
@@ -157,25 +165,38 @@ const Industries = () => {
             Industries We Serve with <span style={{ color: '#07B4EB' }}>Expertise</span>
           </h2>
         </motion.div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
-          {industries.map((industry, i) => (
-            <motion.div
-              key={i}
-              className="bento-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
-              style={{ cursor: 'pointer' }}
-              onClick={() => navigate('/contact')}
-            >
-              <div style={{ width: 52, height: 52, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(172,106,255,0.1)', border: '1px solid rgba(172,106,255,0.2)', marginBottom: 20 }}>
-                {industry.icon}
-              </div>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#fff', marginBottom: 10 }}>{industry.name}</h3>
-              <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.9rem' }}>{industry.desc}</p>
-            </motion.div>
-          ))}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 12 }}>
+          {industries.map((industry, i) => {
+            const accents = [
+              { bg: 'rgba(139,92,246,0.07)', border: 'rgba(139,92,246,0.22)', iconBg: 'rgba(139,92,246,0.14)', iconBorder: 'rgba(139,92,246,0.3)', arrow: '#8B5CF6' },
+              { bg: 'rgba(7,180,235,0.05)', border: 'rgba(7,180,235,0.18)', iconBg: 'rgba(7,180,235,0.1)', iconBorder: 'rgba(7,180,235,0.25)', arrow: '#07B4EB' },
+              { bg: 'rgba(16,185,129,0.05)', border: 'rgba(16,185,129,0.15)', iconBg: 'rgba(16,185,129,0.1)', iconBorder: 'rgba(16,185,129,0.22)', arrow: '#10B981' },
+            ]
+            const a = accents[i % 3]
+            return (
+              <motion.div
+                key={i}
+                className="spotlight-tile"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.48, delay: i * 0.07 }}
+                onClick={() => navigate('/contact')}
+                style={{ background: a.bg, border: `1px solid ${a.border}` }}
+              >
+                {/* Echo number watermark */}
+                <div style={{ position: 'absolute', bottom: -10, right: 14, fontSize: '5.5rem', fontWeight: 900, color: 'rgba(255,255,255,0.025)', fontFamily: "'Space Grotesk', sans-serif", lineHeight: 1, userSelect: 'none', pointerEvents: 'none' }}>
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                <div style={{ width: 46, height: 46, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', background: a.iconBg, border: `1px solid ${a.iconBorder}`, marginBottom: 18 }}>
+                  {industry.icon}
+                </div>
+                <h3 style={{ fontSize: '1.08rem', fontWeight: 700, color: '#fff', marginBottom: 8 }}>{industry.name}</h3>
+                <p style={{ color: 'rgba(255,255,255,0.44)', lineHeight: 1.68, fontSize: '0.87rem' }}>{industry.desc}</p>
+                <div style={{ position: 'absolute', bottom: 18, right: 22, color: a.arrow, fontSize: '1rem', opacity: 0.65 }}>→</div>
+              </motion.div>
+            )
+          })}
         </div>
       </section>
 
@@ -222,11 +243,21 @@ const Industries = () => {
           </motion.div>
           <motion.div className="bento-card" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-              {techStack.map((tech, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: '10px 12px', textAlign: 'center', fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)', transition: 'all 0.2s' }}>
-                  {tech}
-                </div>
-              ))}
+              {techStack.map((tech, i) => {
+                const chipAccent = i % 4 === 0
+                  ? { bg: 'rgba(139,92,246,0.09)', border: 'rgba(139,92,246,0.22)', dot: '#8B5CF6', text: 'rgba(196,181,253,0.85)' }
+                  : i % 4 === 1
+                  ? { bg: 'rgba(7,180,235,0.06)', border: 'rgba(7,180,235,0.2)', dot: '#07B4EB', text: 'rgba(103,232,249,0.8)' }
+                  : i % 4 === 2
+                  ? { bg: 'rgba(16,185,129,0.06)', border: 'rgba(16,185,129,0.16)', dot: '#10B981', text: 'rgba(110,231,183,0.75)' }
+                  : { bg: 'rgba(255,255,255,0.03)', border: 'rgba(255,255,255,0.08)', dot: 'rgba(255,255,255,0.3)', text: 'rgba(255,255,255,0.52)' }
+                return (
+                  <div key={i} style={{ background: chipAccent.bg, border: `1px solid ${chipAccent.border}`, borderRadius: 10, padding: '9px 12px', textAlign: 'center', fontSize: '0.8rem', color: chipAccent.text, transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+                    <span style={{ width: 5, height: 5, borderRadius: '50%', background: chipAccent.dot, flexShrink: 0, boxShadow: `0 0 4px ${chipAccent.dot}` }} />
+                    {tech}
+                  </div>
+                )
+              })}
             </div>
           </motion.div>
         </div>

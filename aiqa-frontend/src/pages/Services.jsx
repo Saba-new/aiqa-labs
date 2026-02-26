@@ -93,12 +93,23 @@ const Services = () => {
             A seamless and tailored approach to meet your technology needs.
           </h2>
         </motion.div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
           {overview.map((item, i) => (
-            <motion.div key={i} className="bento-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
-              <span className="card-num">0{i + 1}</span>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#fff', margin: '14px 0 10px' }}>{item.title}</h3>
-              <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.91rem' }}>{item.description}</p>
+            <motion.div
+              key={i}
+              className="numbered-row"
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              style={{ borderBottom: i < overview.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}
+            >
+              <div className="numbered-row-digit">{String(i + 1).padStart(2, '0')}</div>
+              <div className="numbered-row-divider" />
+              <div style={{ flex: 1 }}>
+                <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#fff', marginBottom: 10 }}>{item.title}</h3>
+                <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.72, fontSize: '0.91rem' }}>{item.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -115,30 +126,45 @@ const Services = () => {
             <span style={{ color: '#07B4EB' }}>Models</span>
           </h2>
         </motion.div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
-          {models.map((model, i) => (
-            <motion.div
-              key={i}
-              className={`bento-card${i % 2 === 1 ? ' bento-card-accent' : ''}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-            >
-              <span className="card-num">0{i + 1}</span>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#AC6AFF', margin: '14px 0 16px' }}>{model.title}</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {model.points.map((pt, j) => (
-                  <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'rgba(255,255,255,0.55)', fontSize: '0.9rem', lineHeight: 1.6 }}>
-                    <svg style={{ marginTop: 2, flexShrink: 0 }} width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#07B4EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: 14 }}>
+          {models.map((model, i) => {
+            const modelColors = ['#8B5CF6', '#07B4EB', '#10B981', '#F59E0B']
+            const modelTextColors = ['#C4B5FD', '#67E8F9', '#6EE7B7', '#FDE68A']
+            const mc = modelColors[i % 4]
+            const mtc = modelTextColors[i % 4]
+            return (
+              <motion.div
+                key={i}
+                className="terminal-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+              >
+                <div className="terminal-header">
+                  <div className="terminal-dot" style={{ background: mc }} />
+                  <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.15)' }} />
+                  <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.08)' }} />
+                  <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.32)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>
+                    {String(i + 1).padStart(2, '0')} / {model.title}
+                  </span>
+                </div>
+                <div className="terminal-body">
+                  <h3 style={{ fontSize: '1.12rem', fontWeight: 700, color: mtc, marginBottom: 18 }}>{model.title}</h3>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 11 }}>
+                    {model.points.map((pt, j) => (
+                      <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'rgba(255,255,255,0.5)', fontSize: '0.88rem', lineHeight: 1.65 }}>
+                        <svg style={{ marginTop: 3, flexShrink: 0 }} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={mc} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </section>
 
@@ -180,11 +206,21 @@ const Services = () => {
           </motion.div>
           <motion.div className="bento-card" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-              {techStack.map((tech, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: '10px 12px', textAlign: 'center', fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)' }}>
-                  {tech}
-                </div>
-              ))}
+              {techStack.map((tech, i) => {
+                const chipAccent = i % 4 === 0
+                  ? { bg: 'rgba(139,92,246,0.09)', border: 'rgba(139,92,246,0.22)', dot: '#8B5CF6', text: 'rgba(196,181,253,0.85)' }
+                  : i % 4 === 1
+                  ? { bg: 'rgba(7,180,235,0.06)', border: 'rgba(7,180,235,0.2)', dot: '#07B4EB', text: 'rgba(103,232,249,0.8)' }
+                  : i % 4 === 2
+                  ? { bg: 'rgba(16,185,129,0.06)', border: 'rgba(16,185,129,0.16)', dot: '#10B981', text: 'rgba(110,231,183,0.75)' }
+                  : { bg: 'rgba(255,255,255,0.03)', border: 'rgba(255,255,255,0.08)', dot: 'rgba(255,255,255,0.3)', text: 'rgba(255,255,255,0.52)' }
+                return (
+                  <div key={i} style={{ background: chipAccent.bg, border: `1px solid ${chipAccent.border}`, borderRadius: 10, padding: '9px 12px', textAlign: 'center', fontSize: '0.8rem', color: chipAccent.text, transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+                    <span style={{ width: 5, height: 5, borderRadius: '50%', background: chipAccent.dot, flexShrink: 0, boxShadow: `0 0 4px ${chipAccent.dot}` }} />
+                    {tech}
+                  </div>
+                )
+              })}
             </div>
           </motion.div>
         </div>

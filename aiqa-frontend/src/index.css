@@ -1406,3 +1406,144 @@ html {
   background: linear-gradient(90deg, transparent 5%, rgba(139,92,246,0.8) 40%, rgba(14,165,233,0.6) 80%, transparent 95%);
   z-index: 2;
 }
+
+/* ══════════════════════════════════════════════════════════
+   UNIQUE CARD ARCHETYPES — v2
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Node card — left accent stripe + watermark number ── */
+.node-card {
+  position: relative;
+  overflow: hidden;
+  border-left: 2px solid rgba(139,92,246,0.45);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-radius: 0 18px 18px 0;
+  background: rgba(255,255,255,0.018);
+  padding: 28px 32px;
+  transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.node-card::after {
+  content: attr(data-num);
+  position: absolute;
+  right: -8px;
+  bottom: -16px;
+  font-size: 7rem;
+  font-weight: 900;
+  color: rgba(139,92,246,0.045);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.node-card:hover {
+  border-left-color: rgba(139,92,246,0.95);
+  background: rgba(139,92,246,0.05);
+  transform: translateX(5px);
+  box-shadow: -4px 0 24px rgba(139,92,246,0.14), 0 12px 40px rgba(0,0,0,0.35);
+}
+
+/* ── Terminal card — mac‑window header + content body ── */
+.terminal-card {
+  background: rgba(6,6,18,0.85);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.terminal-header {
+  background: rgba(255,255,255,0.035);
+  border-bottom: 1px solid rgba(255,255,255,0.055);
+  padding: 11px 18px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.terminal-body {
+  padding: 24px 26px;
+}
+.terminal-card:hover {
+  border-color: rgba(139,92,246,0.22);
+  box-shadow: 0 24px 52px rgba(0,0,0,0.55), 0 0 0 1px rgba(139,92,246,0.09);
+  transform: translateY(-6px);
+}
+
+/* ── HUD card — icon column + text column ──────────── */
+.hud-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  display: flex;
+  overflow: hidden;
+  transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hud-card-icon {
+  width: 68px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139,92,246,0.07);
+  border-right: 1px solid rgba(139,92,246,0.12);
+}
+.hud-card-body {
+  padding: 18px 20px;
+  flex: 1;
+  min-width: 0;
+}
+.hud-card:hover {
+  border-color: rgba(139,92,246,0.24);
+  background: rgba(139,92,246,0.04);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgba(0,0,0,0.4), 0 0 0 1px rgba(139,92,246,0.07);
+}
+
+/* ── Spotlight tile — echo number + accent glow ───── */
+.spotlight-tile {
+  position: relative;
+  border-radius: 20px;
+  padding: 28px 28px 44px;
+  overflow: hidden;
+  transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+.spotlight-tile:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 52px rgba(0,0,0,0.55);
+}
+
+/* ── Numbered row — large digit + divider + text ──── */
+.numbered-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 28px 0;
+}
+.numbered-row-digit {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 72px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(139,92,246,0.75) 0%, rgba(7,180,235,0.4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.numbered-row-divider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(139,92,246,0.2);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+

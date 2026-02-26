@@ -92,22 +92,37 @@ const Platform = () => {
             IoT Intelligence that seamlessly fits into your existing stack
           </h2>
         </motion.div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
-          {features.map((feature, i) => (
-            <motion.div
-              key={i}
-              className="bento-card"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-            >
-              <span className="card-num">0{i + 1}</span>
-              <img src={feature.icon} alt={feature.title} style={{ width: 44, height: 44, objectFit: 'contain', margin: '16px 0 14px', opacity: 0.85 }} />
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: 10 }}>{feature.title}</h3>
-              <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.88rem' }}>{feature.description}</p>
-            </motion.div>
-          ))}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 12 }}>
+          {features.map((feature, i) => {
+            const hudAccents = [
+              { iconBg: 'rgba(139,92,246,0.1)', iconBorder: 'rgba(139,92,246,0.18)' },
+              { iconBg: 'rgba(7,180,235,0.08)', iconBorder: 'rgba(7,180,235,0.15)' },
+              { iconBg: 'rgba(16,185,129,0.08)', iconBorder: 'rgba(16,185,129,0.15)' },
+              { iconBg: 'rgba(245,158,11,0.07)', iconBorder: 'rgba(245,158,11,0.14)' },
+              { iconBg: 'rgba(139,92,246,0.1)', iconBorder: 'rgba(139,92,246,0.18)' },
+              { iconBg: 'rgba(7,180,235,0.08)', iconBorder: 'rgba(7,180,235,0.15)' },
+            ]
+            const ha = hudAccents[i]
+            return (
+              <motion.div
+                key={i}
+                className="hud-card"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+              >
+                <div className="hud-card-icon" style={{ background: ha.iconBg, borderRight: `1px solid ${ha.iconBorder}` }}>
+                  <img src={feature.icon} alt={feature.title} style={{ width: 30, height: 30, objectFit: 'contain', opacity: 0.88 }} />
+                </div>
+                <div className="hud-card-body">
+                  <span className="card-num">0{i + 1}</span>
+                  <h3 style={{ fontSize: '0.98rem', fontWeight: 700, color: '#fff', margin: '7px 0 7px' }}>{feature.title}</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.44)', lineHeight: 1.65, fontSize: '0.83rem' }}>{feature.description}</p>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </section>
 
@@ -155,10 +170,14 @@ const Platform = () => {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
           {/* Integrations */}
-          <motion.div className="bento-card" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <span className="card-num">01 â€” INTEGRATIONS</span>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
+            style={{ position: 'relative', overflow: 'hidden', borderRadius: 20, padding: '32px', background: 'rgba(139,92,246,0.06)', border: '1px solid rgba(139,92,246,0.18)' }}
+          >
+            <div style={{ position: 'absolute', top: -16, right: -8, fontSize: '6rem', fontWeight: 900, color: 'rgba(139,92,246,0.06)', fontFamily: "'Space Grotesk', sans-serif", lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>01</div>
+            <span className="card-num">01 — INTEGRATIONS</span>
             <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#fff', margin: '14px 0 12px' }}>Integrations</h3>
-            <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.9rem', marginBottom: 20 }}>
+            <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.9rem', marginBottom: 20 }}>
               TwinV allows seamless integration with both your existing systems and external platforms,
               providing out-of-the-box solutions that reduce capital expenditure and simplify IoT project implementation.
             </p>
@@ -169,28 +188,48 @@ const Platform = () => {
 
           {/* Right column â€” Commissioning + O&M */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <motion.div className="bento-card" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-              <div style={{ flex: 1 }}>
-                <span className="card-num">02 â€” COMMISSIONING</span>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#fff', margin: '14px 0 10px' }}>Commissioning</h3>
-                <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.88rem' }}>
-                  What typically takes months is simplified with our platform's cloud-based setup,
-                  enabling seamless commissioning in just a few days.
-                </p>
+            <motion.div
+              className="terminal-card"
+              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="terminal-header">
+                <div className="terminal-dot" style={{ background: '#07B4EB' }} />
+                <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.15)' }} />
+                <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.08)' }} />
+                <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.32)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>02 / Commissioning</span>
               </div>
-              <img src={graphLogo} alt="Commissioning" style={{ width: 56, height: 56, objectFit: 'contain', opacity: 0.8, flexShrink: 0 }} />
+              <div className="terminal-body" style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#67E8F9', marginBottom: 10 }}>Commissioning</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.88rem' }}>
+                    What typically takes months is simplified with our platform's cloud-based setup,
+                    enabling seamless commissioning in just a few days.
+                  </p>
+                </div>
+                <img src={graphLogo} alt="Commissioning" style={{ width: 52, height: 52, objectFit: 'contain', opacity: 0.8, flexShrink: 0 }} />
+              </div>
             </motion.div>
 
-            <motion.div className="bento-card bento-card-accent" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }} style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-              <div style={{ flex: 1 }}>
-                <span className="card-num">03 â€” O&amp;M</span>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#fff', margin: '14px 0 10px' }}>O&amp;M Applications</h3>
-                <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.88rem' }}>
-                  Enhance agility and decision-making in operations and maintenance with real-time
-                  insights through our platform's comprehensive suite of tools.
-                </p>
+            <motion.div
+              className="terminal-card"
+              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }}
+            >
+              <div className="terminal-header">
+                <div className="terminal-dot" style={{ background: '#8B5CF6' }} />
+                <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.15)' }} />
+                <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.08)' }} />
+                <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.32)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>03 / O&amp;M Applications</span>
               </div>
-              <img src={graphLogo} alt="Analytics" style={{ width: 56, height: 56, objectFit: 'contain', opacity: 0.8, flexShrink: 0 }} />
+              <div className="terminal-body" style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#C4B5FD', marginBottom: 10 }}>O&amp;M Applications</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.88rem' }}>
+                    Enhance agility and decision-making in operations and maintenance with real-time
+                    insights through our platform's comprehensive suite of tools.
+                  </p>
+                </div>
+                <img src={graphLogo} alt="Analytics" style={{ width: 52, height: 52, objectFit: 'contain', opacity: 0.8, flexShrink: 0 }} />
+              </div>
             </motion.div>
           </div>
         </div>
