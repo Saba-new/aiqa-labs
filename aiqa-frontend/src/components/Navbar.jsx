@@ -34,8 +34,12 @@ function Header() {
       style={{ boxShadow: scrolled ? '0 4px 40px rgba(0,0,0,0.6)' : 'none' }}
     >
       {/* Logo */}
-      <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={Logo} alt="AIQA" height={22} style={{ objectFit: 'contain' }} />
+      <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+        <img
+          src={Logo}
+          alt="AIQA"
+          style={{ height: 18, maxHeight: 18, width: 'auto', display: 'block', objectFit: 'contain' }}
+        />
       </Link>
 
       {/* Desktop nav */}
@@ -68,7 +72,7 @@ function Header() {
 
       {/* Mobile drawer */}
       <Drawer
-        title={<img src={Logo} alt="AIQA" height={16} />}
+        title={<img src={Logo} alt="AIQA" style={{ height: 14, width: 'auto', display: 'block' }} />}
         placement="left"
         onClose={() => setDrawerVisible(false)}
         open={drawerVisible}
