@@ -233,111 +233,126 @@ function Home() {
           </button>
         </motion.div>
 
-        {/* Bento 2×2 grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: 16,
-          }}
-        >
-          {/* Card 1 — wide */}
+        {/* Bento grid — each card has a distinct archetype */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 14 }}>
+
+          {/* Card 1 — full-width, protocol strip + animated icon row */}
           <motion.div
-            className="bento-card"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            style={{ gridColumn: 'span 2' }}
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}
+            style={{
+              gridColumn: 'span 12',
+              position: 'relative', overflow: 'hidden',
+              borderRadius: 20, padding: '32px 36px',
+              background: 'rgba(139,92,246,0.05)',
+              border: '1px solid rgba(139,92,246,0.16)',
+              display: 'flex', flexWrap: 'wrap', gap: 32, alignItems: 'center',
+            }}
           >
-            <span className="card-num">01 — PROTOCOL</span>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', margin: '12px 0 10px', letterSpacing: '-0.01em' }}>
-              Flexible Protocol Integration
-            </h3>
-            <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.93rem', maxWidth: 500 }}>
-              TwinV supports seamless integration with any communication protocol, ensuring
-              compatibility with diverse IoT devices and enabling future-ready scalability.
-            </p>
-            {/* Protocol icon row */}
-            <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap', alignItems: 'center' }}>
+            {/* faint grid texture */}
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(139,92,246,0.08) 1px, transparent 1px)', backgroundSize: '28px 28px', opacity: 0.6, pointerEvents: 'none' }} />
+            <div style={{ flex: '1 1 320px', position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(139,92,246,0.12)', border: '1px solid rgba(139,92,246,0.25)', borderRadius: 100, padding: '4px 12px', marginBottom: 14 }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#8B5CF6', boxShadow: '0 0 8px #8B5CF6' }} />
+                <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'rgba(196,181,253,0.9)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>01 — Protocol Layer</span>
+              </div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>Flexible Protocol Integration</h3>
+              <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.72, fontSize: '0.92rem', maxWidth: 460 }}>
+                TwinV supports seamless integration with any communication protocol, ensuring
+                compatibility with diverse IoT devices and enabling future-ready scalability.
+              </p>
+            </div>
+            <div style={{ flex: '0 1 auto', display: 'flex', gap: 10, flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
               {[group1, group2, group3, group4, group5, group6].map((icon, i) => (
-                <div
-                  key={i}
-                  style={{
-                    width: 44, height: 44,
-                    borderRadius: 12,
-                    background: 'rgba(139,92,246,0.08)',
-                    border: '1px solid rgba(139,92,246,0.18)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}
-                >
-                  <img src={icon} alt="" style={{ width: 26, height: 26, objectFit: 'contain', opacity: 0.8 }} />
+                <div key={i} style={{ width: 52, height: 52, borderRadius: 14, background: 'rgba(6,6,18,0.7)', border: '1px solid rgba(139,92,246,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)' }}>
+                  <img src={icon} alt="" style={{ width: 28, height: 28, objectFit: 'contain', opacity: 0.85 }} />
                 </div>
               ))}
-              <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.78rem', marginLeft: 4 }}>+ more</span>
             </div>
           </motion.div>
 
-          {/* Card 2 — accent */}
+          {/* Card 2 — vertical dark, AI star image bottom right */}
           <motion.div
-            className="bento-card bento-card-accent"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.08 }}
+            style={{
+              gridColumn: 'span 5',
+              position: 'relative', overflow: 'hidden',
+              borderRadius: 20, padding: '30px 28px 0',
+              background: 'linear-gradient(160deg, rgba(139,92,246,0.12) 0%, rgba(6,6,18,0.9) 60%)',
+              border: '1px solid rgba(139,92,246,0.2)',
+              minHeight: 280, display: 'flex', flexDirection: 'column',
+            }}
           >
-            <span className="card-num">02 — AI</span>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', margin: '12px 0 10px', letterSpacing: '-0.01em' }}>
-              AI-Powered<br />Predictions
-            </h3>
-            <p style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.7, fontSize: '0.93rem' }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 10%, #8B5CF6 50%, transparent 90%)' }} />
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.22)', borderRadius: 100, padding: '4px 12px', marginBottom: 14, alignSelf: 'flex-start' }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#AC6AFF', boxShadow: '0 0 8px #AC6AFF' }} />
+              <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'rgba(196,181,253,0.9)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>02 — AI Engine</span>
+            </div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>AI-Powered<br />Predictions</h3>
+            <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.9rem', flex: 1 }}>
               Leverage advanced AI and machine learning to predict potential issues,
               optimize resources, and drive intelligent decision-making.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 24 }}>
-              <img src={star} alt="AI" style={{ width: 110, opacity: 0.85 }} />
+            <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', marginTop: 8 }}>
+              <img src={star} alt="AI" style={{ width: 120, opacity: 0.88, filter: 'drop-shadow(0 0 24px rgba(139,92,246,0.5))' }} />
             </div>
           </motion.div>
 
-          {/* Card 3 */}
+          {/* Card 3 — cyan accent, graph image */}
           <motion.div
-            className="bento-card"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.13 }}
+            style={{
+              gridColumn: 'span 7',
+              position: 'relative', overflow: 'hidden',
+              borderRadius: 20, padding: '30px 28px 0',
+              background: 'linear-gradient(160deg, rgba(7,180,235,0.08) 0%, rgba(6,6,18,0.95) 55%)',
+              border: '1px solid rgba(7,180,235,0.15)',
+              minHeight: 280, display: 'flex', flexDirection: 'column',
+            }}
           >
-            <span className="card-num">03 — INSIGHTS</span>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', margin: '12px 0 10px', letterSpacing: '-0.01em' }}>
-              Real-Time Insights
-            </h3>
-            <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.93rem', maxWidth: 320 }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 10%, #07B4EB 50%, transparent 90%)' }} />
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(7,180,235,0.08)', border: '1px solid rgba(7,180,235,0.2)', borderRadius: 100, padding: '4px 12px', marginBottom: 14, alignSelf: 'flex-start' }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#07B4EB', boxShadow: '0 0 8px #07B4EB' }} />
+              <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'rgba(103,232,249,0.9)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>03 — Live Data</span>
+            </div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>Real-Time Insights</h3>
+            <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.9rem', maxWidth: 380 }}>
               Gain real-time visibility into asset performance to enable proactive maintenance and boost efficiency.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 16 }}>
-              <img src={graph} alt="insights" style={{ maxWidth: 200, opacity: 0.9 }} />
+            <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', flex: 1, marginTop: 8 }}>
+              <img src={graph} alt="insights" style={{ maxWidth: 240, opacity: 0.92, filter: 'drop-shadow(0 0 20px rgba(7,180,235,0.3))' }} />
             </div>
           </motion.div>
 
-          {/* Card 4 — accent */}
+          {/* Card 4 — emerald tint, energy circle */}
           <motion.div
-            className="bento-card bento-card-accent"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.18 }}
+            style={{
+              gridColumn: 'span 12',
+              position: 'relative', overflow: 'hidden',
+              borderRadius: 20, padding: '30px 36px',
+              background: 'linear-gradient(120deg, rgba(16,185,129,0.07) 0%, rgba(6,6,18,0.9) 55%)',
+              border: '1px solid rgba(16,185,129,0.14)',
+              display: 'flex', flexWrap: 'wrap', gap: 32, alignItems: 'center',
+            }}
           >
-            <span className="card-num">04 — SUSTAINABILITY</span>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', margin: '12px 0 10px', letterSpacing: '-0.01em' }}>
-              Sustainable Energy<br />Optimization
-            </h3>
-            <p style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.7, fontSize: '0.93rem', maxWidth: 320 }}>
-              Optimize energy consumption and enhance sustainability with TwinV's advanced insights.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 16 }}>
-              <img src={circleIcon} alt="energy" style={{ width: 160, opacity: 0.85 }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 5%, #10B981 40%, transparent 80%)' }} />
+            {/* faint echo number */}
+            <div style={{ position: 'absolute', right: 32, bottom: -16, fontSize: '7rem', fontWeight: 900, color: 'rgba(16,185,129,0.05)', fontFamily: "'Space Grotesk', sans-serif", lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>04</div>
+            <div style={{ flex: '1 1 280px', position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 100, padding: '4px 12px', marginBottom: 14 }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 8px #10B981' }} />
+                <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'rgba(110,231,183,0.9)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>04 — Green Tech</span>
+              </div>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>Sustainable Energy<br />Optimization</h3>
+              <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.72, fontSize: '0.92rem', maxWidth: 420 }}>
+                Optimize energy consumption and enhance sustainability with TwinV's advanced insights.
+              </p>
+            </div>
+            <div style={{ flex: '0 1 auto', display: 'flex', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
+              <img src={circleIcon} alt="energy" style={{ width: 170, opacity: 0.88, filter: 'drop-shadow(0 0 28px rgba(16,185,129,0.35))' }} />
             </div>
           </motion.div>
+
         </div>
       </section>
 
@@ -378,37 +393,16 @@ function Home() {
           </button>
         </motion.div>
 
-        {/* 3-col bento */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 16,
-          }}
-        >
+        {/* Services — terminal-card style, each with a distinct accent color */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 14 }}>
           {[
-            {
-              num: '01',
-              title: 'Custom software\ndevelopment',
-              desc: 'Tailored solutions with domain expertise, technical excellence, and full compliance for optimal results.',
-              icon: icon1,
-            },
-            {
-              num: '02',
-              title: 'IT consulting and\ndigital advisory',
-              desc: 'We assess, design, and optimize solutions with strategic precision, from concept to delivery.',
-              icon: icon2,
-            },
-            {
-              num: '03',
-              title: 'Digital\ntransformation',
-              desc: 'We enhance functionality, modernize systems, improve security, automate processes, and reduce IT costs.',
-              icon: icon3,
-            },
+            { num: '01', label: 'Custom Dev', color: '#8B5CF6', textColor: '#C4B5FD', title: 'Custom software\ndevelopment', desc: 'Tailored solutions with domain expertise, technical excellence, and full compliance for optimal results.', icon: icon1 },
+            { num: '02', label: 'Advisory', color: '#07B4EB', textColor: '#67E8F9', title: 'IT consulting and\ndigital advisory', desc: 'We assess, design, and optimize solutions with strategic precision, from concept to delivery.', icon: icon2 },
+            { num: '03', label: 'Transform', color: '#10B981', textColor: '#6EE7B7', title: 'Digital\ntransformation', desc: 'We enhance functionality, modernize systems, improve security, automate processes, and reduce IT costs.', icon: icon3 },
           ].map((svc, i) => (
             <motion.div
               key={i}
-              className="bento-card"
+              className="terminal-card"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -416,28 +410,25 @@ function Home() {
               style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
               onClick={() => navigate('/services')}
             >
-              <span className="card-num">{svc.num}</span>
-              <h3
-                style={{
-                  fontSize: '1.3rem', fontWeight: 700, color: '#fff',
-                  margin: '14px 0 10px', letterSpacing: '-0.01em', whiteSpace: 'pre-line',
-                }}
-              >
-                {svc.title}
-              </h3>
-              <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.9rem', flex: 1 }}>
-                {svc.desc}
-              </p>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-end',
-                  marginTop: 28,
-                }}
-              >
-                <img src={svc.icon} alt={svc.title} style={{ width: 130, opacity: 0.85 }} />
-                <span style={{ color: '#AC6AFF', fontSize: '1.3rem', lineHeight: 1 }}>→</span>
+              <div className="terminal-header">
+                <div className="terminal-dot" style={{ background: svc.color }} />
+                <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.14)' }} />
+                <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.07)' }} />
+                <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>
+                  {svc.num} / {svc.label}
+                </span>
+              </div>
+              <div className="terminal-body" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: svc.textColor, margin: '0 0 10px', letterSpacing: '-0.01em', whiteSpace: 'pre-line', lineHeight: 1.25 }}>
+                  {svc.title}
+                </h3>
+                <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.9rem', flex: 1 }}>
+                  {svc.desc}
+                </p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 24 }}>
+                  <img src={svc.icon} alt={svc.title} style={{ width: 120, opacity: 0.82, filter: `drop-shadow(0 0 12px ${svc.color}44)` }} />
+                  <span style={{ color: svc.color, fontSize: '1.3rem', lineHeight: 1 }}>→</span>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -481,40 +472,49 @@ function Home() {
           </button>
         </motion.div>
 
-        {/* 12-col industry grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(12, 1fr)',
-            gap: 12,
-          }}
-        >
+        {/* 12-col industry grid — each tile has unique accent */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 12 }}>
           {[
-            { title: 'FinTech', desc: 'Custom financial software for digital payments, banking.', span: 12, accent: false },
-            { title: 'Real Estate', desc: 'Develop modern real estate solutions using cutting-edge technologies.', span: 4, accent: false },
-            { title: 'Healthcare', desc: 'Custom EHR, EMR, ERX, and other medical solutions.', span: 8, accent: false },
-            { title: 'Transportation & Mobility', desc: 'Custom TMS, WMS, FMS, vehicle management, and blockchain systems.', span: 8, accent: true },
-            { title: 'Software', desc: 'Build software of any complexity, from SaaS systems to product ecosystems.', span: 4, accent: false },
-            { title: 'Manufacturing', desc: 'Optimize production with custom manufacturing software solutions.', span: 6, accent: false },
-            { title: 'Smart Home & Appliances', desc: 'Increase the value of smart home products with user-centered software.', span: 6, accent: true },
+            { title: 'FinTech', desc: 'Custom financial software for digital payments, banking.', span: 12, bg: 'rgba(139,92,246,0.07)', border: 'rgba(139,92,246,0.18)', arrowColor: '#AC6AFF', dot: '#8B5CF6' },
+            { title: 'Real Estate', desc: 'Develop modern real estate solutions using cutting-edge technologies.', span: 4, bg: 'rgba(7,180,235,0.06)', border: 'rgba(7,180,235,0.16)', arrowColor: '#07B4EB', dot: '#07B4EB' },
+            { title: 'Healthcare', desc: 'Custom EHR, EMR, ERX, and other medical solutions.', span: 8, bg: 'rgba(16,185,129,0.05)', border: 'rgba(16,185,129,0.14)', arrowColor: '#10B981', dot: '#10B981' },
+            { title: 'Transportation & Mobility', desc: 'Custom TMS, WMS, FMS, vehicle management, and blockchain systems.', span: 8, bg: 'rgba(245,158,11,0.05)', border: 'rgba(245,158,11,0.14)', arrowColor: '#F59E0B', dot: '#F59E0B' },
+            { title: 'Software', desc: 'Build software of any complexity, from SaaS systems to product ecosystems.', span: 4, bg: 'rgba(139,92,246,0.06)', border: 'rgba(139,92,246,0.15)', arrowColor: '#AC6AFF', dot: '#8B5CF6' },
+            { title: 'Manufacturing', desc: 'Optimize production with custom manufacturing software solutions.', span: 6, bg: 'rgba(7,180,235,0.05)', border: 'rgba(7,180,235,0.13)', arrowColor: '#07B4EB', dot: '#07B4EB' },
+            { title: 'Smart Home & Appliances', desc: 'Increase the value of smart home products with user-centered software.', span: 6, bg: 'rgba(16,185,129,0.06)', border: 'rgba(16,185,129,0.15)', arrowColor: '#10B981', dot: '#10B981' },
           ].map((ind, i) => (
             <motion.div
               key={i}
-              className={`industry-tile${ind.accent ? ' industry-tile-accent' : ''}`}
-              style={{ gridColumn: `span ${ind.span}` }}
+              style={{
+                gridColumn: `span ${ind.span}`,
+                position: 'relative',
+                overflow: 'hidden',
+                background: ind.bg,
+                border: `1px solid ${ind.border}`,
+                borderRadius: 16,
+                padding: '22px 26px 36px',
+                cursor: 'pointer',
+                transition: 'all 0.32s cubic-bezier(0.22,1,0.36,1)',
+              }}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.05 }}
               onClick={() => navigate('/industries')}
+              whileHover={{ y: -4, scale: 1.01 }}
             >
-              <div style={{ fontWeight: 700, fontSize: '1.1rem', color: '#fff', marginBottom: 8 }}>
-                {ind.title}
+              {/* accent top line */}
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent 10%, ${ind.dot} 50%, transparent 90%)` }} />
+              {/* echo number */}
+              <div style={{ position: 'absolute', bottom: -10, right: 14, fontSize: '4.5rem', fontWeight: 900, color: 'rgba(255,255,255,0.025)', fontFamily: "'Space Grotesk', sans-serif", lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>
+                {String(i + 1).padStart(2, '0')}
               </div>
-              <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.88rem', lineHeight: 1.6 }}>
-                {ind.desc}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10 }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: ind.dot, boxShadow: `0 0 6px ${ind.dot}`, flexShrink: 0 }} />
+                <span style={{ fontWeight: 700, fontSize: '1.02rem', color: '#fff' }}>{ind.title}</span>
               </div>
-              <div className="industry-arrow">→</div>
+              <div style={{ color: 'rgba(255,255,255,0.44)', fontSize: '0.86rem', lineHeight: 1.62 }}>{ind.desc}</div>
+              <div style={{ position: 'absolute', bottom: 16, right: 20, color: ind.arrowColor, fontSize: '1rem', opacity: 0.75 }}>→</div>
             </motion.div>
           ))}
         </div>
