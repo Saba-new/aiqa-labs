@@ -50,6 +50,23 @@ function Home() {
         <div className="aurora-orb aurora-orb-2" />
         <div className="aurora-orb aurora-orb-3" />
 
+        {/* editorial depth word — human design signature */}
+        <div style={{
+          position: 'absolute',
+          top: '50%', left: '50%',
+          transform: 'translate(-50%, -50%)',
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: 'clamp(7rem, 22vw, 18rem)',
+          fontWeight: 900,
+          letterSpacing: '-0.05em',
+          lineHeight: 1,
+          color: 'rgba(255,255,255,0.013)',
+          userSelect: 'none',
+          pointerEvents: 'none',
+          whiteSpace: 'nowrap',
+          zIndex: 0,
+        }}>TWINV</div>
+
         {/* cyber badge */}
         <motion.div {...fadeUp(0)} style={{ marginBottom: 24 }}>
           <span className="cyber-tag">AIQA Labs — Digital Twin Platform</span>
@@ -233,123 +250,118 @@ function Home() {
           </button>
         </motion.div>
 
-        {/* Bento grid — each card has a distinct archetype */}
+        {/* Platform cards — each card has a distinct personality and density */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 14 }}>
 
-          {/* Card 1 — full-width, protocol strip + animated icon row */}
+          {/* 01 — PROTOCOL: full width, editorial typography left + icon grid right */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}
+            className="feat-card"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
             style={{
               gridColumn: 'span 12',
-              position: 'relative', overflow: 'hidden',
-              borderRadius: 20, padding: '32px 36px',
-              background: 'rgba(139,92,246,0.05)',
-              border: '1px solid rgba(139,92,246,0.16)',
-              display: 'flex', flexWrap: 'wrap', gap: 32, alignItems: 'center',
+              background: 'rgba(255,255,255,0.015)',
+              border: '1px solid rgba(139,92,246,0.13)',
+              display: 'flex', flexWrap: 'wrap', gap: 0,
             }}
           >
-            {/* faint grid texture */}
-            <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle, rgba(139,92,246,0.08) 1px, transparent 1px)', backgroundSize: '28px 28px', opacity: 0.6, pointerEvents: 'none' }} />
-            <div style={{ flex: '1 1 320px', position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(139,92,246,0.12)', border: '1px solid rgba(139,92,246,0.25)', borderRadius: 100, padding: '4px 12px', marginBottom: 14 }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#8B5CF6', boxShadow: '0 0 8px #8B5CF6' }} />
-                <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'rgba(196,181,253,0.9)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>01 — Protocol Layer</span>
+            <div style={{ flex: '1 1 340px', padding: '36px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center', borderRight: '1px solid rgba(255,255,255,0.04)' }}>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '5rem', fontWeight: 900, lineHeight: 0.85, color: 'rgba(139,92,246,0.09)', letterSpacing: '-0.05em', marginBottom: 14, userSelect: 'none' }}>01</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                <span className="live-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: '#8B5CF6', color: '#8B5CF6', flexShrink: 0 }} />
+                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'rgba(196,181,253,0.65)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Protocol Layer</span>
               </div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>Flexible Protocol Integration</h3>
-              <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.72, fontSize: '0.92rem', maxWidth: 460 }}>
-                TwinV supports seamless integration with any communication protocol, ensuring
-                compatibility with diverse IoT devices and enabling future-ready scalability.
+              <h3 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 800, color: '#fff', margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>
+                Flexible Protocol<br />Integration
+              </h3>
+              <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.72, fontSize: '0.88rem', maxWidth: 380 }}>
+                TwinV works with any communication protocol — BACnet/IP, Modbus TCP, OPC UA —
+                connecting diverse IoT devices without ripping out existing infrastructure.
               </p>
             </div>
-            <div style={{ flex: '0 1 auto', display: 'flex', gap: 10, flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
-              {[group1, group2, group3, group4, group5, group6].map((icon, i) => (
-                <div key={i} style={{ width: 52, height: 52, borderRadius: 14, background: 'rgba(6,6,18,0.7)', border: '1px solid rgba(139,92,246,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)' }}>
-                  <img src={icon} alt="" style={{ width: 28, height: 28, objectFit: 'contain', opacity: 0.85 }} />
-                </div>
-              ))}
+            <div style={{ flex: '0 0 auto', padding: '36px 44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+                {[group1, group2, group3, group4, group5, group6].map((icon, i) => (
+                  <div key={i} style={{ width: 56, height: 56, borderRadius: 14, background: 'rgba(139,92,246,0.07)', border: '1px solid rgba(139,92,246,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src={icon} alt="" style={{ width: 30, height: 30, objectFit: 'contain', opacity: 0.8 }} />
+                  </div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
-          {/* Card 2 — vertical dark, AI star image bottom right */}
+          {/* 02 — AI: narrow, image-first, text footer */}
           <motion.div
+            className="feat-card"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.08 }}
             style={{
-              gridColumn: 'span 5',
-              position: 'relative', overflow: 'hidden',
-              borderRadius: 20, padding: '30px 28px 0',
-              background: 'linear-gradient(160deg, rgba(139,92,246,0.12) 0%, rgba(6,6,18,0.9) 60%)',
-              border: '1px solid rgba(139,92,246,0.2)',
-              minHeight: 280, display: 'flex', flexDirection: 'column',
+              gridColumn: 'span 4',
+              background: 'linear-gradient(175deg, rgba(139,92,246,0.18) 0%, rgba(6,6,18,0.97) 56%)',
+              border: '1px solid rgba(139,92,246,0.22)',
+              minHeight: 340, display: 'flex', flexDirection: 'column',
             }}
           >
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 10%, #8B5CF6 50%, transparent 90%)' }} />
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.22)', borderRadius: 100, padding: '4px 12px', marginBottom: 14, alignSelf: 'flex-start' }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#AC6AFF', boxShadow: '0 0 8px #AC6AFF' }} />
-              <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'rgba(196,181,253,0.9)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>02 — AI Engine</span>
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '28px 24px 0' }}>
+              <img src={star} alt="" style={{ width: '80%', maxWidth: 160, opacity: 0.92, filter: 'drop-shadow(0 0 36px rgba(139,92,246,0.65))' }} />
             </div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>AI-Powered<br />Predictions</h3>
-            <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.9rem', flex: 1 }}>
-              Leverage advanced AI and machine learning to predict potential issues,
-              optimize resources, and drive intelligent decision-making.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', marginTop: 8 }}>
-              <img src={star} alt="AI" style={{ width: 120, opacity: 0.88, filter: 'drop-shadow(0 0 24px rgba(139,92,246,0.5))' }} />
+            <div style={{ padding: '18px 24px 26px', borderTop: '1px solid rgba(139,92,246,0.1)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#AC6AFF', color: '#AC6AFF', flexShrink: 0 }} />
+                <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(196,181,253,0.6)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>02 — AI Engine</span>
+              </div>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#fff', margin: '0 0 6px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>AI-Powered Predictions</h3>
+              <p style={{ color: 'rgba(255,255,255,0.38)', lineHeight: 1.65, fontSize: '0.82rem' }}>Advanced ML models predict failures before they happen.</p>
             </div>
           </motion.div>
 
-          {/* Card 3 — cyan accent, graph image */}
+          {/* 03 — INSIGHTS: wide, graph edge-bleeds right side */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.13 }}
+            className="feat-card"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.12 }}
             style={{
-              gridColumn: 'span 7',
-              position: 'relative', overflow: 'hidden',
-              borderRadius: 20, padding: '30px 28px 0',
-              background: 'linear-gradient(160deg, rgba(7,180,235,0.08) 0%, rgba(6,6,18,0.95) 55%)',
-              border: '1px solid rgba(7,180,235,0.15)',
-              minHeight: 280, display: 'flex', flexDirection: 'column',
+              gridColumn: 'span 8',
+              background: 'linear-gradient(140deg, rgba(7,180,235,0.07) 0%, rgba(6,6,18,0.97) 52%)',
+              border: '1px solid rgba(7,180,235,0.14)',
+              minHeight: 340, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
             }}
           >
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 10%, #07B4EB 50%, transparent 90%)' }} />
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(7,180,235,0.08)', border: '1px solid rgba(7,180,235,0.2)', borderRadius: 100, padding: '4px 12px', marginBottom: 14, alignSelf: 'flex-start' }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#07B4EB', boxShadow: '0 0 8px #07B4EB' }} />
-              <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'rgba(103,232,249,0.9)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>03 — Live Data</span>
+            <div style={{ padding: '30px 32px 0', maxWidth: 420 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#07B4EB', color: '#07B4EB', flexShrink: 0 }} />
+                <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(103,232,249,0.65)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>03 — Live Data</span>
+              </div>
+              <h3 style={{ fontSize: 'clamp(1.3rem, 2vw, 1.75rem)', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.18 }}>Real-Time<br />Insights</h3>
+              <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, fontSize: '0.88rem' }}>Live visibility into asset performance. Proactive maintenance before failures occur.</p>
             </div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>Real-Time Insights</h3>
-            <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.9rem', maxWidth: 380 }}>
-              Gain real-time visibility into asset performance to enable proactive maintenance and boost efficiency.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', flex: 1, marginTop: 8 }}>
-              <img src={graph} alt="insights" style={{ maxWidth: 240, opacity: 0.92, filter: 'drop-shadow(0 0 20px rgba(7,180,235,0.3))' }} />
+            <div style={{ position: 'relative', height: 160, overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(90deg, rgba(6,6,18,0.97) 0%, transparent 100%)', zIndex: 1 }} />
+              <img src={graph} alt="" style={{ position: 'absolute', right: 0, bottom: 0, height: '100%', maxWidth: '80%', objectFit: 'contain', objectPosition: 'right bottom', opacity: 0.9, filter: 'drop-shadow(0 0 18px rgba(7,180,235,0.35))' }} />
             </div>
           </motion.div>
 
-          {/* Card 4 — emerald tint, energy circle */}
+          {/* 04 — ENERGY: full width, big display number left, circle image right */}
           <motion.div
+            className="feat-card"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.18 }}
             style={{
               gridColumn: 'span 12',
-              position: 'relative', overflow: 'hidden',
-              borderRadius: 20, padding: '30px 36px',
-              background: 'linear-gradient(120deg, rgba(16,185,129,0.07) 0%, rgba(6,6,18,0.9) 55%)',
-              border: '1px solid rgba(16,185,129,0.14)',
-              display: 'flex', flexWrap: 'wrap', gap: 32, alignItems: 'center',
+              background: 'linear-gradient(120deg, rgba(16,185,129,0.06) 0%, rgba(6,6,18,0.97) 60%)',
+              border: '1px solid rgba(16,185,129,0.13)',
+              display: 'flex', flexWrap: 'wrap', gap: 0,
             }}
           >
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 5%, #10B981 40%, transparent 80%)' }} />
-            {/* faint echo number */}
-            <div style={{ position: 'absolute', right: 32, bottom: -16, fontSize: '7rem', fontWeight: 900, color: 'rgba(16,185,129,0.05)', fontFamily: "'Space Grotesk', sans-serif", lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>04</div>
-            <div style={{ flex: '1 1 280px', position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 100, padding: '4px 12px', marginBottom: 14 }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 8px #10B981' }} />
-                <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'rgba(110,231,183,0.9)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>04 — Green Tech</span>
+            <div style={{ flex: '1 1 300px', padding: '36px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '4.5rem', fontWeight: 900, lineHeight: 0.9, color: 'rgba(16,185,129,0.08)', letterSpacing: '-0.05em', marginBottom: 14, userSelect: 'none' }}>04</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', color: '#10B981', flexShrink: 0 }} />
+                <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(110,231,183,0.6)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Green Tech</span>
               </div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>Sustainable Energy<br />Optimization</h3>
-              <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.72, fontSize: '0.92rem', maxWidth: 420 }}>
-                Optimize energy consumption and enhance sustainability with TwinV's advanced insights.
+              <h3 style={{ fontSize: 'clamp(1.3rem, 2vw, 1.75rem)', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.18 }}>Sustainable Energy<br />Optimization</h3>
+              <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.72, fontSize: '0.88rem', maxWidth: 400 }}>
+                Optimize energy consumption and reduce carbon footprint with TwinV’s advanced sustainability insights and predictive controls.
               </p>
             </div>
-            <div style={{ flex: '0 1 auto', display: 'flex', justifyContent: 'flex-end', position: 'relative', zIndex: 1 }}>
-              <img src={circleIcon} alt="energy" style={{ width: 170, opacity: 0.88, filter: 'drop-shadow(0 0 28px rgba(16,185,129,0.35))' }} />
+            <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', padding: '24px 44px' }}>
+              <img src={circleIcon} alt="" style={{ width: 180, opacity: 0.88, filter: 'drop-shadow(0 0 40px rgba(16,185,129,0.42))' }} />
             </div>
           </motion.div>
 
@@ -393,43 +405,43 @@ function Home() {
           </button>
         </motion.div>
 
-        {/* Services — terminal-card style, each with a distinct accent color */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 14 }}>
+        {/* Services — editorial horizontal list, NOT cards */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.045)' }}>
           {[
-            { num: '01', label: 'Custom Dev', color: '#8B5CF6', textColor: '#C4B5FD', title: 'Custom software\ndevelopment', desc: 'Tailored solutions with domain expertise, technical excellence, and full compliance for optimal results.', icon: icon1 },
-            { num: '02', label: 'Advisory', color: '#07B4EB', textColor: '#67E8F9', title: 'IT consulting and\ndigital advisory', desc: 'We assess, design, and optimize solutions with strategic precision, from concept to delivery.', icon: icon2 },
-            { num: '03', label: 'Transform', color: '#10B981', textColor: '#6EE7B7', title: 'Digital\ntransformation', desc: 'We enhance functionality, modernize systems, improve security, automate processes, and reduce IT costs.', icon: icon3 },
+            { num: '01', tag: 'Custom Dev',  color: '#8B5CF6', textColor: '#C4B5FD', title: 'Custom software development',       desc: 'Tailored solutions with domain expertise, technical excellence, and full compliance for optimal results.',          icon: icon1 },
+            { num: '02', tag: 'Advisory',    color: '#07B4EB', textColor: '#67E8F9', title: 'IT consulting and digital advisory', desc: 'We assess, design, and optimize solutions with strategic precision, from concept to delivery.',                      icon: icon2 },
+            { num: '03', tag: 'Transform',   color: '#10B981', textColor: '#6EE7B7', title: 'Digital transformation',            desc: 'We enhance functionality, modernize systems, improve security, automate processes, and reduce IT costs.',             icon: icon3 },
           ].map((svc, i) => (
             <motion.div
               key={i}
-              className="terminal-card"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="svc-row"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
+              transition={{ duration: 0.5, delay: i * 0.09 }}
               onClick={() => navigate('/services')}
             >
-              <div className="terminal-header">
-                <div className="terminal-dot" style={{ background: svc.color }} />
-                <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.14)' }} />
-                <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.07)' }} />
-                <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>
-                  {svc.num} / {svc.label}
-                </span>
+              {/* oversized faded number — editorial anchor */}
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '3.8rem', fontWeight: 900, lineHeight: 1, color: 'rgba(255,255,255,0.05)', letterSpacing: '-0.04em', flexShrink: 0, width: 64, userSelect: 'none' }}>
+                {svc.num}
               </div>
-              <div className="terminal-body" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: svc.textColor, margin: '0 0 10px', letterSpacing: '-0.01em', whiteSpace: 'pre-line', lineHeight: 1.25 }}>
-                  {svc.title}
-                </h3>
-                <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.9rem', flex: 1 }}>
-                  {svc.desc}
-                </p>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 24 }}>
-                  <img src={svc.icon} alt={svc.title} style={{ width: 120, opacity: 0.82, filter: `drop-shadow(0 0 12px ${svc.color}44)` }} />
-                  <span style={{ color: svc.color, fontSize: '1.3rem', lineHeight: 1 }}>→</span>
+              {/* colored gradient divider */}
+              <div style={{ width: 1, alignSelf: 'stretch', background: `linear-gradient(180deg, transparent, ${svc.color}50, transparent)`, flexShrink: 0 }} />
+              {/* content block */}
+              <div style={{ flex: 1, minWidth: 0, paddingTop: 2 }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${svc.color}12`, border: `1px solid ${svc.color}28`, borderRadius: 100, padding: '3px 10px', marginBottom: 10 }}>
+                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: svc.color, flexShrink: 0 }} />
+                  <span style={{ fontSize: '0.62rem', fontWeight: 700, color: svc.textColor, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{svc.tag}</span>
                 </div>
+                <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#fff', marginBottom: 7, lineHeight: 1.25, letterSpacing: '-0.01em' }}>{svc.title}</h3>
+                <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.68, fontSize: '0.87rem', maxWidth: 480 }}>{svc.desc}</p>
               </div>
+              {/* illustration */}
+              <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+                <img src={svc.icon} alt="" style={{ width: 88, opacity: 0.7, filter: `drop-shadow(0 0 10px ${svc.color}44)` }} />
+              </div>
+              {/* arrow */}
+              <span style={{ color: svc.color, fontSize: '1.15rem', flexShrink: 0, opacity: 0.65, alignSelf: 'center' }}>→</span>
             </motion.div>
           ))}
         </div>
@@ -472,49 +484,64 @@ function Home() {
           </button>
         </motion.div>
 
-        {/* 12-col industry grid — each tile has unique accent */}
+        {/* Industries — featured hero tile + editorial chip grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 12 }}>
+
+          {/* FinTech — editorial featured tile, tall, left column */}
+          <motion.div
+            className="ind-hero-tile"
+            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}
+            onClick={() => navigate('/industries')}
+            style={{
+              gridColumn: 'span 5', gridRow: 'span 2',
+              background: 'rgba(139,92,246,0.07)',
+              border: '1px solid rgba(139,92,246,0.18)',
+              minHeight: 300, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+            }}
+          >
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 22 }}>
+                <span className="live-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: '#8B5CF6', color: '#8B5CF6' }} />
+                <span style={{ fontSize: '0.62rem', fontWeight: 700, color: 'rgba(196,181,253,0.55)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Featured Industry</span>
+              </div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1, color: '#fff', marginBottom: 16 }}>
+                Fin<span style={{ background: 'linear-gradient(135deg, #AC6AFF 0%, #07B4EB 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Tech</span>
+              </div>
+              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.88rem', lineHeight: 1.65, maxWidth: 240 }}>
+                Custom financial software for digital payments, banking, and secure transactions.
+              </p>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(172,106,255,0.45)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" /><line x1="12" y1="12" x2="12" y2="16" /><line x1="10" y1="14" x2="14" y2="14" />
+              </svg>
+              <span style={{ color: '#AC6AFF', fontSize: '1.4rem', opacity: 0.65 }}>→</span>
+            </div>
+          </motion.div>
+
+          {/* remaining 6 industries — chip tiles */}
           {[
-            { title: 'FinTech', desc: 'Custom financial software for digital payments, banking.', span: 12, bg: 'rgba(139,92,246,0.07)', border: 'rgba(139,92,246,0.18)', arrowColor: '#AC6AFF', dot: '#8B5CF6' },
-            { title: 'Real Estate', desc: 'Develop modern real estate solutions using cutting-edge technologies.', span: 4, bg: 'rgba(7,180,235,0.06)', border: 'rgba(7,180,235,0.16)', arrowColor: '#07B4EB', dot: '#07B4EB' },
-            { title: 'Healthcare', desc: 'Custom EHR, EMR, ERX, and other medical solutions.', span: 8, bg: 'rgba(16,185,129,0.05)', border: 'rgba(16,185,129,0.14)', arrowColor: '#10B981', dot: '#10B981' },
-            { title: 'Transportation & Mobility', desc: 'Custom TMS, WMS, FMS, vehicle management, and blockchain systems.', span: 8, bg: 'rgba(245,158,11,0.05)', border: 'rgba(245,158,11,0.14)', arrowColor: '#F59E0B', dot: '#F59E0B' },
-            { title: 'Software', desc: 'Build software of any complexity, from SaaS systems to product ecosystems.', span: 4, bg: 'rgba(139,92,246,0.06)', border: 'rgba(139,92,246,0.15)', arrowColor: '#AC6AFF', dot: '#8B5CF6' },
-            { title: 'Manufacturing', desc: 'Optimize production with custom manufacturing software solutions.', span: 6, bg: 'rgba(7,180,235,0.05)', border: 'rgba(7,180,235,0.13)', arrowColor: '#07B4EB', dot: '#07B4EB' },
-            { title: 'Smart Home & Appliances', desc: 'Increase the value of smart home products with user-centered software.', span: 6, bg: 'rgba(16,185,129,0.06)', border: 'rgba(16,185,129,0.15)', arrowColor: '#10B981', dot: '#10B981' },
+            { title: 'Real Estate',           span: 7, color: '#07B4EB', desc: 'Modern real estate platforms built with cutting-edge tech.',       icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> },
+            { title: 'Healthcare',            span: 7, color: '#10B981', desc: 'Custom EHR, EMR, ERX, and other medical software solutions.',      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> },
+            { title: 'Transport & Mobility',  span: 4, color: '#F59E0B', desc: 'TMS, WMS, vehicle management and blockchain systems.',            icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> },
+            { title: 'Software',              span: 4, color: '#8B5CF6', desc: 'SaaS systems to product ecosystems, any complexity.',             icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> },
+            { title: 'Manufacturing',         span: 4, color: '#07B4EB', desc: 'Optimize production with custom manufacturing software.',         icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20h20"/><path d="M6 20V10l6-6 6 6v10"/><rect x="9" y="14" width="6" height="6"/></svg> },
+            { title: 'Smart Home & Appliances', span: 3, color: '#10B981', desc: 'User-centered IoT software for smart home products.',            icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> },
           ].map((ind, i) => (
             <motion.div
               key={i}
-              style={{
-                gridColumn: `span ${ind.span}`,
-                position: 'relative',
-                overflow: 'hidden',
-                background: ind.bg,
-                border: `1px solid ${ind.border}`,
-                borderRadius: 16,
-                padding: '22px 26px 36px',
-                cursor: 'pointer',
-                transition: 'all 0.32s cubic-bezier(0.22,1,0.36,1)',
-              }}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.05 }}
+              className="ind-chip-tile"
+              initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.06 }}
               onClick={() => navigate('/industries')}
-              whileHover={{ y: -4, scale: 1.01 }}
+              style={{ gridColumn: `span ${ind.span}`, background: `${ind.color}09`, border: `1px solid ${ind.color}20` }}
             >
-              {/* accent top line */}
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent 10%, ${ind.dot} 50%, transparent 90%)` }} />
-              {/* echo number */}
-              <div style={{ position: 'absolute', bottom: -10, right: 14, fontSize: '4.5rem', fontWeight: 900, color: 'rgba(255,255,255,0.025)', fontFamily: "'Space Grotesk', sans-serif", lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>
-                {String(i + 1).padStart(2, '0')}
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent 10%, ${ind.color} 50%, transparent 90%)` }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 9, color: ind.color }}>
+                {ind.icon}
+                <span style={{ fontWeight: 700, fontSize: '0.95rem', color: '#fff' }}>{ind.title}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10 }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: ind.dot, boxShadow: `0 0 6px ${ind.dot}`, flexShrink: 0 }} />
-                <span style={{ fontWeight: 700, fontSize: '1.02rem', color: '#fff' }}>{ind.title}</span>
-              </div>
-              <div style={{ color: 'rgba(255,255,255,0.44)', fontSize: '0.86rem', lineHeight: 1.62 }}>{ind.desc}</div>
-              <div style={{ position: 'absolute', bottom: 16, right: 20, color: ind.arrowColor, fontSize: '1rem', opacity: 0.75 }}>→</div>
+              <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.82rem', lineHeight: 1.6, paddingRight: 24 }}>{ind.desc}</p>
+              <span style={{ position: 'absolute', bottom: 14, right: 18, color: ind.color, fontSize: '0.9rem', opacity: 0.6 }}>→</span>
             </motion.div>
           ))}
         </div>
