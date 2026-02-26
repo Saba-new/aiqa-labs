@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import axios from 'axios'
+import { sendContactForm } from '../api/index.js'
 import contactLogo from '../assets/contactLogo.png'
 import quoteIcon from '../assets/designIcon.png'
 
@@ -17,9 +17,7 @@ const Contact = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData, {
-        headers: { 'Content-Type': 'application/json' },
-      })
+      const response = await sendContactForm(formData)
       if (response.status === 200) {
         toast.success('Details submitted successfully.')
         setFormData({ name: '', email: '', phone: '', message: '' })

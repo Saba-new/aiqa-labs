@@ -26,6 +26,7 @@ const allowedOrigins = [
   'http://localhost:3002',
   'http://localhost:5173',
   'http://localhost:4173',
+  'https://veemag.vercel.app',
   process.env.FRONTEND_URL,
 ].filter(Boolean)
 

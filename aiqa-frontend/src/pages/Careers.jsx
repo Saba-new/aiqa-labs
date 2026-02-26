@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import axios from 'axios'
+import { sendContactForm } from '../api/index.js'
 
 const ROLES = [
   {
@@ -137,9 +137,7 @@ function ApplyModal({ role, onClose }) {
         subject: `Job Application: ${role}`,
         message: form.message || '(No cover note provided)',
       }
-      const res = await axios.post('http://localhost:5000/api/contact', payload, {
-        headers: { 'Content-Type': 'application/json' },
-      })
+      const res = await sendContactForm(payload)
       if (res.status === 200) {
         toast.success('Application submitted! We will be in touch.')
         onClose()
