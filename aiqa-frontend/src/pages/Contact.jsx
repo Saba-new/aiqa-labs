@@ -1,162 +1,155 @@
-import React, { useState } from 'react'
+﻿import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { sendContactForm } from '../api/index.js'
+import axios from 'axios'
+import contactLogo from '../assets/contactLogo.png'
+import quoteIcon from '../assets/designIcon.png'
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
-
+  const navigate = useNavigate()
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' })
   const [loading, setLoading] = useState(false)
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-
     try {
-      const response = await sendContactForm(formData)
-      if (response.data.success) {
-        toast.success('Message sent! We\'ll get back to you within 1–2 business days.')
-        setFormData({ name: '', email: '', subject: '', message: '' })
+      const response = await axios.post('http://website-be.aiqa.co.in:5500/api/v1/contact', formData, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      if (response.status === 200) {
+        toast.success('Details submitted successfully.')
+        setFormData({ name: '', email: '', phone: '', message: '' })
       }
     } catch (error) {
-      const msg =
-        error.response?.data?.errors?.[0]?.msg ||
-        error.response?.data?.error ||
-        'Failed to send message. Please try again later.'
-      toast.error(msg)
-      console.error('Contact form error:', error)
+      toast.error('Failed to submit the details. Please try again later.')
+      console.error('Error:', error)
     } finally {
       setLoading(false)
     }
   }
 
+  const stats = [
+    { value: '9+', unit: 'Years', label: 'Experience', desc: 'Driving innovation in the tech industry.' },
+    { value: '10+', unit: 'Industries', label: 'Served', desc: 'Empowering diverse sectors with technology.' },
+  ]
+
   return (
-    <div className="relative z-10 min-h-screen pt-32 px-6 pb-20">
-      <div className="container mx-auto max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Get in <span style={{ 
-              background: 'linear-gradient(135deg, #AC6AFF 0%, #7B68EE 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}>Touch</span>
-          </h1>
-          <p className="text-xl text-gray-400">
-            Experience the full potential of our platform. Schedule your personalized demo.
-          </p>
+    <>
+      <section style={{ padding: '140px 10% 100px', position: 'relative', overflow: 'hidden' }}>
+        <div className="hero-grid" />
+        <div className="aurora-orb aurora-orb-1" />
+        <div className="aurora-orb aurora-orb-2" />
+
+        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} style={{ position: 'relative', zIndex: 1, marginBottom: 52 }}>
+          <img src={contactLogo} alt="AIQA" style={{ height: 28, cursor: 'pointer', objectFit: 'contain' }} onClick={() => navigate('/')} />
         </motion.div>
 
-        <motion.form
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          onSubmit={handleSubmit}
-          className="glass p-12 rounded-3xl"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div>
-              <label className="block text-sm font-semibold mb-2">Name <span className="text-red-500">*</span></label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors"
-                placeholder="John Doe"
-              />
+        <div style={{ display: 'flex', gap: 48, flexWrap: 'wrap', position: 'relative', zIndex: 1, alignItems: 'flex-start' }}>
+
+          {/* LEFT */}
+          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} style={{ flex: '1 1 320px' }}>
+            <span className="cyber-tag" style={{ marginBottom: 24, display: 'inline-block' }}>Let's Connect</span>
+            <h1 style={{ fontSize: 'clamp(1.9rem, 3.5vw, 3rem)', fontWeight: 800, color: '#fff', lineHeight: 1.15, letterSpacing: '-0.02em', margin: '0 0 18px' }}>
+              Experience the full potential{' '}
+              <span style={{ background: 'linear-gradient(135deg, #8B5CF6 0%, #07B4EB 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                of our platform.
+              </span>
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.97rem', marginBottom: 36 }}>
+              Schedule your personalized demo and unlock new possibilities with AIQA.
+            </p>
+
+            <div style={{ display: 'flex', gap: 0, marginBottom: 32, border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, overflow: 'hidden' }}>
+              {stats.map((s, i) => (
+                <div key={i} style={{ flex: 1, padding: '20px 22px', borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none', background: 'rgba(255,255,255,0.02)' }}>
+                  <div style={{ fontSize: '2rem', fontWeight: 700, background: 'linear-gradient(135deg,#fff 30%,#C4B5FD 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', lineHeight: 1 }}>
+                    {s.value}
+                  </div>
+                  <div style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>{s.unit} {s.label}</div>
+                  <div style={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.3)', marginTop: 5, lineHeight: 1.5 }}>{s.desc}</div>
+                </div>
+              ))}
             </div>
-            <div>
-              <label className="block text-sm font-semibold mb-2">Email <span className="text-red-500">*</span></label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors"
-                placeholder="john@example.com"
-              />
+
+            <motion.div className="bento-card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} style={{ maxWidth: 400 }}>
+              <img src={quoteIcon} alt="" style={{ width: 34, marginBottom: 14, opacity: 0.75 }} />
+              <blockquote style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, fontStyle: 'italic', fontSize: '0.9rem', marginBottom: 14 }}>
+                "Built it, mastered it, and launched it seamlessly. This platform redefines simplicity and empowers everyone to excel."
+              </blockquote>
+              <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.76rem', letterSpacing: '0.04em' }}>— A Satisfied Customer</div>
+            </motion.div>
+          </motion.div>
+
+          {/* RIGHT */}
+          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="bento-card" style={{ flex: '1 1 360px', padding: 36 }}>
+            <div className="section-label" style={{ marginBottom: 6 }}>Contact Form</div>
+            <h2 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#fff', marginBottom: 28, lineHeight: 1.3 }}>
+              <span style={{ background: 'linear-gradient(135deg,#8B5CF6,#07B4EB)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Connect</span>{' '}
+              now to simplify and supercharge your business operations!
+            </h2>
+
+            <form onSubmit={handleSubmit}>
+              {[
+                { label: 'Name', name: 'name', type: 'text', placeholder: 'Your full name', required: true },
+                { label: 'Business Email', name: 'email', type: 'email', placeholder: 'Enter Business Email', required: true },
+                { label: 'Phone Number', name: 'phone', type: 'tel', placeholder: 'Enter Phone Number', required: true },
+              ].map((field) => (
+                <div key={field.name} style={{ marginBottom: 16 }}>
+                  <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginBottom: 7, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                    {field.label}{field.required && <span style={{ color: '#f87171', marginLeft: 2 }}>*</span>}
+                  </label>
+                  <input
+                    type={field.type} name={field.name} value={formData[field.name]}
+                    onChange={handleChange} required={field.required} placeholder={field.placeholder}
+                    style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 10, padding: '11px 15px', color: '#fff', fontSize: '0.9rem', outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box', transition: 'border-color 0.2s' }}
+                    onFocus={(e) => (e.target.style.borderColor = 'rgba(139,92,246,0.55)')}
+                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.09)')}
+                  />
+                </div>
+              ))}
+
+              <div style={{ marginBottom: 24 }}>
+                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginBottom: 7, letterSpacing: '0.06em', textTransform: 'uppercase' }}>Message</label>
+                <textarea
+                  name="message" value={formData.message} onChange={handleChange} rows={4}
+                  placeholder="Tell us about your project..."
+                  style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 10, padding: '11px 15px', color: '#fff', fontSize: '0.9rem', outline: 'none', resize: 'vertical', fontFamily: 'inherit', boxSizing: 'border-box', transition: 'border-color 0.2s' }}
+                  onFocus={(e) => (e.target.style.borderColor = 'rgba(139,92,246,0.55)')}
+                  onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.09)')}
+                />
+              </div>
+
+              <button
+                type="submit" disabled={loading} className="get-started-button"
+                style={{ width: '100%', opacity: loading ? 0.6 : 1, cursor: loading ? 'not-allowed' : 'pointer' }}
+              >
+                {loading ? 'Sending...' : 'Send'}
+              </button>
+            </form>
+
+            <div style={{ marginTop: 22, paddingTop: 18, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+              <a href="mailto:contact@aiqa.co.in"
+                style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.76rem', display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#8B5CF6')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.3)')}
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                contact@aiqa.co.in
+              </a>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="mb-6">
-            <label className="block text-sm font-semibold mb-2">Subject <span className="text-red-500">*</span></label>
-            <input
-              type="text"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors"
-              placeholder="How can we help you?"
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="block text-sm font-semibold mb-2">Message <span className="text-red-500">*</span></label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows="5"
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors resize-none"
-              placeholder="Tell us about your project..."
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-primary hover:bg-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all glow hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{ background: 'linear-gradient(135deg, #AC6AFF 0%, #7B2CBF 100%)', border: 'none' }}
-          >
-            {loading ? 'Sending...' : 'Send Message'}
-          </button>
-        </motion.form>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 text-center"
-        >
-          <h3 className="text-2xl font-bold mb-4">Or reach us directly</h3>
-          <div className="flex justify-center flex-wrap gap-8">
-            <a href="mailto:contact@aiqa.co.in" className="flex items-center gap-2 text-gray-400 hover:text-primary transition-colors">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              contact@aiqa.co.in
-            </a>
-            <a href="tel:+911234567890" className="flex items-center gap-2 text-gray-400 hover:text-primary transition-colors">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-              </svg>
-              +91 1234567890
-            </a>
-          </div>
-        </motion.div>
-      </div>
-    </div>
+        </div>
+      </section>
+    </>
   )
 }
 
 export default Contact
-
