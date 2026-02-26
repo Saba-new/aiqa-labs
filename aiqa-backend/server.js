@@ -26,15 +26,18 @@ const allowedOrigins = [
   'http://localhost:3002',
   'http://localhost:5173',
   'http://localhost:4173',
-  'https://veemag.vercel.app',
   process.env.FRONTEND_URL,
 ].filter(Boolean)
+
+// Allow any *.vercel.app subdomain (covers preview + production deployments)
+const vercelPattern = /^https:\/\/[a-z0-9-]+(\.vercel\.app)$/
 
 app.use(
   cors({
     origin: (origin, cb) => {
-      // allow requests with no origin (curl, Postman, etc.)
-      if (!origin || allowedOrigins.includes(origin)) return cb(null, true)
+      if (!origin) return cb(null, true)
+      if (allowedOrigins.includes(origin)) return cb(null, true)
+      if (vercelPattern.test(origin)) return cb(null, true)
       cb(new Error(`CORS blocked: ${origin}`))
     },
     credentials: true,
