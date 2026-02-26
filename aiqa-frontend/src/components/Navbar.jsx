@@ -35,7 +35,7 @@ function Header() {
     >
       {/* Logo */}
       <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={Logo} alt="AIQA" height={34} style={{ objectFit: 'contain' }} />
+        <img src={Logo} alt="AIQA" height={22} style={{ objectFit: 'contain' }} />
       </Link>
 
       {/* Desktop nav */}
@@ -68,7 +68,7 @@ function Header() {
 
       {/* Mobile drawer */}
       <Drawer
-        title={<img src={Logo} alt="AIQA" height={26} />}
+        title={<img src={Logo} alt="AIQA" height={16} />}
         placement="left"
         onClose={() => setDrawerVisible(false)}
         open={drawerVisible}
