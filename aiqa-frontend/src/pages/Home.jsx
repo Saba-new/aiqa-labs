@@ -9,6 +9,13 @@ import icon1 from '../assets/icon1.png'
 import icon2 from '../assets/icon2.png'
 import icon3 from '../assets/icon3.png'
 import logo192 from '../assets/logo192.png'
+import sparkImg from '../assets/spark-image.png'
+import group1 from '../assets/Group1.png'
+import group2 from '../assets/Group2.png'
+import group3 from '../assets/Group3.png'
+import group4 from '../assets/Group4.png'
+import group5 from '../assets/Group5.png'
+import group6 from '../assets/Group6.png'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 36 },
@@ -37,6 +44,11 @@ function Home() {
       >
         {/* grid overlay */}
         <div className="hero-grid" />
+
+        {/* aurora orbs */}
+        <div className="aurora-orb aurora-orb-1" />
+        <div className="aurora-orb aurora-orb-2" />
+        <div className="aurora-orb aurora-orb-3" />
 
         {/* cyber badge */}
         <motion.div {...fadeUp(0)} style={{ marginBottom: 24 }}>
@@ -95,13 +107,35 @@ function Home() {
         </motion.p>
 
         {/* CTA */}
-        <motion.div {...fadeUp(0.3)} style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
+        <motion.div {...fadeUp(0.3)} style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
           <button className="get-started-button" onClick={() => navigate('/contact')}>
             Get Started
           </button>
           <button className="btn-neo" onClick={() => navigate('/platform')}>
             Explore Platform
           </button>
+        </motion.div>
+
+        {/* Protocol compatibility pills */}
+        <motion.div {...fadeUp(0.38)} style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: 36, marginBottom: 12 }}>
+            Native protocol support
+          </div>
+          <div className="protocol-row">
+            {[
+              { icon: group1, label: 'BACnet/IP' },
+              { icon: group2, label: 'Modbus TCP' },
+              { icon: group3, label: 'OPC UA' },
+              { icon: group4, label: 'MQTT' },
+              { icon: group5, label: 'Tridium Niagara' },
+              { icon: group6, label: 'RDM' },
+            ].map((p) => (
+              <div key={p.label} className="protocol-pill">
+                <img src={p.icon} alt={p.label} />
+                {p.label}
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* STATS ROW */}
@@ -140,6 +174,27 @@ function Home() {
           ))}
         </motion.div>
       </section>
+
+      {/* ── MARQUEE STRIP ─────────────────────────────────────────── */}
+      <div style={{ padding: '0 0 0', margin: '32px 0' }}>
+        <div className="marquee-wrapper">
+          <div className="marquee-track">
+            {[
+              'Digital Twin', 'IoT Integration', 'Real-Time Analytics', 'Predictive Maintenance',
+              'OPC UA', 'BACnet/IP', 'Modbus TCP', 'MQTT', 'Edge Computing',
+              'AI-Powered Insights', 'Smart Buildings', 'Energy Optimization',
+              'Digital Twin', 'IoT Integration', 'Real-Time Analytics', 'Predictive Maintenance',
+              'OPC UA', 'BACnet/IP', 'Modbus TCP', 'MQTT', 'Edge Computing',
+              'AI-Powered Insights', 'Smart Buildings', 'Energy Optimization',
+            ].map((tag, i) => (
+              <span key={i} className="marquee-tag">
+                <span className="marquee-dot" />
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* ── DIVIDER ───────────────────────────────────────────────── */}
       <hr className="neon-divider" style={{ margin: '0 10%' }} />
@@ -203,8 +258,23 @@ function Home() {
               TwinV supports seamless integration with any communication protocol, ensuring
               compatibility with diverse IoT devices and enabling future-ready scalability.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 24 }}>
-              <img src={content} alt="protocol" style={{ maxWidth: 280, opacity: 0.9 }} />
+            {/* Protocol icon row */}
+            <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap', alignItems: 'center' }}>
+              {[group1, group2, group3, group4, group5, group6].map((icon, i) => (
+                <div
+                  key={i}
+                  style={{
+                    width: 44, height: 44,
+                    borderRadius: 12,
+                    background: 'rgba(139,92,246,0.08)',
+                    border: '1px solid rgba(139,92,246,0.18)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}
+                >
+                  <img src={icon} alt="" style={{ width: 26, height: 26, objectFit: 'contain', opacity: 0.8 }} />
+                </div>
+              ))}
+              <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.78rem', marginLeft: 4 }}>+ more</span>
             </div>
           </motion.div>
 
