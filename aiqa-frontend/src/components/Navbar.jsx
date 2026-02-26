@@ -38,7 +38,7 @@ function Header() {
         <img
           src={Logo}
           alt="AIQA"
-          style={{ height: 16, maxHeight: 16, width: 'auto', display: 'block', objectFit: 'contain' }}
+          className="navbar-logo"
         />
       </Link>
 

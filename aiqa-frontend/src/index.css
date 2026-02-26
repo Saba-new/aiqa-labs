@@ -1240,6 +1240,14 @@ html {
   background: linear-gradient(90deg, transparent, rgba(172, 106, 255, 0.45), rgba(7, 180, 235, 0.35), transparent);
 }
 
+.navbar-logo {
+  height: 20px !important;
+  max-height: 20px !important;
+  width: auto !important;
+  display: block;
+  object-fit: contain;
+}
+
 .nav-link-neo {
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
