@@ -1,422 +1,454 @@
 ﻿import React from 'react'
-import { Row, Col, Card, Image } from 'antd'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import star from "../assets/star copy.png"
-import content from "../assets/content.png"
-import graph from "../assets/graph.png"
-import circleIcon from "../assets/circleIcon.png"
-import icon1 from "../assets/icon1.png"
-import icon2 from "../assets/icon2.png"
-import icon3 from "../assets/icon3.png"
-import nextIcon from "../assets/nextIcon.png"
-import logo192 from "../assets/logo192.png"
+import star from '../assets/star copy.png'
+import content from '../assets/content.png'
+import graph from '../assets/graph.png'
+import circleIcon from '../assets/circleIcon.png'
+import icon1 from '../assets/icon1.png'
+import icon2 from '../assets/icon2.png'
+import icon3 from '../assets/icon3.png'
+import logo192 from '../assets/logo192.png'
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 36 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
+})
 
 function Home() {
-  const navigate = useNavigate();
-
-  const stats = [
-    {
-      value: "9+",
-      label: "Years",
-      title: "Experience",
-      description: "Driving innovation in the tech industry.",
-    },
-    {
-      value: "10+",
-      label: "Industries",
-      title: "Served",
-      description: "Empowering diverse sectors with technology.",
-    },
-    {
-      value: "100%",
-      label: "Client",
-      title: "Satisfaction",
-      description: "Delivering excellence in every project.",
-    },
-  ];
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
-
-  const viewFade = {
-    initial: { opacity: 1, y: 0 },
-    animate: { opacity: 1, y: 0 },
-  };
+  const navigate = useNavigate()
 
   return (
     <>
-      {/* HERO */}
-      <div className='home-container'>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}
+      {/* ── HERO ──────────────────────────────────────────────────── */}
+      <section
+        style={{
+          position: 'relative',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '140px 10% 80px',
+          overflow: 'hidden',
+          textAlign: 'center',
+        }}
+      >
+        {/* grid overlay */}
+        <div className="hero-grid" />
+
+        {/* cyber badge */}
+        <motion.div {...fadeUp(0)} style={{ marginBottom: 24 }}>
+          <span className="cyber-tag">AIQA Labs — Digital Twin Platform</span>
+        </motion.div>
+
+        {/* logo */}
+        <motion.div {...fadeUp(0.1)} style={{ marginBottom: 32 }}>
+          <img
+            src={logo192}
+            alt="AIQA"
+            width={76}
+            style={{ borderRadius: '50%', boxShadow: '0 0 40px rgba(172,106,255,0.35)' }}
+          />
+        </motion.div>
+
+        {/* headline */}
+        <motion.h1
+          {...fadeUp(0.15)}
+          style={{
+            fontSize: 'clamp(2.2rem, 5.5vw, 4.8rem)',
+            fontWeight: 800,
+            lineHeight: 1.12,
+            letterSpacing: '-0.02em',
+            margin: '0 0 24px',
+            color: '#fff',
+            maxWidth: 860,
+          }}
         >
-          <Image src={logo192} preview={false} width={80} style={{ borderRadius: '50%' }} />
-        </motion.div>
-        <motion.div {...fadeInUp}>
-          <div className='home-title'>
-            <span>Gateway to <span className='span-limitless'>limitless</span></span>
-            <br />
-            <span>Digital Twin Possibilitie<span className="highlight">s</span></span>
-          </div>
-        </motion.div>
+          Gateway to{' '}
+          <span
+            style={{
+              background: 'linear-gradient(135deg, #AC6AFF 0%, #07B4EB 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            limitless
+          </span>{' '}
+          Digital Twin Possibilities
+        </motion.h1>
 
-        <motion.div {...fadeInUp} transition={{ duration: 0.6, delay: 0.2 }}>
-          <div className='home-sub-title'>
-            <span>Transform how you manage, simulate, and optimize your digital world.</span>
-            <br />
-            <span>Leverage advanced technology to unlock endless opportunities and step into the future today.</span>
-          </div>
-        </motion.div>
-
-        <motion.div
-          style={{ marginTop: 40, display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+        {/* subtitle */}
+        <motion.p
+          {...fadeUp(0.22)}
+          style={{
+            fontSize: 'clamp(1rem, 1.8vw, 1.18rem)',
+            color: 'rgba(255,255,255,0.55)',
+            maxWidth: 600,
+            lineHeight: 1.7,
+            margin: '0 auto 40px',
+          }}
         >
-          <button className='get-started-button' onClick={() => navigate("/contact")}>Get Started</button>
+          Transform how you manage, simulate, and optimize your digital world.
+          Leverage advanced technology to unlock endless opportunities and step into the future today.
+        </motion.p>
+
+        {/* CTA */}
+        <motion.div {...fadeUp(0.3)} style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
+          <button className="get-started-button" onClick={() => navigate('/contact')}>
+            Get Started
+          </button>
+          <button className="btn-neo" onClick={() => navigate('/platform')}>
+            Explore Platform
+          </button>
         </motion.div>
 
-        <div className="stats-container">
-          {stats.map((stat, index) => (
-            <motion.div
-              className="stat-item"
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="stat-value">
-                {stat.value} <span className="stat-label">{stat.label}</span>
+        {/* STATS ROW */}
+        <motion.div
+          {...fadeUp(0.42)}
+          style={{
+            display: 'flex',
+            gap: 0,
+            marginTop: 72,
+            borderTop: '1px solid rgba(255,255,255,0.07)',
+            paddingTop: 48,
+            width: '100%',
+            maxWidth: 720,
+            justifyContent: 'center',
+          }}
+        >
+          {[
+            { value: '9+', sub: 'Years', label: 'Experience', desc: 'Driving innovation in the tech industry.' },
+            { value: '10+', sub: 'Industries', label: 'Served', desc: 'Empowering diverse sectors with technology.' },
+            { value: '100%', sub: 'Client', label: 'Satisfaction', desc: 'Delivering excellence in every project.' },
+          ].map((s, i) => (
+            <React.Fragment key={i}>
+              <div className="stat-neo" style={{ flex: 1, padding: '0 24px', textAlign: 'center' }}>
+                <div className="stat-neo-value">{s.value}</div>
+                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>
+                  {s.sub} {s.label}
+                </div>
+                <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', marginTop: 6, lineHeight: 1.5 }}>
+                  {s.desc}
+                </div>
               </div>
-              <div className="stat-title">{stat.title}</div>
-              <div className="stat-description">{stat.description}</div>
-              {index < stats.length - 1 && <div className="divider" />}
-            </motion.div>
+              {i < 2 && (
+                <div style={{ width: 1, background: 'rgba(255,255,255,0.08)', alignSelf: 'stretch' }} />
+              )}
+            </React.Fragment>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </section>
 
-      {/* OUR PLATFORM heading */}
-      <motion.div {...viewFade}>
-        <Row style={{ padding: "5% 10% 0% 10%" }}>
-          <Col xl={17} lg={17} md={17} sm={24} xs={24}>
-            <div className='label-platform'>OUR PLATFORM</div>
-            <div className='home-title-2'>
-              TwinV is the All-in-One Platform
-              for IoT and Digital Twins
-            </div>
-            <div className='home-title-3'>
+      {/* ── DIVIDER ───────────────────────────────────────────────── */}
+      <hr className="neon-divider" style={{ margin: '0 10%' }} />
+
+      {/* ── PLATFORM ──────────────────────────────────────────────── */}
+      <section style={{ padding: '80px 10%' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48, flexWrap: 'wrap', gap: 24 }}
+        >
+          <div style={{ maxWidth: 600 }}>
+            <div className="section-label">Our Platform</div>
+            <h2
+              style={{
+                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+                fontWeight: 800,
+                color: '#fff',
+                margin: '12px 0 16px',
+                lineHeight: 1.2,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              TwinV is the All-in-One Platform<br />for IoT and Digital Twins
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.97rem', maxWidth: 520 }}>
               TwinV combines IoT and digital twin technology to deliver real-time insights,
               predictive analytics, and advanced simulations. Optimize performance,
               streamline operations, and drive innovation with our all-in-one platform.
+            </p>
+          </div>
+          <button className="btn-neo" onClick={() => navigate('/platform')}>
+            Step Into the Future
+          </button>
+        </motion.div>
+
+        {/* Bento 2×2 grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 16,
+          }}
+        >
+          {/* Card 1 — wide */}
+          <motion.div
+            className="bento-card"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{ gridColumn: 'span 2' }}
+          >
+            <span className="card-num">01 — PROTOCOL</span>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', margin: '12px 0 10px', letterSpacing: '-0.01em' }}>
+              Flexible Protocol Integration
+            </h3>
+            <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.93rem', maxWidth: 500 }}>
+              TwinV supports seamless integration with any communication protocol, ensuring
+              compatibility with diverse IoT devices and enabling future-ready scalability.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 24 }}>
+              <img src={content} alt="protocol" style={{ maxWidth: 280, opacity: 0.9 }} />
             </div>
-          </Col>
-          <Col xl={7} lg={7} md={7} sm={24} xs={24} style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }}>
-            <button className='button-step'>Step Into the Future</button>
-          </Col>
-        </Row>
-      </motion.div>
+          </motion.div>
 
-      {/* PLATFORM CARDS ROW 1 */}
-      <motion.div {...viewFade} transition={{ duration: 0.6, delay: 0.1 }}>
-        <Row style={{ padding: "3% 10% 0% 10%" }}>
-          <Col xl={17} lg={17} md={17} sm={24} xs={24}>
-            <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }}>
-              <Card className="feature-card" style={{ width: "98%", height: "100%" }}>
-                <div className='home-title-2'>Flexible Protocol Integration</div>
-                <div className='home-title-3'>
-                  TwinV supports seamless integration with any communication protocol, ensuring
-                  compatibility with diverse IoT devices and enabling future-ready scalability.
-                </div>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "5px" }}>
-                  <Image width={300} src={content} preview={false} />
-                </div>
-              </Card>
-            </motion.div>
-          </Col>
-          <Col xl={7} lg={7} md={7} sm={24} xs={24} style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }}>
-            <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }} style={{ width: "98%", height: "100%" }}>
-              <Card className="feature-card feature-card-purple" style={{ height: "100%", width: "100%" }}>
-                <div className='ai-title'>AI-Powered<br />Predictions</div>
-                <div className='ai-content'>
-                  Leverage advanced AI and machine learning to predict potential issues,
-                  optimize resources, and drive intelligent decision-making.
-                </div>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", marginTop: 50 }}>
-                  <Image width={120} src={star} preview={false} />
-                </div>
-              </Card>
-            </motion.div>
-          </Col>
-        </Row>
-      </motion.div>
+          {/* Card 2 — accent */}
+          <motion.div
+            className="bento-card bento-card-accent"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <span className="card-num">02 — AI</span>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', margin: '12px 0 10px', letterSpacing: '-0.01em' }}>
+              AI-Powered<br />Predictions
+            </h3>
+            <p style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.7, fontSize: '0.93rem' }}>
+              Leverage advanced AI and machine learning to predict potential issues,
+              optimize resources, and drive intelligent decision-making.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 24 }}>
+              <img src={star} alt="AI" style={{ width: 110, opacity: 0.85 }} />
+            </div>
+          </motion.div>
 
-      {/* PLATFORM CARDS ROW 2 */}
-      <motion.div {...viewFade} transition={{ duration: 0.6, delay: 0.1 }}>
-        <Row style={{ padding: "1.5% 10% 0% 10%" }}>
-          <Col xl={12} lg={12} md={12} sm={24} xs={24}>
-            <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }}>
-              <Card className="feature-card" style={{ width: "98%", height: "100%" }}>
-                <div style={{ inlineSize: "fit-content" }} className='home-title-2'>Real-Time Insights</div>
-                <div style={{ width: "65%" }} className='home-title-3'>
-                  Gain real-time visibility into asset performance to enable proactive maintenance and boost efficiency.
-                </div>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", marginTop: 5 }}>
-                  <Image width={230} src={graph} preview={false} />
-                </div>
-              </Card>
-            </motion.div>
-          </Col>
-          <Col xl={12} lg={12} md={12} sm={24} xs={24} style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }}>
-            <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }} style={{ width: "98%", height: "100%" }}>
-              <Card className="feature-card feature-card-purple" style={{ height: "100%", width: "100%" }}>
-                <div style={{ width: "80%", margin: "10px 0px" }} className='ai-title'>Sustainable Energy<br />Optimization</div>
-                <div style={{ width: "50%" }} className='ai-content'>
-                  Optimize energy consumption and enhance sustainability with TwinV's advanced insights.
-                </div>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
-                  <Image width={180} src={circleIcon} preview={false} />
-                </div>
-              </Card>
-            </motion.div>
-          </Col>
-        </Row>
-      </motion.div>
+          {/* Card 3 */}
+          <motion.div
+            className="bento-card"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <span className="card-num">03 — INSIGHTS</span>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', margin: '12px 0 10px', letterSpacing: '-0.01em' }}>
+              Real-Time Insights
+            </h3>
+            <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.93rem', maxWidth: 320 }}>
+              Gain real-time visibility into asset performance to enable proactive maintenance and boost efficiency.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 16 }}>
+              <img src={graph} alt="insights" style={{ maxWidth: 200, opacity: 0.9 }} />
+            </div>
+          </motion.div>
 
-      {/* TAILORED SMART SOLUTIONS heading */}
-      <motion.div {...viewFade}>
-        <Row style={{ padding: "5% 10% 0% 10%" }}>
-          <Col xl={17} lg={17} md={17} sm={24} xs={24}>
-            <div className='label-platform-1'>Tailored Smart Solutions</div>
-            <div className='home-title-2'>
+          {/* Card 4 — accent */}
+          <motion.div
+            className="bento-card bento-card-accent"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <span className="card-num">04 — SUSTAINABILITY</span>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#fff', margin: '12px 0 10px', letterSpacing: '-0.01em' }}>
+              Sustainable Energy<br />Optimization
+            </h3>
+            <p style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.7, fontSize: '0.93rem', maxWidth: 320 }}>
+              Optimize energy consumption and enhance sustainability with TwinV's advanced insights.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 16 }}>
+              <img src={circleIcon} alt="energy" style={{ width: 160, opacity: 0.85 }} />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── DIVIDER ───────────────────────────────────────────────── */}
+      <hr className="neon-divider" style={{ margin: '0 10%' }} />
+
+      {/* ── SERVICES ──────────────────────────────────────────────── */}
+      <section style={{ padding: '80px 10%' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48, flexWrap: 'wrap', gap: 24 }}
+        >
+          <div style={{ maxWidth: 600 }}>
+            <div className="section-label">Tailored Smart Solutions</div>
+            <h2
+              style={{
+                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+                fontWeight: 800,
+                color: '#fff',
+                margin: '12px 0 16px',
+                lineHeight: 1.2,
+                letterSpacing: '-0.02em',
+              }}
+            >
               Comprehensive IoT Solutions for Every Stage of Development
-            </div>
-            <div className='home-title-3'>
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.97rem', maxWidth: 520 }}>
               We specialize in delivering end-to-end IoT solutions, combining hardware and software expertise.
               Whether you're building a product from scratch, modernizing existing systems, or enhancing
               functionality, we provide the innovation and support your business needs to thrive.
-            </div>
-          </Col>
-          <Col xl={7} lg={7} md={7} sm={24} xs={24} style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }}>
-            <button className='button-step'>Transform with Us</button>
-          </Col>
-        </Row>
-      </motion.div>
+            </p>
+          </div>
+          <button className="btn-neo" onClick={() => navigate('/services')}>
+            Transform with Us
+          </button>
+        </motion.div>
 
-      {/* SERVICE CARDS */}
-      <motion.div {...viewFade} transition={{ duration: 0.6, delay: 0.1 }}>
-        <Row style={{ padding: "3% 10% 0% 10%" }}>
-          <Col xl={8} lg={8} md={8} sm={24} xs={24}>
-            <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }}>
-              <Card className='card-back-1'>
-                <div>
-                  <div className='card-title-1'>Custom software<br />development</div>
-                  <div className='card-content-1'>
-                    Tailored solutions with domain expertise, technical excellence,
-                    and full compliance for optimal results.
-                  </div>
-                </div>
-                <div style={{ display: "flex", flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between" }}>
-                  <Image width={150} src={icon1} preview={false} />
-                  <Image style={{ cursor: "pointer" }} onClick={() => navigate("/services")} src={nextIcon} preview={false} />
-                </div>
-              </Card>
+        {/* 3-col bento */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 16,
+          }}
+        >
+          {[
+            {
+              num: '01',
+              title: 'Custom software\ndevelopment',
+              desc: 'Tailored solutions with domain expertise, technical excellence, and full compliance for optimal results.',
+              icon: icon1,
+            },
+            {
+              num: '02',
+              title: 'IT consulting and\ndigital advisory',
+              desc: 'We assess, design, and optimize solutions with strategic precision, from concept to delivery.',
+              icon: icon2,
+            },
+            {
+              num: '03',
+              title: 'Digital\ntransformation',
+              desc: 'We enhance functionality, modernize systems, improve security, automate processes, and reduce IT costs.',
+              icon: icon3,
+            },
+          ].map((svc, i) => (
+            <motion.div
+              key={i}
+              className="bento-card"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
+              onClick={() => navigate('/services')}
+            >
+              <span className="card-num">{svc.num}</span>
+              <h3
+                style={{
+                  fontSize: '1.3rem', fontWeight: 700, color: '#fff',
+                  margin: '14px 0 10px', letterSpacing: '-0.01em', whiteSpace: 'pre-line',
+                }}
+              >
+                {svc.title}
+              </h3>
+              <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.9rem', flex: 1 }}>
+                {svc.desc}
+              </p>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-end',
+                  marginTop: 28,
+                }}
+              >
+                <img src={svc.icon} alt={svc.title} style={{ width: 130, opacity: 0.85 }} />
+                <span style={{ color: '#AC6AFF', fontSize: '1.3rem', lineHeight: 1 }}>→</span>
+              </div>
             </motion.div>
-          </Col>
-          <Col xl={8} lg={8} md={8} sm={24} xs={24}>
-            <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }}>
-              <Card className='card-back-2'>
-                <div>
-                  <div className='card-title-1'>IT consulting and<br />digital advisory</div>
-                  <div className='card-content-2'>
-                    We assess, design, and optimize solutions with strategic precision,
-                    from concept to delivery.
-                  </div>
-                </div>
-                <div style={{ display: "flex", flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between" }}>
-                  <Image width={150} src={icon2} preview={false} />
-                  <Image style={{ cursor: "pointer" }} onClick={() => navigate("/services")} src={nextIcon} preview={false} />
-                </div>
-              </Card>
-            </motion.div>
-          </Col>
-          <Col xl={8} lg={8} md={8} sm={24} xs={24}>
-            <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }}>
-              <Card className='card-back-3'>
-                <div>
-                  <div className='card-title-1'>Digital transformation</div>
-                  <div className='card-content-3'>
-                    We enhance functionality, modernize systems, improve security,
-                    automate processes, and reduce IT costs.
-                  </div>
-                </div>
-                <div style={{ display: "flex", flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between" }}>
-                  <Image width={150} src={icon3} preview={false} />
-                  <Image style={{ cursor: "pointer" }} onClick={() => navigate("/services")} src={nextIcon} preview={false} />
-                </div>
-              </Card>
-            </motion.div>
-          </Col>
-        </Row>
-      </motion.div>
+          ))}
+        </div>
+      </section>
 
-      {/* INDUSTRIES heading */}
-      <motion.div {...viewFade}>
-        <Row style={{ padding: "5% 10% 0% 10%" }}>
-          <Col xl={17} lg={17} md={17} sm={24} xs={24}>
-            <div className='label-platform'>Industries in focus</div>
-            <div className='home-title-2'>Accelerate Growth with End-to-End IoT Expertise</div>
-            <div className='home-title-3'>
+      {/* ── DIVIDER ───────────────────────────────────────────────── */}
+      <hr className="neon-divider" style={{ margin: '0 10%' }} />
+
+      {/* ── INDUSTRIES ────────────────────────────────────────────── */}
+      <section style={{ padding: '80px 10% 100px' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48, flexWrap: 'wrap', gap: 24 }}
+        >
+          <div style={{ maxWidth: 600 }}>
+            <div className="section-label">Industries in Focus</div>
+            <h2
+              style={{
+                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+                fontWeight: 800,
+                color: '#fff',
+                margin: '12px 0 16px',
+                lineHeight: 1.2,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Accelerate Growth with End-to-End IoT Expertise
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.97rem', maxWidth: 520 }}>
               Transform your business faster with our unparalleled IoT expertise. Leveraging deep
               domain knowledge, specialized hardware-software integration, and tailored delivery
               processes, we empower you to innovate, optimize operations, and achieve sustainable growth.
-            </div>
-          </Col>
-          <Col xl={7} lg={7} md={7} sm={24} xs={24} style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }}>
-            <button className='button-step'>Unlock Innovation</button>
-          </Col>
-        </Row>
-      </motion.div>
+            </p>
+          </div>
+          <button className="btn-neo" onClick={() => navigate('/industries')}>
+            Unlock Innovation
+          </button>
+        </motion.div>
 
-      {/* INDUSTRY TILES */}
-      <motion.div {...viewFade} transition={{ duration: 0.6, delay: 0.1 }}>
-        <div className='fintech-column'>
-          <div className="fintech-row">
-            <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-              <Card className="card-tile-1">
-                <Row justify="space-between">
-                  <Col span={24}>
-                    <div className="tile-heading">FinTech</div>
-                    <div className="tile-content">Custom financial software for digital payments, banking.</div>
-                  </Col>
-                  <Col span={24} className="tile-icon">
-                    <Image style={{ cursor: "pointer" }} onClick={() => navigate("/industries")} src={nextIcon} preview={false} />
-                  </Col>
-                </Row>
-              </Card>
+        {/* 12-col industry grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(12, 1fr)',
+            gap: 12,
+          }}
+        >
+          {[
+            { title: 'FinTech', desc: 'Custom financial software for digital payments, banking.', span: 12, accent: false },
+            { title: 'Real Estate', desc: 'Develop modern real estate solutions using cutting-edge technologies.', span: 4, accent: false },
+            { title: 'Healthcare', desc: 'Custom EHR, EMR, ERX, and other medical solutions.', span: 8, accent: false },
+            { title: 'Transportation & Mobility', desc: 'Custom TMS, WMS, FMS, vehicle management, and blockchain systems.', span: 8, accent: true },
+            { title: 'Software', desc: 'Build software of any complexity, from SaaS systems to product ecosystems.', span: 4, accent: false },
+            { title: 'Manufacturing', desc: 'Optimize production with custom manufacturing software solutions.', span: 6, accent: false },
+            { title: 'Smart Home & Appliances', desc: 'Increase the value of smart home products with user-centered software.', span: 6, accent: true },
+          ].map((ind, i) => (
+            <motion.div
+              key={i}
+              className={`industry-tile${ind.accent ? ' industry-tile-accent' : ''}`}
+              style={{ gridColumn: `span ${ind.span}` }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: i * 0.05 }}
+              onClick={() => navigate('/industries')}
+            >
+              <div style={{ fontWeight: 700, fontSize: '1.1rem', color: '#fff', marginBottom: 8 }}>
+                {ind.title}
+              </div>
+              <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.88rem', lineHeight: 1.6 }}>
+                {ind.desc}
+              </div>
+              <div className="industry-arrow">→</div>
             </motion.div>
-          </div>
-
-          <div className='fintech-row'>
-            <Row>
-              <Col xl={8} md={8} lg={8} sm={24} xs={24}>
-                <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-                  <Card className='fintech-row-2'>
-                    <Row>
-                      <Col>
-                        <div className='tile-heading'>Real Estate</div>
-                        <div className='tile-content'>Develop modern real estate solutions using cutting-edge technologies.</div>
-                      </Col>
-                      <Col className='tile-icon' xl={24} sm={24} xs={24} lg={24} md={24}>
-                        <Image style={{ cursor: "pointer" }} onClick={() => navigate("/industries")} src={nextIcon} preview={false} />
-                      </Col>
-                    </Row>
-                  </Card>
-                </motion.div>
-              </Col>
-              <Col xl={16} md={16} lg={16} sm={24} xs={24}>
-                <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-                  <Card className='fintech-row-1'>
-                    <Row>
-                      <Col>
-                        <div className='tile-heading'>Healthcare</div>
-                        <div style={{ margin: "0px 0px 17% 0px" }} className='tile-content'>Custom EHR, EMR, ERX, and other medical solutions.</div>
-                      </Col>
-                      <Col className='tile-icon' xl={24} sm={24} xs={24} lg={24} md={24}>
-                        <Image style={{ cursor: "pointer" }} onClick={() => navigate("/industries")} src={nextIcon} preview={false} />
-                      </Col>
-                    </Row>
-                  </Card>
-                </motion.div>
-              </Col>
-
-              <Col xl={16} md={16} lg={16} sm={24} xs={24}>
-                <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-                  <Card className='fintech-row-2' style={{ marginTop: 5 }}>
-                    <Row>
-                      <Col>
-                        <div className='tile-heading'>Transportation and mobility</div>
-                        <div style={{ margin: "0px 0px 11% 0px" }} className='tile-content'>
-                          Custom TMS, WMS, FMS, vehicle management, and blockchain systems for transportation.
-                        </div>
-                      </Col>
-                      <Col className='tile-icon' xl={24} sm={24} xs={24} lg={24} md={24}>
-                        <Image style={{ cursor: "pointer" }} onClick={() => navigate("/industries")} src={nextIcon} preview={false} />
-                      </Col>
-                    </Row>
-                  </Card>
-                </motion.div>
-              </Col>
-
-              <Col xl={8} md={8} lg={8} sm={24} xs={24}>
-                <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-                  <Card className='fintech-row-1' style={{ backgroundColor: "black", color: "white", marginTop: 5 }}>
-                    <Row>
-                      <Col>
-                        <div className='tile-heading'>Software</div>
-                        <div style={{ margin: "0px 0px 15% 0px" }} className='tile-content'>
-                          Build software of any complexity, from SaaS systems to product ecosystems.
-                        </div>
-                      </Col>
-                      <Col className='tile-icon' xl={24} sm={24} xs={24} lg={24} md={24}>
-                        <Image style={{ cursor: "pointer" }} onClick={() => navigate("/industries")} src={nextIcon} preview={false} />
-                      </Col>
-                    </Row>
-                  </Card>
-                </motion.div>
-              </Col>
-            </Row>
-          </div>
+          ))}
         </div>
-      </motion.div>
-
-      {/* Manufacturing + Smart Home */}
-      <motion.div {...viewFade} transition={{ duration: 0.6, delay: 0.1 }}>
-        <Row style={{ padding: "0% 10% 0% 10%" }}>
-          <Col xl={12} md={12} lg={12} sm={24} xs={24}>
-            <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-              <Card className='fintech-row-2' style={{ marginTop: 5 }}>
-                <Row>
-                  <Col>
-                    <div className='tile-heading'>Manufacturing</div>
-                    <div style={{ margin: "0px 0px 8% 0px" }} className='tile-content'>
-                      Optimize production with custom manufacturing software solutions.
-                    </div>
-                  </Col>
-                  <Col style={{ display: "flex", justifyContent: "flex-end" }} xl={24} sm={24} xs={24} lg={24} md={24}>
-                    <Image style={{ cursor: "pointer" }} onClick={() => navigate("/industries")} src={nextIcon} preview={false} />
-                  </Col>
-                </Row>
-              </Card>
-            </motion.div>
-          </Col>
-
-          <Col xl={12} md={12} lg={12} sm={24} xs={24}>
-            <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
-              <Card className='fintech-row-1 card-tile-2' style={{ marginTop: 5 }}>
-                <Row>
-                  <Col>
-                    <div className='tile-heading'>Smart Home and<br />Appliances</div>
-                    <div className='tile-content'>Increase the value of smart home products with user-centered software.</div>
-                  </Col>
-                  <Col style={{ display: "flex", justifyContent: "flex-end" }} xl={24} sm={24} xs={24} lg={24} md={24}>
-                    <Image style={{ cursor: "pointer" }} onClick={() => navigate("/industries")} src={nextIcon} preview={false} />
-                  </Col>
-                </Row>
-              </Card>
-            </motion.div>
-          </Col>
-        </Row>
-      </motion.div>
+      </section>
     </>
   )
 }

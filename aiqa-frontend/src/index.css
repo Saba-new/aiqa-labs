@@ -979,3 +979,272 @@ html {
     padding: 14px 5%;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   FUTURISTIC DESIGN SYSTEM
+═══════════════════════════════════════════════════════════ */
+
+/* Cyber badge */
+.cyber-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  background: rgba(172, 106, 255, 0.08);
+  border: 1px solid rgba(172, 106, 255, 0.3);
+  border-radius: 100px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #AC6AFF;
+}
+.cyber-tag::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #AC6AFF;
+  box-shadow: 0 0 8px #AC6AFF;
+  flex-shrink: 0;
+}
+
+/* Section label */
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #AC6AFF;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: #AC6AFF;
+  flex-shrink: 0;
+}
+
+/* Bento card — standard */
+.bento-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(172, 106, 255, 0.7), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.bento-card:hover {
+  border-color: rgba(172, 106, 255, 0.22);
+  background: rgba(172, 106, 255, 0.04);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.5), 0 0 32px rgba(172, 106, 255, 0.08);
+}
+.bento-card:hover::before {
+  opacity: 1;
+}
+
+/* Bento card — purple accent */
+.bento-card-accent {
+  background: linear-gradient(135deg, rgba(172, 106, 255, 0.1) 0%, rgba(123, 44, 191, 0.05) 100%);
+  border: 1px solid rgba(172, 106, 255, 0.18);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.bento-card-accent:hover {
+  border-color: rgba(172, 106, 255, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.5), 0 0 40px rgba(172, 106, 255, 0.12);
+}
+
+/* Card number monospace */
+.card-num {
+  display: block;
+  font-size: 0.63rem;
+  font-weight: 700;
+  color: rgba(172, 106, 255, 0.5);
+  letter-spacing: 0.18em;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 18px;
+}
+
+/* Neon horizontal divider */
+.neon-divider {
+  height: 1px;
+  border: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(172, 106, 255, 0.45) 30%, rgba(7, 180, 235, 0.45) 70%, transparent 100%);
+}
+
+/* Industry tile */
+.industry-tile {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 28px 28px 52px;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.industry-tile::after {
+  content: '→';
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  font-size: 1.1rem;
+  color: #AC6AFF;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+}
+.industry-tile:hover {
+  border-color: rgba(172, 106, 255, 0.3);
+  background: rgba(172, 106, 255, 0.05);
+  box-shadow: 0 12px 36px rgba(172, 106, 255, 0.1);
+}
+.industry-tile:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Industry tile accent variant */
+.industry-tile-accent {
+  background: rgba(172, 106, 255, 0.06);
+  border-color: rgba(172, 106, 255, 0.18);
+}
+.industry-tile-accent:hover {
+  background: rgba(172, 106, 255, 0.12);
+  border-color: rgba(172, 106, 255, 0.4);
+}
+/* Industry arrow inside tile */
+.industry-arrow {
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  font-size: 1.1rem;
+  color: #AC6AFF;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+}
+.industry-tile:hover .industry-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* Stats row futuristic */
+.stat-neo {
+  padding: 24px 36px;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  text-align: center;
+  flex: 1;
+  transition: background 0.3s ease;
+}
+.stat-neo:last-child {
+  border-right: none;
+}
+.stat-neo-value {
+  font-size: 2.8rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffffff 0%, #AC6AFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+/* Futuristic navbar */
+.navbar-neo {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(5, 5, 15, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: fixed;
+}
+.navbar-neo::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 8%; right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(172, 106, 255, 0.45), rgba(7, 180, 235, 0.35), transparent);
+}
+
+.nav-link-neo {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: all 0.25s ease;
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-link-neo::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, #AC6AFF, #07B4EB);
+  transition: width 0.3s ease;
+}
+.nav-link-neo:hover { color: #ffffff; }
+.nav-link-neo:hover::after { width: 100%; }
+.nav-link-neo.active-link { color: #ffffff; }
+.nav-link-neo.active-link::after { width: 100%; }
+
+.btn-neo {
+  background: transparent;
+  border: 1px solid rgba(172, 106, 255, 0.5);
+  color: #AC6AFF;
+  padding: 9px 26px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+.btn-neo:hover {
+  border-color: #AC6AFF;
+  color: #ffffff;
+  background: rgba(172, 106, 255, 0.12);
+  box-shadow: 0 0 20px rgba(172, 106, 255, 0.25);
+}
+
+/* Hero grid overlay */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(172, 106, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(172, 106, 255, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}

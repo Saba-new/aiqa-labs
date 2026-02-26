@@ -1,56 +1,113 @@
-import React, { useState, useEffect } from 'react';
-import { Image, Drawer } from 'antd';
-import { MenuOutlined } from '@ant-design/icons';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import Logo from "../assets/logo.png";
+import React, { useState, useEffect } from 'react'
+import { Drawer } from 'antd'
+import { MenuOutlined } from '@ant-design/icons'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import Logo from '../assets/logo.png'
+
+const navLinks = [
+  { to: '/platform', label: 'Platform' },
+  { to: '/services', label: 'Services' },
+  { to: '/industries', label: 'Industries' },
+  { to: '/about', label: 'About' },
+]
 
 function Header() {
-    const [drawerVisible, setDrawerVisible] = useState(false);
-    const navigate = useNavigate();
-    const location = useLocation();
+  const [drawerVisible, setDrawerVisible] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
-    const toggleDrawer = () => {
-        setDrawerVisible(!drawerVisible);
-    };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [location]);
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    setDrawerVisible(false)
+  }, [location])
 
-    return (
-        <div className='header-bg'>
-            <div className='header-inner' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 16px' }}>
-                <MenuOutlined style={{marginRight : 20}} className='mobile-only' onClick={toggleDrawer} />
-                <Link to='/'><Image width={130} src={Logo} alt="Company Logo" preview={false} /></Link>
-                <div className='header-links desktop-only'>
-                    
-                    <Link to='/platform' className="header-link">Platform</Link>
-                    <Link to='/services' className="header-link">Services</Link>
-                    <Link to='/industries' className="header-link">Industries</Link>
-                    <Link to='/about' className="header-link">About</Link>
-                </div>
-            </div>
+  return (
+    <nav
+      className="navbar-neo"
+      style={{ boxShadow: scrolled ? '0 4px 40px rgba(0,0,0,0.6)' : 'none' }}
+    >
+      {/* Logo */}
+      <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+        <img src={Logo} alt="AIQA" height={34} style={{ objectFit: 'contain' }} />
+      </Link>
 
-            <div className='desktop-only' style={{ textAlign: 'right', padding: '0 16px' }}>
-                <button className='get-started-button-1' onClick={() => navigate("/contact")}>
-                    Get Started
-                </button>
-            </div>
-            <Drawer
-                title="Menu"
-                placement="left"
-                onClose={toggleDrawer}
-                open={drawerVisible}
+      {/* Desktop nav */}
+      <div className="desktop-only" style={{ display: 'flex', gap: 40, alignItems: 'center' }}>
+        {navLinks.map(link => (
+          <Link
+            key={link.to}
+            to={link.to}
+            className={`nav-link-neo${location.pathname === link.to ? ' active-link' : ''}`}
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
+
+      {/* Right side */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <button
+          className="btn-neo desktop-only"
+          onClick={() => navigate('/contact')}
+        >
+          Get Started
+        </button>
+        <MenuOutlined
+          className="mobile-only"
+          onClick={() => setDrawerVisible(true)}
+          style={{ fontSize: 20, color: '#ffffff', cursor: 'pointer' }}
+        />
+      </div>
+
+      {/* Mobile drawer */}
+      <Drawer
+        title={<img src={Logo} alt="AIQA" height={26} />}
+        placement="left"
+        onClose={() => setDrawerVisible(false)}
+        open={drawerVisible}
+        styles={{
+          body: { background: '#05050f', padding: '16px 0' },
+          header: { background: '#05050f', borderBottom: '1px solid rgba(255,255,255,0.07)' },
+        }}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', padding: '0 24px' }}>
+          {navLinks.map(link => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => setDrawerVisible(false)}
+              style={{
+                color: location.pathname === link.to ? '#AC6AFF' : 'rgba(255,255,255,0.7)',
+                fontSize: '0.95rem',
+                padding: '16px 0',
+                borderBottom: '1px solid rgba(255,255,255,0.06)',
+                textDecoration: 'none',
+                fontWeight: 500,
+                letterSpacing: '0.03em',
+              }}
             >
-                <div className="drawer-links">
-                    <Link to='/platform' onClick={toggleDrawer}>Platform</Link>
-                    <Link to='/services' onClick={toggleDrawer}>Services</Link>
-                    <Link to='/industries' onClick={toggleDrawer}>Industries</Link>
-                    <Link to='/about' onClick={toggleDrawer}>About</Link>
-                </div>
-            </Drawer>
+              {link.label}
+            </Link>
+          ))}
+          <button
+            className="get-started-button"
+            style={{ marginTop: 28, width: '100%' }}
+            onClick={() => { setDrawerVisible(false); navigate('/contact') }}
+          >
+            Get Started
+          </button>
         </div>
-    );
+      </Drawer>
+    </nav>
+  )
 }
 
-export default Header;
+export default Header
+
