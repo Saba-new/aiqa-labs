@@ -1,10 +1,11 @@
-import React from 'react'
+﻿import React from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
 const Services = () => {
   const navigate = useNavigate()
-  const stats = [
+
+  const overview = [
     {
       title: 'Custom software development',
       description: 'Tailored solutions with domain expertise, technical excellence, and full compliance for optimal results.',
@@ -19,10 +20,10 @@ const Services = () => {
     },
   ]
 
-  const services = [
+  const models = [
     {
       title: 'Time and Materials',
-      description: [
+      points: [
         'Ideal for long-term projects and dynamic requirements.',
         'Scope of work may evolve during the process.',
         'Flexible to adjust to changes in the project scope and workload.',
@@ -30,7 +31,7 @@ const Services = () => {
     },
     {
       title: 'Fixed Price',
-      description: [
+      points: [
         'Suitable for clear, well-defined requirements and strict deadlines.',
         'Best for projects with a limited scope.',
         'AIQA manages the entire product development lifecycle with precision.',
@@ -38,7 +39,7 @@ const Services = () => {
     },
     {
       title: 'Managed Team',
-      description: [
+      points: [
         'Ideal for long-term projects and dynamic requirements.',
         'Scope of work may evolve during the process.',
         'Flexible to adjust to changes in the project scope and workload.',
@@ -46,7 +47,7 @@ const Services = () => {
     },
     {
       title: 'Managed Product & Service',
-      description: [
+      points: [
         'AIQA co-creates and designs products with you, managing the entire lifecycle.',
         'Expert development teams handle everything from concept to delivery.',
         'Specialized services in design, development, QA, and DevOps ensure optimal results.',
@@ -62,159 +63,133 @@ const Services = () => {
   ]
 
   return (
-    <div className="relative z-10 min-h-screen pt-32 px-6 pb-20">
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+    <>
+      {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <section style={{ padding: '140px 10% 80px', textAlign: 'center', position: 'relative' }}>
+        <div className="hero-grid" />
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <span className="cyber-tag" style={{ marginBottom: 24, display: 'inline-block' }}>Tailored Smart Solutions</span>
+          <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 800, color: '#fff', lineHeight: 1.12, letterSpacing: '-0.02em', margin: '20px 0 20px', maxWidth: 780, marginLeft: 'auto', marginRight: 'auto' }}>
             Comprehensive Solutions,{' '}
-            <span style={{ 
-              background: 'linear-gradient(135deg, #AC6AFF 0%, #7B68EE 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}>Tailored for You</span>
+            <span style={{ background: 'linear-gradient(135deg, #AC6AFF 0%, #07B4EB 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Tailored for You
+            </span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            We deliver end-to-end services, from building platforms to modernizing systems and optimizing performance. 
+          <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: 620, margin: '0 auto 36px', lineHeight: 1.7, fontSize: '1.05rem' }}>
+            We deliver end-to-end services, from building platforms to modernizing systems and optimizing performance.
             Our expertise in hardware, software, and IoT ensures solutions that align with your unique business goals.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            onClick={() => navigate('/contact')}
-            className="mt-8 bg-primary hover:bg-purple-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all glow"
-          >
-            Get Started
-          </motion.button>
+          <button className="get-started-button" onClick={() => navigate('/contact')}>Get Started</button>
         </motion.div>
+      </section>
 
-        {/* Smart Solutions Section */}
-        <div className="mb-20">
-          <div className="mb-8">
-            <p className="text-sm text-gray-500 uppercase mb-2">Tailored Smart Solutions</p>
-            <h2 className="text-3xl md:text-4xl font-bold">
-              A seamless and tailored approach to meet your technology needs.
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="glass p-6"
-              >
-                <h3 className="text-xl font-semibold mb-3">{stat.title}</h3>
-                <p className="text-gray-400">{stat.description}</p>
-              </motion.div>
-            ))}
-          </div>
+      <hr className="neon-divider" style={{ margin: '0 10%' }} />
+
+      {/* â”€â”€ SMART SOLUTIONS OVERVIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <section style={{ padding: '80px 10%' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ marginBottom: 48 }}>
+          <div className="section-label">Tailored Smart Solutions</div>
+          <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 800, color: '#fff', margin: '12px 0 0', letterSpacing: '-0.02em' }}>
+            A seamless and tailored approach to meet your technology needs.
+          </h2>
+        </motion.div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+          {overview.map((item, i) => (
+            <motion.div key={i} className="bento-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
+              <span className="card-num">0{i + 1}</span>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#fff', margin: '14px 0 10px' }}>{item.title}</h3>
+              <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, fontSize: '0.91rem' }}>{item.description}</p>
+            </motion.div>
+          ))}
         </div>
+      </section>
 
-        {/* Service Models Section */}
-        <div className="mb-20">
-          <div className="mb-12 text-center">
-            <p className="text-sm text-gray-500 uppercase mb-2">Service Options</p>
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Our Flexible Collaboration and Engagement <span className="text-cyan-400">Models</span>
-            </h2>
-          </div>
+      <hr className="neon-divider" style={{ margin: '0 10%' }} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-                className="glass p-8 rounded-2xl transition-all duration-300"
-              >
-                <h3 className="text-2xl font-bold mb-4 text-primary">{service.title}</h3>
-                <ul className="space-y-3">
-                  {service.description.map((desc, i) => (
-                    <li key={i} className="flex items-start text-gray-400">
-                      <svg className="mt-1 mr-2 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#07B4EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      <span>{desc}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
+      {/* â”€â”€ SERVICE MODELS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <section style={{ padding: '80px 10%' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ marginBottom: 48, textAlign: 'center' }}>
+          <div className="section-label" style={{ justifyContent: 'center' }}>Service Options</div>
+          <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 800, color: '#fff', margin: '12px 0 0', letterSpacing: '-0.02em' }}>
+            Our Flexible Collaboration and Engagement{' '}
+            <span style={{ color: '#07B4EB' }}>Models</span>
+          </h2>
+        </motion.div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
+          {models.map((model, i) => (
+            <motion.div
+              key={i}
+              className={`bento-card${i % 2 === 1 ? ' bento-card-accent' : ''}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+            >
+              <span className="card-num">0{i + 1}</span>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#AC6AFF', margin: '14px 0 16px' }}>{model.title}</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {model.points.map((pt, j) => (
+                  <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'rgba(255,255,255,0.55)', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                    <svg style={{ marginTop: 2, flexShrink: 0 }} width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#07B4EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
+      </section>
 
-        {/* CTA Section */}
+      <hr className="neon-divider" style={{ margin: '0 10%' }} />
+
+      {/* â”€â”€ CTA BANNER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <section style={{ padding: '60px 10%' }}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          className="bento-card bento-card-accent"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass p-8 rounded-2xl mb-20"
+          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 }}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">Not sure which solution fits your needs?</h3>
-              <p className="text-gray-400">Let's find the perfect match together.</p>
-            </div>
-            <button
-              onClick={() => navigate('/contact')}
-              className="bg-primary hover:bg-purple-600 text-white px-8 py-3 rounded-full font-semibold transition-all glow"
-            >
-              Get Started
-            </button>
+          <div>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#fff', marginBottom: 8 }}>Not sure which solution fits your needs?</h3>
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.95rem' }}>Let's find the perfect match together.</p>
           </div>
+          <button className="get-started-button" style={{ whiteSpace: 'nowrap' }} onClick={() => navigate('/contact')}>Get Started</button>
         </motion.div>
+      </section>
 
-        {/* Expertise Section */}
-        <div>
-          <div className="mb-8">
-            <p className="text-sm text-gray-500 uppercase mb-2">Expertise & Strengths</p>
-            <h2 className="text-3xl md:text-4xl font-bold">
-              <span className="text-cyan-400">Expertise</span> and competencies
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-bold mb-4">Tech-Driven Innovation</h3>
-              <p className="text-gray-400">
-                Leverage cutting-edge technology to build and optimize your software
-                solutions with efficiency and cost-effectiveness.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass p-8 rounded-2xl"
-            >
-              <div className="grid grid-cols-2 gap-4">
-                {techStack.map((tech, index) => (
-                  <div
-                    key={index}
-                    className="bg-gray-800/50 p-3 rounded-lg text-center text-sm"
-                  >
-                    {tech}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+      <hr className="neon-divider" style={{ margin: '0 10%' }} />
+
+      {/* â”€â”€ EXPERTISE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <section style={{ padding: '80px 10% 100px' }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ marginBottom: 48 }}>
+          <div className="section-label">Expertise &amp; Strengths</div>
+          <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 800, color: '#fff', margin: '12px 0 0', letterSpacing: '-0.02em' }}>
+            <span style={{ color: '#07B4EB' }}>Expertise</span> and competencies
+          </h2>
+        </motion.div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 16 }}>
+          <motion.div className="bento-card" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#fff', marginBottom: 16 }}>Tech-Driven Innovation</h3>
+            <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.75, fontSize: '0.95rem' }}>
+              Leverage cutting-edge technology to build and optimize your software solutions with efficiency and cost-effectiveness.
+            </p>
+          </motion.div>
+          <motion.div className="bento-card" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+              {techStack.map((tech, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: '10px 12px', textAlign: 'center', fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)' }}>
+                  {tech}
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   )
 }
 
