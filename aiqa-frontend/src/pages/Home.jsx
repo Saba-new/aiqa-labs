@@ -484,64 +484,76 @@ function Home() {
           </button>
         </motion.div>
 
-        {/* Industries — featured hero tile + editorial chip grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 12 }}>
-
-          {/* FinTech — editorial featured tile, tall, left column */}
-          <motion.div
-            className="ind-hero-tile"
-            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}
-            onClick={() => navigate('/industries')}
-            style={{
-              gridColumn: 'span 5', gridRow: 'span 2',
-              background: 'rgba(139,92,246,0.07)',
-              border: '1px solid rgba(139,92,246,0.18)',
-              minHeight: 300, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-            }}
-          >
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 22 }}>
-                <span className="live-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: '#8B5CF6', color: '#8B5CF6' }} />
-                <span style={{ fontSize: '0.62rem', fontWeight: 700, color: 'rgba(196,181,253,0.55)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Featured Industry</span>
-              </div>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1, color: '#fff', marginBottom: 16 }}>
-                Fin<span style={{ background: 'linear-gradient(135deg, #AC6AFF 0%, #07B4EB 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Tech</span>
-              </div>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.88rem', lineHeight: 1.65, maxWidth: 240 }}>
-                Custom financial software for digital payments, banking, and secure transactions.
-              </p>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(172,106,255,0.45)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" /><line x1="12" y1="12" x2="12" y2="16" /><line x1="10" y1="14" x2="14" y2="14" />
-              </svg>
-              <span style={{ color: '#AC6AFF', fontSize: '1.4rem', opacity: 0.65 }}>→</span>
-            </div>
-          </motion.div>
-
-          {/* remaining 6 industries — chip tiles */}
+        {/* Industries — sector scanner horizontal strips */}
+        <div style={{ border: '1px solid rgba(255,255,255,0.07)', borderRadius: 18, overflow: 'hidden', background: 'rgba(255,255,255,0.012)' }}>
           {[
-            { title: 'Real Estate',           span: 7, color: '#07B4EB', desc: 'Modern real estate platforms built with cutting-edge tech.',       icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> },
-            { title: 'Healthcare',            span: 7, color: '#10B981', desc: 'Custom EHR, EMR, ERX, and other medical software solutions.',      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> },
-            { title: 'Transport & Mobility',  span: 4, color: '#F59E0B', desc: 'TMS, WMS, vehicle management and blockchain systems.',            icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> },
-            { title: 'Software',              span: 4, color: '#8B5CF6', desc: 'SaaS systems to product ecosystems, any complexity.',             icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> },
-            { title: 'Manufacturing',         span: 4, color: '#07B4EB', desc: 'Optimize production with custom manufacturing software.',         icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M2 20h20"/><path d="M6 20V10l6-6 6 6v10"/><rect x="9" y="14" width="6" height="6"/></svg> },
-            { title: 'Smart Home & Appliances', span: 3, color: '#10B981', desc: 'User-centered IoT software for smart home products.',            icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> },
-          ].map((ind, i) => (
+            { num: '01', title: 'FinTech',              color: '#AC6AFF', tags: ['Finance', 'Banking', 'Payments'],     desc: 'Custom financial software for digital payments, banking, and secure transactions.' },
+            { num: '02', title: 'Real Estate',          color: '#07B4EB', tags: ['PropTech', 'CRM', 'Analytics'],       desc: 'Modern real estate platforms built with cutting-edge technology.' },
+            { num: '03', title: 'Healthcare',           color: '#10B981', tags: ['EHR', 'EMR', 'Telemedicine'],         desc: 'Custom EHR, EMR, ERX, and other medical software solutions.' },
+            { num: '04', title: 'Transport & Mobility', color: '#F59E0B', tags: ['TMS', 'WMS', 'Blockchain'],           desc: 'TMS, WMS, vehicle management and blockchain systems.' },
+            { num: '05', title: 'Software & SaaS',      color: '#8B5CF6', tags: ['SaaS', 'B2B', 'Ecosystems'],          desc: 'SaaS systems to product ecosystems, any complexity.' },
+            { num: '06', title: 'Manufacturing',        color: '#07B4EB', tags: ['Industry 4.0', 'IoT', 'ERP'],         desc: 'Optimize production with custom manufacturing software.' },
+            { num: '07', title: 'Smart Home',           color: '#10B981', tags: ['IoT', 'Appliances', 'UX'],            desc: 'User-centered IoT software for smart home products.' },
+          ].map((ind, i, arr) => (
             <motion.div
               key={i}
-              className="ind-chip-tile"
-              initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.06 }}
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              whileHover="hov"
               onClick={() => navigate('/industries')}
-              style={{ gridColumn: `span ${ind.span}`, background: `${ind.color}09`, border: `1px solid ${ind.color}20` }}
+              style={{
+                position: 'relative', display: 'flex', alignItems: 'center', gap: 0,
+                padding: '20px 28px', cursor: 'pointer', overflow: 'hidden',
+                borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.045)' : 'none',
+              }}
             >
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent 10%, ${ind.color} 50%, transparent 90%)` }} />
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 9, color: ind.color }}>
-                {ind.icon}
-                <span style={{ fontWeight: 700, fontSize: '0.95rem', color: '#fff' }}>{ind.title}</span>
+              {/* hover bg wash */}
+              <motion.div
+                variants={{ hov: { opacity: 1 }, initial: { opacity: 0 } }} initial={{ opacity: 0 }}
+                style={{ position: 'absolute', inset: 0, background: `linear-gradient(90deg, ${ind.color}10 0%, transparent 65%)`, pointerEvents: 'none' }}
+              />
+              {/* left accent bar */}
+              <motion.div
+                variants={{ hov: { scaleY: 1, opacity: 1 }, initial: { scaleY: 0, opacity: 0 } }} initial={{ scaleY: 0, opacity: 0 }}
+                style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 3, background: `linear-gradient(180deg, transparent, ${ind.color}, transparent)`, transformOrigin: 'center', borderRadius: 2 }}
+              />
+
+              {/* index number */}
+              <div style={{
+                fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.68rem', fontWeight: 700,
+                color: `${ind.color}60`, letterSpacing: '0.1em', minWidth: 36, userSelect: 'none',
+              }}>{ind.num}</div>
+
+              {/* vertical divider */}
+              <div style={{ width: 1, alignSelf: 'stretch', background: 'rgba(255,255,255,0.06)', margin: '0 24px', flexShrink: 0 }} />
+
+              {/* title */}
+              <div style={{
+                fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.05rem', fontWeight: 700,
+                color: '#fff', letterSpacing: '-0.015em', flex: '0 0 200px',
+              }}>{ind.title}</div>
+
+              {/* tag pills */}
+              <div style={{ display: 'flex', gap: 6, flex: '0 0 280px', flexWrap: 'wrap', padding: '0 24px' }}>
+                {ind.tags.map((t, ti) => (
+                  <span key={ti} style={{
+                    fontSize: '0.62rem', padding: '3px 10px', borderRadius: 20,
+                    background: `${ind.color}14`, border: `1px solid ${ind.color}35`,
+                    color: ind.color, fontWeight: 600, letterSpacing: '0.06em', whiteSpace: 'nowrap',
+                  }}>{t}</span>
+                ))}
               </div>
-              <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.82rem', lineHeight: 1.6, paddingRight: 24 }}>{ind.desc}</p>
-              <span style={{ position: 'absolute', bottom: 14, right: 18, color: ind.color, fontSize: '0.9rem', opacity: 0.6 }}>→</span>
+
+              {/* description */}
+              <div style={{ flex: 1, fontSize: '0.81rem', color: 'rgba(255,255,255,0.33)', lineHeight: 1.6 }}>{ind.desc}</div>
+
+              {/* arrow */}
+              <motion.span
+                variants={{ hov: { x: 5, opacity: 1 }, initial: { x: 0, opacity: 0.35 } }} initial={{ x: 0, opacity: 0.35 }}
+                style={{ color: ind.color, fontSize: '1rem', marginLeft: 16, flexShrink: 0 }}
+              >→</motion.span>
             </motion.div>
           ))}
         </div>
