@@ -16,6 +16,9 @@ import group3 from '../assets/Group3.png'
 import group4 from '../assets/Group4.png'
 import group5 from '../assets/Group5.png'
 import group6 from '../assets/Group6.png'
+import profile1 from '../assets/profile1.png'
+import profile2 from '../assets/profile2.png'
+import profile3 from '../assets/profile3.png'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 36 },
@@ -580,10 +583,9 @@ function Home() {
         {/* Row 1 — scrolls left */}
         {(() => {
           const row1 = [
-            { quote: "AIQA Labs transformed our entire fleet monitoring system. The IoT integration was seamless — real-time dashboards in under 6 weeks. Genuinely impressive.", name: 'Rajan Mehta', role: 'CTO · LogiTrack Systems', initials: 'RM', color: '#AC6AFF' },
-            { quote: "Their team actually understood our clinical workflows. The EHR module cut our data entry overhead by 40%. Rare depth of domain knowledge.", name: 'Dr. Priya Anand', role: 'CMO · NovaCare Health', initials: 'PA', color: '#10B981' },
-            { quote: "We evaluated five vendors. AIQA was the only one that asked the right questions before writing a single line of code. That mindset made all the difference.", name: 'Marcus Webb', role: 'Head of Product · Stackfield Inc.', initials: 'MW', color: '#07B4EB' },
-            { quote: "Our smart appliance product launched on time — first time in company history. Their hardware-software integration team is something truly special.", name: 'Leena Varghese', role: 'VP Engineering · BrightNest', initials: 'LV', color: '#F59E0B' },
+            { quote: "AIQA transformed our operations with their innovative IoT solutions. Their platform is intuitive, efficient, and has significantly boosted our productivity. Highly recommended!", name: 'Jane Doe', role: 'CEO · Tech Innovations', avatar: profile1, color: '#AC6AFF' },
+            { quote: "The team at AIQA delivered beyond our expectations. Their digital twin technology provided real-time insights that were crucial for our decision-making process. A true partner in innovation.", name: 'John Smith', role: 'CTO · Global Enterprises', avatar: profile2, color: '#10B981' },
+            { quote: "Working with AIQA was a game-changer. Their tailored software development and consulting services helped us streamline our processes and achieve remarkable growth. Exceptional service!", name: 'Emily White', role: 'Director · Future Systems', avatar: profile3, color: '#07B4EB' },
           ]
           const cards = [...row1, ...row1]
           return (
@@ -598,10 +600,9 @@ function Home() {
         {/* Row 2 — scrolls right */}
         {(() => {
           const row2 = [
-            { quote: "The energy monitoring platform is scalable, elegant, and reliable. Three months in — zero downtime. They treat your product as their own.", name: 'Aditya Srinivas', role: 'CEO · GreenGrid Solutions', initials: 'AS', color: '#AC6AFF' },
-            { quote: "Post-launch support is what stands out. They're not a 'build and disappear' team. Always responsive, always iterating. Perfect for a scaling startup.", name: 'Sofia Cortez', role: 'Director of Ops · Urbane PropTech', initials: 'SC', color: '#10B981' },
-            { quote: "From discovery to deployment, the process was airtight. Weekly demos, clear scope, zero surprises. That kind of discipline is hard to find.", name: 'Tariq Hassan', role: 'CTO · FinBridge Payments', initials: 'TH', color: '#07B4EB' },
-            { quote: "They built our entire SaaS backend from scratch. The architecture is clean, documented, and our in-house team picked it up with zero friction.", name: 'Nadia Osei', role: 'Founder · Loopstack', initials: 'NO', color: '#F59E0B' },
+            { quote: "Working with AIQA was a game-changer. Their tailored software development and consulting services helped us streamline our processes and achieve remarkable growth. Exceptional service!", name: 'Emily White', role: 'Director · Future Systems', avatar: profile3, color: '#F59E0B' },
+            { quote: "AIQA transformed our operations with their innovative IoT solutions. Their platform is intuitive, efficient, and has significantly boosted our productivity. Highly recommended!", name: 'Jane Doe', role: 'CEO · Tech Innovations', avatar: profile1, color: '#07B4EB' },
+            { quote: "The team at AIQA delivered beyond our expectations. Their digital twin technology provided real-time insights that were crucial for our decision-making process. A true partner in innovation.", name: 'John Smith', role: 'CTO · Global Enterprises', avatar: profile2, color: '#AC6AFF' },
           ]
           const cards = [...row2, ...row2]
           return (
@@ -704,12 +705,10 @@ function TestiCard({ t }) {
 
       {/* author */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, borderTop: '1px solid rgba(255,255,255,0.055)', paddingTop: 16 }}>
-        <div style={{
-          width: 34, height: 34, borderRadius: '50%', flexShrink: 0,
-          background: `${t.color}18`, border: `1.5px solid ${t.color}40`,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.68rem', fontWeight: 700, color: t.color,
-        }}>{t.initials}</div>
+        {t.avatar
+          ? <img src={t.avatar} alt={t.name} style={{ width: 34, height: 34, borderRadius: '50%', flexShrink: 0, objectFit: 'cover', border: `1.5px solid ${t.color}40` }} />
+          : <div style={{ width: 34, height: 34, borderRadius: '50%', flexShrink: 0, background: `${t.color}18`, border: `1.5px solid ${t.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.68rem', fontWeight: 700, color: t.color }}>{t.initials}</div>
+        }
         <div>
           <div style={{ fontSize: '0.83rem', fontWeight: 700, color: '#fff' }}>{t.name}</div>
           <div style={{ fontSize: '0.71rem', color: 'rgba(255,255,255,0.3)', marginTop: 1 }}>{t.role}</div>
