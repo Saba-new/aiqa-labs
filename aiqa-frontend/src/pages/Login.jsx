@@ -22,26 +22,55 @@ function Login() {
     e.preventDefault()
     setLoading(true)
 
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/login`,
-        formData
-      )
+    // Retry logic for when backend is waking up
+    const maxRetries = 3
+    let lastError = null
 
-      if (response.data.success) {
-        // Store token in localStorage
-        localStorage.setItem('token', response.data.token)
-        localStorage.setItem('user', JSON.stringify(response.data.user))
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        if (attempt > 1) {
+          toast.info(`Waking up server... Attempt ${attempt}/${maxRetries}`)
+        }
+
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/auth/login`,
+          formData,
+          { timeout: 30000 } // 30 second timeout
+        )
+
+        if (response.data.success) {
+          // Store token in localStorage
+          localStorage.setItem('token', response.data.token)
+          localStorage.setItem('user', JSON.stringify(response.data.user))
+          
+          toast.success('Login successful!')
+          navigate('/')
+          return
+        }
+      } catch (error) {
+        console.error(`Login attempt ${attempt} error:`, error)
+        lastError = error
         
-        toast.success('Login successful!')
-        navigate('/')
+        // If it's a timeout or network error and we have retries left, wait and retry
+        if ((error.code === 'ECONNABORTED' || error.message === 'Network Error') && attempt < maxRetries) {
+          await new Promise(resolve => setTimeout(resolve, 2000 * attempt)) // Wait 2s, 4s, 6s
+          continue
+        }
+        
+        // If it's a server error response, don't retry
+        if (error.response) {
+          toast.error(error.response.data?.message || 'Login failed')
+          break
+        }
       }
-    } catch (error) {
-      console.error('Login error:', error)
-      toast.error(error.response?.data?.message || 'Login failed')
-    } finally {
-      setLoading(false)
     }
+
+    // All retries failed
+    if (lastError && !lastError.response) {
+      toast.error('Server is waking up. Please try again in 30 seconds.')
+    }
+    
+    setLoading(false)
   }
 
   return (
