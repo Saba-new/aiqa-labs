@@ -6,12 +6,17 @@ import rateLimit from 'express-rate-limit'
 import { fileURLToPath } from 'url'
 import path from 'path'
 
+import connectDB from './config/db.js'
 import contactRouter from './routes/contact.js'
 import contentRouter from './routes/content.js'
+import authRouter from './routes/auth.js'
 
 // Load .env from the same directory as server.js, regardless of cwd
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 dotenv.config({ path: path.join(__dirname, '.env') })
+
+// Connect to MongoDB
+connectDB()
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -59,6 +64,7 @@ const limiter = rateLimit({
 app.use(limiter)
 
 // ── Routes ────────────────────────────────────────────────────────────────
+app.use('/api/auth', authRouter)
 app.use('/api/contact', contactRouter)
 app.use('/api/content', contentRouter)
 
