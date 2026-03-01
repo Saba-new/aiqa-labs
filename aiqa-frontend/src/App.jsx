@@ -13,6 +13,8 @@ import Industries from './pages/Industries'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Careers from './pages/Careers'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       <Footer />
       <ToastContainer theme="dark" />

@@ -14,6 +14,7 @@ const navLinks = [
 function Header() {
   const [drawerVisible, setDrawerVisible] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [user, setUser] = useState(null)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -24,9 +25,24 @@ function Header() {
   }, [])
 
   useEffect(() => {
+    // Check if user is logged in
+    const storedUser = localStorage.getItem('user')
+    if (storedUser) {
+      setUser(JSON.parse(storedUser))
+    }
+  }, [location])
+
+  useEffect(() => {
     window.scrollTo(0, 0)
     setDrawerVisible(false)
   }, [location])
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    setUser(null)
+    navigate('/')
+  }
 
   return (
     <nav
@@ -57,12 +73,35 @@ function Header() {
 
       {/* Right side */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-        <button
-          className="btn-neo desktop-only"
-          onClick={() => navigate('/contact')}
-        >
-          Get Started
-        </button>
+        {user ? (
+          <>
+            <span className="desktop-only" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>
+              Welcome, {user.name}
+            </span>
+            <button
+              className="btn-neo desktop-only"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              className="btn-neo desktop-only"
+              onClick={() => navigate('/contact')}
+              style={{ opacity: 0.85 }}
+            >
+              Get Started
+            </button>
+            <button
+              className="btn-neo desktop-only"
+              onClick={() => navigate('/register')}
+            >
+              Sign Up
+            </button>
+          </>
+        )}
         <MenuOutlined
           className="mobile-only"
           onClick={() => setDrawerVisible(true)}
@@ -100,13 +139,37 @@ function Header() {
               {link.label}
             </Link>
           ))}
-          <button
-            className="get-started-button"
-            style={{ marginTop: 28, width: '100%' }}
-            onClick={() => { setDrawerVisible(false); navigate('/contact') }}
-          >
-            Get Started
-          </button>
+          {user ? (
+            <>
+              <div style={{ padding: '16px 0', marginTop: 12, borderTop: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>
+                Welcome, {user.name}
+              </div>
+              <button
+                className="get-started-button"
+                style={{ marginTop: 16, width: '100%' }}
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="get-started-button"
+                style={{ marginTop: 28, width: '100%', opacity: 0.85 }}
+                onClick={() => { setDrawerVisible(false); navigate('/contact') }}
+              >
+                Get Started
+              </button>
+              <button
+                className="get-started-button"
+                style={{ marginTop: 12, width: '100%' }}
+                onClick={() => { setDrawerVisible(false); navigate('/register') }}
+              >
+                Sign Up
+              </button>
+            </>
+          )}
         </div>
       </Drawer>
     </nav>
