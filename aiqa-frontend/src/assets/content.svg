@@ -14,17 +14,30 @@
   <!-- Central hub -->
   <circle cx="150" cy="90" r="22" fill="none" stroke="#AC6AFF" stroke-width="2.5"/>
   <circle cx="150" cy="90" r="14" fill="#AC6AFF" fill-opacity="0.6"/>
-  <!-- Connection nodes -->
-  <circle cx="50" cy="45" r="10" fill="none" stroke="#7B68EE" stroke-width="2"/>
-  <circle cx="50" cy="45" r="5" fill="#7B68EE"/>
-  <circle cx="250" cy="45" r="10" fill="none" stroke="#7B68EE" stroke-width="2"/>
-  <circle cx="250" cy="45" r="5" fill="#7B68EE"/>
-  <circle cx="50" cy="135" r="10" fill="none" stroke="#7B68EE" stroke-width="2"/>
-  <circle cx="50" cy="135" r="5" fill="#7B68EE"/>
-  <circle cx="250" cy="135" r="10" fill="none" stroke="#7B68EE" stroke-width="2"/>
-  <circle cx="250" cy="135" r="5" fill="#7B68EE"/>
-  <circle cx="30" cy="90" r="8" fill="none" stroke="#AC6AFF" stroke-width="2"/>
-  <circle cx="270" cy="90" r="8" fill="none" stroke="#AC6AFF" stroke-width="2"/>
+  <!-- Protocol clouds -->
+  <defs>
+    <linearGradient id="mqttGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#07B4EB" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+    <linearGradient id="httpGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#6D28D9" />
+    </linearGradient>
+    <linearGradient id="coapGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#AC6AFF" />
+      <stop offset="100%" stop-color="#6D28D9" />
+    </linearGradient>
+  </defs>
+  <!-- MQTT Cloud -->
+  <path d="M40 55c-6 0-11-4-11-9 0-4 3-7 7-8 1-6 7-10 14-10 5 0 10 2 12 6 1-1 3-2 5-2 4 0 7 3 7 7 0 1 0 2-1 3 4 1 7 4 7 8 0 5-5 9-11 9z" fill="url(#mqttGrad)"/>
+  <text x="40" y="52" text-anchor="middle" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">MQTT</text>
+  <!-- HTTP Cloud -->
+  <path d="M260 55c-6 0-11-4-11-9 0-4 3-7 7-8 1-6 7-10 14-10 5 0 10 2 12 6 1-1 3-2 5-2 4 0 7 3 7 7 0 1 0 2-1 3 4 1 7 4 7 8 0 5-5 9-11 9z" fill="url(#httpGrad)"/>
+  <text x="260" y="52" text-anchor="middle" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">HTTP</text>
+  <!-- CoAP Cloud -->
+  <path d="M150 145c-10 0-18-7-18-15 0-7 6-13 14-14 2-10 12-17 24-17 9 0 17 4 20 11 2-2 5-3 8-3 7 0 12 5 12 11 0 2-1 4-2 5 6 2 10 7 10 13 0 8-8 15-18 15z" fill="url(#coapGrad)"/>
+  <text x="150" y="142" text-anchor="middle" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">CoAP</text>
   <!-- Lines from hub to nodes -->
   <line x1="128" y1="76" x2="62" y2="50" stroke="#AC6AFF" stroke-opacity="0.7" stroke-width="1.5" stroke-dasharray="5,3"/>
   <line x1="172" y1="76" x2="238" y2="50" stroke="#AC6AFF" stroke-opacity="0.7" stroke-width="1.5" stroke-dasharray="5,3"/>

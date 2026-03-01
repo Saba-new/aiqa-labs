@@ -5,6 +5,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Unified protocol cloud backgrounds */
+.protocol-cloud {
+  color: #fff;
+  border-radius: 50px;
+  padding: 0.5em 1.4em;
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(139,92,246,0.13);
+  margin: 0 0.5em;
+}
+.protocol-cloud-mqtt {
+  background: linear-gradient(135deg, #07B4EB 0%, #8B5CF6 100%);
+}
+.protocol-cloud-http {
+  background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+}
+.protocol-cloud-coap {
+  background: linear-gradient(135deg, #AC6AFF 0%, #6D28D9 100%);
+}
+
+/* Unified feature card background */
+.feature-card,
+.feat-card {
+  background: linear-gradient(145deg, rgba(139,92,246,0.12) 0%, rgba(6,6,18,0.98) 100%) !important;
+  border: 1px solid rgba(139,92,246,0.18) !important;
+}
 * {
   margin: 0;
   padding: 0;
@@ -1241,8 +1269,8 @@ html {
 }
 
 .navbar-logo {
-  height: 18px !important;
-  max-height: 18px !important;
+  height: 30px !important;
+  max-height: 30px !important;
   width: auto !important;
   display: block;
   object-fit: contain;

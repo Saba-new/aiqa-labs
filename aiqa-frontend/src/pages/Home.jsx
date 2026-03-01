@@ -70,20 +70,6 @@ function Home() {
           zIndex: 0,
         }}>TWINV</div>
 
-        {/* cyber badge */}
-        <motion.div {...fadeUp(0)} style={{ marginBottom: 24 }}>
-          <span className="cyber-tag">AIQA Labs — Digital Twin Platform</span>
-        </motion.div>
-
-        {/* logo */}
-        <motion.div {...fadeUp(0.1)} style={{ marginBottom: 32 }}>
-          <img
-            src={logo192}
-            alt="AIQA"
-            width={76}
-            style={{ borderRadius: '50%', boxShadow: '0 0 40px rgba(172,106,255,0.35)' }}
-          />
-        </motion.div>
 
         {/* headline */}
         <motion.h1
@@ -132,7 +118,7 @@ function Home() {
             Get Started
           </button>
           <button className="btn-neo" onClick={() => navigate('/platform')}>
-            Explore Platform
+	    Explore Platform
           </button>
         </motion.div>
 
@@ -298,8 +284,6 @@ function Home() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.08 }}
             style={{
               gridColumn: 'span 4',
-              background: 'linear-gradient(175deg, rgba(139,92,246,0.18) 0%, rgba(6,6,18,0.97) 56%)',
-              border: '1px solid rgba(139,92,246,0.22)',
               minHeight: 340, display: 'flex', flexDirection: 'column',
             }}
           >
@@ -322,8 +306,6 @@ function Home() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.12 }}
             style={{
               gridColumn: 'span 8',
-              background: 'linear-gradient(140deg, rgba(7,180,235,0.07) 0%, rgba(6,6,18,0.97) 52%)',
-              border: '1px solid rgba(7,180,235,0.14)',
               minHeight: 340, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
             }}
           >
@@ -347,8 +329,6 @@ function Home() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.18 }}
             style={{
               gridColumn: 'span 12',
-              background: 'linear-gradient(120deg, rgba(16,185,129,0.06) 0%, rgba(6,6,18,0.97) 60%)',
-              border: '1px solid rgba(16,185,129,0.13)',
               display: 'flex', flexWrap: 'wrap', gap: 0,
             }}
           >
