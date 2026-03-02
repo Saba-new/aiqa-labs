@@ -72,6 +72,26 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
   const { name, email, phone, message } = req.body
   const subject = req.body.subject || 'Website Enquiry'
 
+  // Log the submission
+  console.log('Contact Form Submission:', {
+    name,
+    email,
+    phone: phone || '(not provided)',
+    subject,
+    message: message.substring(0, 100) + '...',
+    timestamp: new Date().toISOString()
+  })
+
+  // TEMPORARY: Skip email sending to fix timeout issue
+  // Email functionality disabled until SMTP is properly configured on Render
+  console.log('Email sending temporarily disabled - form data logged above')
+  
+  return res.status(200).json({ 
+    success: true, 
+    message: 'Your message has been received! We will contact you soon.' 
+  })
+
+  /* EMAIL SENDING DISABLED - UNCOMMENT AFTER FIXING SMTP ON RENDER
   // Log SMTP configuration (without password)
   console.log('SMTP Config:', {
     host: process.env.SMTP_HOST,
@@ -165,6 +185,7 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
     })
     res.status(500).json({ error: 'Failed to send email. Please try again later.' })
   }
+  */
 })
 
 export default router
