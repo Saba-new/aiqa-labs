@@ -23,6 +23,10 @@ const validateContact = [
     .notEmpty().withMessage('Email is required.')
     .isEmail().withMessage('Please enter a valid email address.')
     .normalizeEmail(),
+  body('phone')
+    .optional({ nullable: true, checkFalsy: true })
+    .trim()
+    .isLength({ max: 20 }).withMessage('Phone must be under 20 characters.'),
   body('subject')
     .optional({ nullable: true, checkFalsy: true })
     .trim()
@@ -41,7 +45,7 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
     return res.status(422).json({ errors: errors.array() })
   }
 
-  const { name, email, message } = req.body
+  const { name, email, phone, message } = req.body
   const subject = req.body.subject || 'Website Enquiry'
 
   // Create transporter — family:4 forces IPv4 to avoid ::1 ECONNREFUSED on some systems
@@ -68,6 +72,7 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
         <table style="width:100%; border-collapse: collapse;">
           <tr><td style="padding:8px; font-weight:bold; width:100px;">Name</td><td style="padding:8px;">${name}</td></tr>
           <tr><td style="padding:8px; font-weight:bold;">Email</td><td style="padding:8px;"><a href="mailto:${email}">${email}</a></td></tr>
+          ${phone ? `<tr><td style="padding:8px; font-weight:bold;">Phone</td><td style="padding:8px;">${phone}</td></tr>` : ''}
           <tr><td style="padding:8px; font-weight:bold;">Subject</td><td style="padding:8px;">${subject}</td></tr>
           <tr><td style="padding:8px; font-weight:bold; vertical-align:top;">Message</td>
               <td style="padding:8px; white-space:pre-wrap;">${message}</td></tr>
