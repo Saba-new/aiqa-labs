@@ -84,12 +84,19 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
 
   // Check if SMTP is configured
   if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.warn('SMTP not configured - skipping email sending')
+    console.warn('⚠️ SMTP not configured - skipping email sending')
+    console.log('Missing:', {
+      host: !process.env.SMTP_HOST,
+      user: !process.env.SMTP_USER,
+      pass: !process.env.SMTP_PASS
+    })
     return res.status(200).json({ 
       success: true, 
       message: 'Your message has been received! We will contact you soon.' 
     })
   }
+
+  console.log('✓ SMTP configured, preparing to send emails...')
 
   // Create transporter
   const transporter = nodemailer.createTransport({
