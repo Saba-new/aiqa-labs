@@ -36,6 +36,12 @@ const Contact = () => {
         }
       } catch (error) {
         console.error(`Contact submit attempt ${attempt} error:`, error)
+        console.error('Error details:', {
+          message: error.message,
+          code: error.code,
+          response: error.response?.data,
+          status: error.response?.status
+        })
         lastError = error
 
         // If timeout or network error and retries left, wait and retry
@@ -46,7 +52,8 @@ const Contact = () => {
 
         // If server error response, don't retry
         if (error.response) {
-          toast.error(error.response.data?.message || 'Failed to submit. Please try again.')
+          const errorMsg = error.response.data?.error || error.response.data?.message || 'Failed to submit. Please try again.'
+          toast.error(errorMsg)
           break
         }
       }
