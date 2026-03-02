@@ -253,7 +253,7 @@ function Home() {
               display: 'flex', flexWrap: 'wrap', gap: 0,
             }}
           >
-            <div style={{ flex: '1 1 340px', padding: '36px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center', borderRight: '1px solid rgba(255,255,255,0.04)' }}>
+            <div style={{ flex: '1 1 340px', padding: '36px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '5rem', fontWeight: 900, lineHeight: 0.85, color: 'rgba(139,92,246,0.09)', letterSpacing: '-0.05em', marginBottom: 14, userSelect: 'none' }}>01</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
                 <span className="live-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: '#8B5CF6', color: '#8B5CF6', flexShrink: 0 }} />
@@ -290,7 +290,7 @@ function Home() {
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '28px 24px 0' }}>
               <img src={star} alt="" style={{ width: '80%', maxWidth: 160, opacity: 0.92, filter: 'drop-shadow(0 0 36px rgba(139,92,246,0.65))' }} />
             </div>
-            <div style={{ padding: '18px 24px 26px', borderTop: '1px solid rgba(139,92,246,0.1)' }}>
+            <div style={{ padding: '18px 24px 26px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#AC6AFF', color: '#AC6AFF', flexShrink: 0 }} />
                 <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(196,181,253,0.6)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>02 — AI Engine</span>
@@ -343,7 +343,7 @@ function Home() {
                 Optimize energy consumption and reduce carbon footprint with TwinV’s advanced sustainability insights and predictive controls.
               </p>
             </div>
-            <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', padding: '24px 44px' }}>
+            <div style={{ flex: '1 1 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 40px' }}>
               <img src={circleIcon} alt="" style={{ width: 180, opacity: 0.88, filter: 'drop-shadow(0 0 40px rgba(16,185,129,0.42))' }} />
             </div>
           </motion.div>
