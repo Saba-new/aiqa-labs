@@ -48,6 +48,16 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
   const { name, email, phone, message } = req.body
   const subject = req.body.subject || 'Website Enquiry'
 
+  // Log SMTP configuration (without password)
+  console.log('SMTP Config:', {
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    secure: process.env.SMTP_SECURE,
+    user: process.env.SMTP_USER,
+    receiver: process.env.CONTACT_RECEIVER_EMAIL,
+    hasPassword: !!process.env.SMTP_PASS
+  })
+
   // Create transporter — family:4 forces IPv4 to avoid ::1 ECONNREFUSED on some systems
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -102,11 +112,23 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
   }
 
   try {
+    console.log('Attempting to send email to team...')
     await transporter.sendMail(toTeamMail)
+    console.log('Team email sent successfully')
+    
+    console.log('Attempting to send auto-reply...')
     await transporter.sendMail(autoReplyMail)
+    console.log('Auto-reply sent successfully')
+    
     res.status(200).json({ success: true, message: 'Your message has been sent successfully!' })
   } catch (err) {
-    console.error('Email error:', err)
+    console.error('Email sending failed:', {
+      error: err.message,
+      code: err.code,
+      command: err.command,
+      responseCode: err.responseCode,
+      response: err.response
+    })
     res.status(500).json({ error: 'Failed to send email. Please try again later.' })
   }
 })
