@@ -18,13 +18,13 @@
   margin: 0 0.5em;
 }
 .protocol-cloud-mqtt {
-  background: linear-gradient(135deg, rgba(74, 105, 189, 0.75) 0%, rgba(139, 92, 246, 0.7) 100%);
+  background: linear-gradient(135deg, rgba(148, 163, 184, 0.75) 0%, rgba(139, 92, 246, 0.7) 100%);
 }
 .protocol-cloud-http {
   background: linear-gradient(135deg, rgba(139, 92, 246, 0.75) 0%, rgba(109, 40, 217, 0.7) 100%);
 }
 .protocol-cloud-coap {
-  background: linear-gradient(135deg, rgba(184, 134, 11, 0.75) 0%, rgba(109, 40, 217, 0.7) 100%);
+  background: linear-gradient(135deg, rgba(100, 116, 139, 0.75) 0%, rgba(109, 40, 217, 0.7) 100%);
 }
 
 /* Unified feature card background */
@@ -47,7 +47,7 @@ body {
     radial-gradient(ellipse 40% 30% at 90% 15%, rgba(14, 165, 233, 0.03) 0%, transparent 55%),
     radial-gradient(ellipse 35% 25% at 5% 80%, rgba(16,185,129,0.02) 0%, transparent 55%);
   background-attachment: fixed;
-  color: #ffffff;
+  color: #e8eaed;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -102,7 +102,7 @@ html {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, rgba(184, 134, 11, 0.9) 0%, rgba(109, 40, 217, 0.85) 100%);
+  background: linear-gradient(135deg, rgba(100, 116, 139, 0.9) 0%, rgba(109, 40, 217, 0.85) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -110,12 +110,12 @@ html {
 
 /* Glow effect */
 .glow {
-  box-shadow: 0 4px 20px rgba(184, 134, 11, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(100, 116, 139, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
 
 .glow:hover {
-  box-shadow: 0 6px 30px rgba(184, 134, 11, 0.35), 0 3px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 30px rgba(100, 116, 139, 0.35), 0 3px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Animated gradient for fallback */
@@ -154,12 +154,12 @@ html {
 }
 
 .highlight {
-  color: #b8860b;
+  color: #64748b;
 }
 
 .home-sub-title {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(232, 234, 237, 0.7);
   max-width: 900px;
   margin: 0 auto;
   line-height: 1.8;
@@ -208,7 +208,7 @@ html {
   padding: 20px;
   border-radius: 16px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(184, 134, 11, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(100, 116, 139, 0.1);
 }
 
 .stat-value {
@@ -247,13 +247,13 @@ html {
   transform: translateY(-50%);
   width: 1px;
   height: 80px;
-  background: linear-gradient(180deg, transparent, rgba(184, 134, 11, 0.3), transparent);
+  background: linear-gradient(180deg, transparent, rgba(100, 116, 139, 0.3), transparent);
 }
 
 .label-platform {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #b8860b;
+  color: #64748b;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 16px;
@@ -262,7 +262,7 @@ html {
 .label-platform-1 {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #4a69bd;
+  color: #94a3b8;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 16px;
@@ -278,7 +278,7 @@ html {
 
 .home-title-3 {
   font-size: clamp(1rem, 1.5vw, 1.15rem);
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(232, 234, 237, 0.7);
   line-height: 1.8;
 }
 
@@ -312,14 +312,14 @@ html {
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 6px 20px rgba(184, 134, 11, 0.12), 0 3px 10px rgba(184, 134, 11, 0.08);
+  box-shadow: 0 6px 20px rgba(100, 116, 139, 0.12), 0 3px 10px rgba(100, 116, 139, 0.08);
 }
 
 .feature-card:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(184, 134, 11, 0.25);
+  border-color: rgba(100, 116, 139, 0.25);
   transform: translateY(-3px);
-  box-shadow: 0 10px 35px rgba(184, 134, 11, 0.2), 0 5px 18px rgba(184, 134, 11, 0.15);
+  box-shadow: 0 10px 35px rgba(100, 116, 139, 0.2), 0 5px 18px rgba(100, 116, 139, 0.15);
 }
 
 .feature-card-large {
@@ -327,14 +327,14 @@ html {
 }
 
 .feature-card-purple {
-  background: linear-gradient(135deg, rgba(184, 134, 11, 0.05) 0%, rgba(123, 104, 238, 0.025) 100%);
-  box-shadow: 0 6px 20px rgba(184, 134, 11, 0.15), 0 3px 10px rgba(184, 134, 11, 0.1);
+  background: linear-gradient(135deg, rgba(100, 116, 139, 0.05) 0%, rgba(123, 104, 238, 0.025) 100%);
+  box-shadow: 0 6px 20px rgba(100, 116, 139, 0.15), 0 3px 10px rgba(100, 116, 139, 0.1);
 }
 
 .feature-card-purple:hover {
-  background: linear-gradient(135deg, rgba(184, 134, 11, 0.08) 0%, rgba(123, 104, 238, 0.04) 100%);
+  background: linear-gradient(135deg, rgba(100, 116, 139, 0.08) 0%, rgba(123, 104, 238, 0.04) 100%);
   transform: translateY(-3px);
-  box-shadow: 0 10px 35px rgba(184, 134, 11, 0.25), 0 5px 18px rgba(184, 134, 11, 0.18);
+  box-shadow: 0 10px 35px rgba(100, 116, 139, 0.25), 0 5px 18px rgba(100, 116, 139, 0.18);
 }
 
 .ai-title {
@@ -347,7 +347,7 @@ html {
 
 .ai-content {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(232, 234, 237, 0.7);
   line-height: 1.6;
 }
 
@@ -355,7 +355,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(184, 134, 11, 0.1) 0%, rgba(123, 104, 238, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(100, 116, 139, 0.1) 0%, rgba(123, 104, 238, 0.1) 100%);
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.1);
@@ -363,7 +363,7 @@ html {
 }
 
 .placeholder-img:hover {
-  box-shadow: 0 6px 20px rgba(184, 134, 11, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 20px rgba(100, 116, 139, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.15);
 }
 
 .placeholder-icon {
@@ -418,7 +418,7 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(184, 134, 11, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(100, 116, 139, 0.05) 0%, transparent 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -434,8 +434,8 @@ html {
 }
 
 .card-back-2 {
-  background: linear-gradient(145deg, rgba(74, 105, 189, 0.07) 0%, rgba(6, 6, 18, 0.98) 70%);
-  border: 1px solid rgba(74, 105, 189, 0.13);
+  background: linear-gradient(145deg, rgba(148, 163, 184, 0.07) 0%, rgba(6, 6, 18, 0.98) 70%);
+  border: 1px solid rgba(148, 163, 184, 0.13);
   border-radius: 24px;
   padding: 32px;
   height: 420px;
@@ -446,7 +446,7 @@ html {
   margin-bottom: 15px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4), 0 3px 10px rgba(74, 105, 189, 0.08);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4), 0 3px 10px rgba(148, 163, 184, 0.08);
 }
 
 .card-back-2::before {
@@ -466,9 +466,9 @@ html {
 }
 
 .card-back-2:hover {
-  border-color: rgba(74, 105, 189, 0.3);
+  border-color: rgba(148, 163, 184, 0.3);
   transform: translateY(-3px);
-  box-shadow: 0 10px 35px rgba(74, 105, 189, 0.18), 0 5px 18px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 35px rgba(148, 163, 184, 0.18), 0 5px 18px rgba(0, 0, 0, 0.4);
 }
 
 .card-back-3 {
@@ -527,13 +527,13 @@ html {
   flex-direction: column;
   position: relative;
   z-index: 1;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(184, 134, 11, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(100, 116, 139, 0.15);
   transition: all 0.3s ease;
 }
 
 .industry-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(184, 134, 11, 0.2), 0 4px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 30px rgba(100, 116, 139, 0.2), 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .industry-card-dark {
@@ -541,32 +541,32 @@ html {
   flex-direction: column;
   position: relative;
   z-index: 1;
-  box-shadow: 0 5px 20px rgba(184, 134, 11, 0.35), 0 3px 10px rgba(184, 134, 11, 0.2);
+  box-shadow: 0 5px 20px rgba(100, 116, 139, 0.35), 0 3px 10px rgba(100, 116, 139, 0.2);
   transition: all 0.3s ease;
 }
 
 .industry-card-dark:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 40px rgba(184, 134, 11, 0.6), 0 5px 20px rgba(184, 134, 11, 0.4);
+  box-shadow: 0 10px 40px rgba(100, 116, 139, 0.6), 0 5px 20px rgba(100, 116, 139, 0.4);
 }
 
 .card-content-1 {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(232, 234, 237, 0.8);
   line-height: 1.6;
   margin-bottom: 24px;
 }
 
 .card-content-2 {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(232, 234, 237, 0.8);
   line-height: 1.6;
   margin-bottom: 24px;
 }
 
 .card-content-3 {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(232, 234, 237, 0.8);
   line-height: 1.6;
   margin-bottom: 24px;
 }
@@ -621,7 +621,7 @@ html {
   min-height: 200px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 5px 18px rgba(184, 134, 11, 0.25), 0 3px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 18px rgba(100, 116, 139, 0.25), 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card-tile-1::before {
@@ -642,7 +642,7 @@ html {
 
 .card-tile-1:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(184, 134, 11, 0.5), 0 6px 20px rgba(184, 134, 11, 0.4);
+  box-shadow: 0 12px 40px rgba(100, 116, 139, 0.5), 0 6px 20px rgba(100, 116, 139, 0.4);
 }
 
 .card-tile-2 {
@@ -670,7 +670,7 @@ html {
   justify-content: space-between;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(184, 134, 11, 0.15);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(100, 116, 139, 0.15);
 }
 
 .fintech-row-1::before {
@@ -680,7 +680,7 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(184, 134, 11, 0.03) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(100, 116, 139, 0.03) 0%, transparent 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -690,9 +690,9 @@ html {
 }
 
 .fintech-row-1:hover {
-  border-color: rgba(184, 134, 11, 0.2);
+  border-color: rgba(100, 116, 139, 0.2);
   transform: translateY(-3px);
-  box-shadow: 0 10px 35px rgba(184, 134, 11, 0.3), 0 5px 18px rgba(184, 134, 11, 0.2);
+  box-shadow: 0 10px 35px rgba(100, 116, 139, 0.3), 0 5px 18px rgba(100, 116, 139, 0.2);
 }
 
 .fintech-row-2 {
@@ -708,7 +708,7 @@ html {
   justify-content: space-between;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(74, 105, 189, 0.12);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(148, 163, 184, 0.12);
 }
 
 .fintech-row-2::before {
@@ -718,7 +718,7 @@ html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(74, 105, 189, 0.03) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(148, 163, 184, 0.03) 0%, transparent 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -728,9 +728,9 @@ html {
 }
 
 .fintech-row-2:hover {
-  border-color: rgba(74, 105, 189, 0.18);
+  border-color: rgba(148, 163, 184, 0.18);
   transform: translateY(-3px);
-  box-shadow: 0 10px 35px rgba(74, 105, 189, 0.18), 0 5px 18px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 35px rgba(148, 163, 184, 0.18), 0 5px 18px rgba(0, 0, 0, 0.2);
 }
 
 .tile-heading {
@@ -841,7 +841,7 @@ html {
 /* ===================== FOOTER ===================== */
 .footer-container {
   padding: 60px 10%;
-  border-top: 1px solid rgba(184, 134, 11, 0.2);
+  border-top: 1px solid rgba(100, 116, 139, 0.2);
   margin-top: 60px;
   color: #fff;
   background: #111118;
@@ -904,7 +904,7 @@ html {
 }
 
 .footer-column a:hover {
-  color: #b8860b;
+  color: #64748b;
 }
 
 .footer-inner-class-2 {
@@ -945,7 +945,7 @@ html {
   background: rgba(5, 1, 20, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(184, 134, 11, 0.15);
+  border-bottom: 1px solid rgba(100, 116, 139, 0.15);
 }
 
 .header-inner {
@@ -971,15 +971,15 @@ html {
 }
 
 .header-link:hover {
-  color: #b8860b;
+  color: #64748b;
 }
 
 .header-link.active {
-  color: #b8860b;
+  color: #64748b;
 }
 
 .get-started-button-1 {
-  background: linear-gradient(135deg, #b8860b 0%, #7B2CBF 100%);
+  background: linear-gradient(135deg, #64748b 0%, #7B2CBF 100%);
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -1011,7 +1011,7 @@ html {
 }
 
 .drawer-links a:hover {
-  color: #b8860b;
+  color: #64748b;
 }
 
 .mobile-only {
@@ -1046,22 +1046,22 @@ html {
   align-items: center;
   gap: 8px;
   padding: 5px 16px;
-  background: rgba(184, 134, 11, 0.08);
-  border: 1px solid rgba(184, 134, 11, 0.3);
+  background: rgba(100, 116, 139, 0.08);
+  border: 1px solid rgba(100, 116, 139, 0.3);
   border-radius: 100px;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #b8860b;
+  color: #64748b;
 }
 .cyber-tag::before {
   content: '';
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #b8860b;
-  box-shadow: 0 0 8px #b8860b;
+  background: #64748b;
+  box-shadow: 0 0 8px #64748b;
   flex-shrink: 0;
 }
 
@@ -1071,7 +1071,7 @@ html {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #b8860b;
+  color: #64748b;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -1081,7 +1081,7 @@ html {
   content: '';
   width: 22px;
   height: 1px;
-  background: #b8860b;
+  background: #64748b;
   flex-shrink: 0;
 }
 
@@ -1101,7 +1101,7 @@ html {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent 5%, rgba(184, 134, 11, 0.8) 50%, rgba(7,180,235,0.5) 80%, transparent 95%);
+  background: linear-gradient(90deg, transparent 5%, rgba(100, 116, 139, 0.8) 50%, rgba(7,180,235,0.5) 80%, transparent 95%);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -1116,10 +1116,10 @@ html {
   pointer-events: none;
 }
 .bento-card:hover {
-  border-color: rgba(184, 134, 11, 0.2);
+  border-color: rgba(100, 116, 139, 0.2);
   background: linear-gradient(145deg, rgba(172,106,255,0.055) 0%, rgba(255,255,255,0.02) 100%);
   transform: translateY(-8px);
-  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(172,106,255,0.08), 0 0 40px rgba(184, 134, 11, 0.07);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(172,106,255,0.08), 0 0 40px rgba(100, 116, 139, 0.07);
 }
 .bento-card:hover::before { opacity: 1; }
 .bento-card:hover::after { opacity: 1; }
@@ -1153,7 +1153,7 @@ html {
   display: block;
   font-size: 0.63rem;
   font-weight: 700;
-  color: rgba(184, 134, 11, 0.5);
+  color: rgba(100, 116, 139, 0.5);
   letter-spacing: 0.18em;
   font-family: 'Courier New', monospace;
   margin-bottom: 18px;
@@ -1163,7 +1163,7 @@ html {
 .neon-divider {
   height: 1px;
   border: none;
-  background: linear-gradient(90deg, transparent 0%, rgba(184, 134, 11, 0.45) 30%, rgba(74, 105, 189, 0.45) 70%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(100, 116, 139, 0.45) 30%, rgba(148, 163, 184, 0.45) 70%, transparent 100%);
 }
 
 /* Industry tile */
@@ -1183,15 +1183,15 @@ html {
   right: 24px;
   bottom: 20px;
   font-size: 1.1rem;
-  color: #b8860b;
+  color: #64748b;
   opacity: 0;
   transform: translateX(-8px);
   transition: all 0.3s ease;
 }
 .industry-tile:hover {
-  border-color: rgba(184, 134, 11, 0.3);
-  background: rgba(184, 134, 11, 0.05);
-  box-shadow: 0 12px 36px rgba(184, 134, 11, 0.1);
+  border-color: rgba(100, 116, 139, 0.3);
+  background: rgba(100, 116, 139, 0.05);
+  box-shadow: 0 12px 36px rgba(100, 116, 139, 0.1);
 }
 .industry-tile:hover::after {
   opacity: 1;
@@ -1199,12 +1199,12 @@ html {
 }
 /* Industry tile accent variant */
 .industry-tile-accent {
-  background: rgba(184, 134, 11, 0.06);
-  border-color: rgba(184, 134, 11, 0.18);
+  background: rgba(100, 116, 139, 0.06);
+  border-color: rgba(100, 116, 139, 0.18);
 }
 .industry-tile-accent:hover {
-  background: rgba(184, 134, 11, 0.12);
-  border-color: rgba(184, 134, 11, 0.4);
+  background: rgba(100, 116, 139, 0.12);
+  border-color: rgba(100, 116, 139, 0.4);
 }
 /* Industry arrow inside tile */
 .industry-arrow {
@@ -1212,7 +1212,7 @@ html {
   right: 24px;
   bottom: 20px;
   font-size: 1.1rem;
-  color: #b8860b;
+  color: #64748b;
   opacity: 0;
   transform: translateX(-8px);
   transition: all 0.3s ease;
@@ -1237,7 +1237,7 @@ html {
 .stat-neo-value {
   font-size: 2.8rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #ffffff 30%, #C4B5FD 100%);
+  background: linear-gradient(135deg, #e8eaed 30%, #C4B5FD 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1265,7 +1265,7 @@ html {
   position: absolute;
   bottom: 0; left: 8%; right: 8%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.45), rgba(74, 105, 189, 0.35), transparent);
+  background: linear-gradient(90deg, transparent, rgba(100, 116, 139, 0.45), rgba(148, 163, 184, 0.35), transparent);
 }
 
 .navbar-logo {
@@ -1291,12 +1291,12 @@ html {
   position: absolute;
   bottom: -2px; left: 0;
   width: 0; height: 1px;
-  background: linear-gradient(90deg, #b8860b, #4a69bd);
+  background: linear-gradient(90deg, #64748b, #94a3b8);
   transition: width 0.3s ease;
 }
-.nav-link-neo:hover { color: #ffffff; }
+.nav-link-neo:hover { color: #e8eaed; }
 .nav-link-neo:hover::after { width: 100%; }
-.nav-link-neo.active-link { color: #ffffff; }
+.nav-link-neo.active-link { color: #e8eaed; }
 .nav-link-neo.active-link::after { width: 100%; }
 
 .btn-neo {
@@ -1314,7 +1314,7 @@ html {
 }
 .btn-neo:hover {
   border-color: rgba(138, 92, 246, 0.85);
-  color: #ffffff;
+  color: #e8eaed;
   background: rgba(138, 92, 246, 0.14);
   box-shadow: 0 0 0 1px rgba(138,92,246,0.2), 0 4px 24px rgba(138, 92, 246, 0.2);
   transform: translateY(-1px);
@@ -1324,7 +1324,7 @@ html {
 .hero-grid {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(184, 134, 11, 0.18) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(100, 116, 139, 0.18) 1px, transparent 1px);
   background-size: 52px 52px;
   mask-image: radial-gradient(ellipse 90% 80% at 50% 0%, rgba(0,0,0,0.7) 0%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 0%, rgba(0,0,0,0.7) 0%, transparent 80%);

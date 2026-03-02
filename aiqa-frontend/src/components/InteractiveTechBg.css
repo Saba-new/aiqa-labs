@@ -6,7 +6,7 @@
   height: 100vh;
   overflow: hidden;
   z-index: -1;
-  background: radial-gradient(ellipse at center, #151515 0%, #0a0a0a 100%);
+  background: radial-gradient(ellipse at center, #0a0e27 0%, #0a0a0a 100%);
   perspective: 1000px;
 }
 
@@ -23,10 +23,10 @@
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(rgba(184, 134, 11, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(184, 134, 11, 0.03) 1px, transparent 1px),
-    linear-gradient(rgba(74, 105, 189, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74, 105, 189, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(100, 116, 139, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 116, 139, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(148, 163, 184, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.02) 1px, transparent 1px);
   background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
   background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
   animation: circuitMove 20s linear infinite;
@@ -46,12 +46,12 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  background: #b8860b;
+  background: #64748b;
   border-radius: 50%;
   box-shadow: 
-    0 0 10px #b8860b,
-    0 0 20px #b8860b,
-    0 0 30px rgba(184, 134, 11, 0.3);
+    0 0 10px #64748b,
+    0 0 20px #64748b,
+    0 0 30px rgba(100, 116, 139, 0.3);
   animation: nodePulse 3s ease-in-out infinite;
 }
 
@@ -127,9 +127,9 @@
 .hexagon {
   width: 60px;
   height: 34.64px;
-  background: rgba(184, 134, 11, 0.1);
-  border-left: 1px solid #b8860b;
-  border-right: 1px solid #b8860b;
+  background: rgba(100, 116, 139, 0.1);
+  border-left: 1px solid #64748b;
+  border-right: 1px solid #64748b;
   position: relative;
   animation: hexRotate 8s linear infinite;
 }
@@ -146,16 +146,16 @@
 
 .hexagon::before {
   bottom: 100%;
-  border-bottom: 17.32px solid rgba(184, 134, 11, 0.1);
-  border-left-color: #b8860b;
-  border-right-color: #b8860b;
+  border-bottom: 17.32px solid rgba(100, 116, 139, 0.1);
+  border-left-color: #64748b;
+  border-right-color: #64748b;
 }
 
 .hexagon::after {
   top: 100%;
-  border-top: 17.32px solid rgba(184, 134, 11, 0.1);
-  border-left-color: #b8860b;
-  border-right-color: #b8860b;
+  border-top: 17.32px solid rgba(100, 116, 139, 0.1);
+  border-left-color: #64748b;
+  border-right-color: #64748b;
 }
 
 .hexagon-glow {
@@ -165,7 +165,7 @@
   transform: translate(-50%, -50%);
   width: 80px;
   height: 80px;
-  background: radial-gradient(circle, rgba(184, 134, 11, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(100, 116, 139, 0.3), transparent 70%);
   animation: glowPulse 3s ease-in-out infinite;
 }
 
@@ -226,9 +226,9 @@
   position: absolute;
   width: 50px;
   height: 50px;
-  background: rgba(74, 105, 189, 0.1);
+  background: rgba(148, 163, 184, 0.1);
   border: 1px solid #07B4EB;
-  box-shadow: inset 0 0 20px rgba(74, 105, 189, 0.2);
+  box-shadow: inset 0 0 20px rgba(148, 163, 184, 0.2);
 }
 
 .cube-face.front {
@@ -282,9 +282,9 @@
 .neuron-core {
   width: 100%;
   height: 100%;
-  background: #b8860b;
+  background: #64748b;
   border-radius: 50%;
-  box-shadow: 0 0 15px #b8860b;
+  box-shadow: 0 0 15px #64748b;
 }
 
 .neuron-pulse {
@@ -294,7 +294,7 @@
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  border: 2px solid #b8860b;
+  border: 2px solid #64748b;
   border-radius: 50%;
   animation: neuronPulse 2s ease-out infinite;
 }
@@ -369,7 +369,7 @@
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  border: 2px solid rgba(184, 134, 11, 0.3);
+  border: 2px solid rgba(100, 116, 139, 0.3);
   border-radius: 50%;
   animation: focusRotate 20s linear infinite;
 }
@@ -377,7 +377,7 @@
 .focus-ring.ring-2 {
   width: 130%;
   height: 130%;
-  border-color: rgba(74, 105, 189, 0.2);
+  border-color: rgba(148, 163, 184, 0.2);
   animation-duration: 15s;
   animation-direction: reverse;
 }
@@ -385,7 +385,7 @@
 .focus-ring.ring-3 {
   width: 160%;
   height: 160%;
-  border-color: rgba(184, 134, 11, 0.1);
+  border-color: rgba(100, 116, 139, 0.1);
   animation-duration: 25s;
 }
 
@@ -405,11 +405,11 @@
   transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
-  background: radial-gradient(circle, #b8860b, #764ba2);
+  background: radial-gradient(circle, #64748b, #764ba2);
   border-radius: 50%;
   box-shadow: 
-    0 0 30px rgba(184, 134, 11, 0.8),
-    0 0 60px rgba(184, 134, 11, 0.4),
+    0 0 30px rgba(100, 116, 139, 0.8),
+    0 0 60px rgba(100, 116, 139, 0.4),
     inset 0 0 20px rgba(255, 255, 255, 0.2);
   animation: coreGlow 3s ease-in-out infinite;
 }
@@ -429,14 +429,14 @@
 @keyframes coreGlow {
   0%, 100% {
     box-shadow: 
-      0 0 30px rgba(184, 134, 11, 0.8),
-      0 0 60px rgba(184, 134, 11, 0.4),
+      0 0 30px rgba(100, 116, 139, 0.8),
+      0 0 60px rgba(100, 116, 139, 0.4),
       inset 0 0 20px rgba(255, 255, 255, 0.2);
   }
   50% {
     box-shadow: 
-      0 0 50px rgba(184, 134, 11, 1),
-      0 0 100px rgba(184, 134, 11, 0.6),
+      0 0 50px rgba(100, 116, 139, 1),
+      0 0 100px rgba(100, 116, 139, 0.6),
       inset 0 0 30px rgba(255, 255, 255, 0.4);
   }
 }

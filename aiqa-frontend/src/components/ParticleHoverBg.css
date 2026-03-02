@@ -54,7 +54,7 @@
   height: 520px;
   top: 0;
   right: -120px;
-  background: radial-gradient(circle, rgba(74, 105, 189, 0.55) 0%, rgba(70, 70, 70, 0.2) 55%, transparent 72%);
+  background: radial-gradient(circle, rgba(148, 163, 184, 0.55) 0%, rgba(70, 70, 70, 0.2) 55%, transparent 72%);
   animation: orbDrift2 20s ease-in-out infinite;
 }
 
@@ -74,7 +74,7 @@
   height: 620px;
   bottom: -130px;
   right: -80px;
-  background: radial-gradient(circle, rgba(184, 134, 11, 0.5) 0%, rgba(70, 70, 70, 0.18) 55%, transparent 72%);
+  background: radial-gradient(circle, rgba(100, 116, 139, 0.5) 0%, rgba(70, 70, 70, 0.18) 55%, transparent 72%);
   animation: orbDrift4 18s ease-in-out infinite;
 }
 
