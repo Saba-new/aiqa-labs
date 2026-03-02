@@ -1,9 +1,10 @@
 import express from 'express'
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 import { body, validationResult } from 'express-validator'
 import rateLimit from 'express-rate-limit'
 
 const router = express.Router()
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Rate limit for contact form — 20 submissions per 15 min per IP
 const contactLimiter = rateLimit({
@@ -82,75 +83,16 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
     timestamp: new Date().toISOString()
   })
 
-  // Check if SMTP is configured
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.warn('⚠️ SMTP not configured - skipping email sending')
-    console.log('Missing:', {
-      host: !process.env.SMTP_HOST,
-      user: !process.env.SMTP_USER,
-      pass: !process.env.SMTP_PASS
-    })
+  // Check if Resend is configured
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('⚠️ RESEND_API_KEY not configured - skipping email sending')
     return res.status(200).json({ 
       success: true, 
       message: 'Your message has been received! We will contact you soon.' 
     })
   }
 
-  console.log('✓ SMTP configured, preparing to send emails...')
-
-  // Create transporter with port 465 (SSL) for better compatibility
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: 465,  // Use 465 with SSL instead of 587
-    secure: true,  // Force SSL
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-    connectionTimeout: 5000,
-    greetingTimeout: 5000,
-  })
-
-  // Email to AIQA team
-  const toTeamMail = {
-    from: `"AIQA Website" <${process.env.SMTP_USER}>`,
-    to: process.env.CONTACT_RECEIVER_EMAIL,
-    replyTo: email,
-    subject: `[Contact Form] ${subject}`,
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #AC6AFF;">New Contact Form Submission</h2>
-        <table style="width:100%; border-collapse: collapse;">
-          <tr><td style="padding:8px; font-weight:bold; width:100px;">Name</td><td style="padding:8px;">${name}</td></tr>
-          <tr><td style="padding:8px; font-weight:bold;">Email</td><td style="padding:8px;"><a href="mailto:${email}">${email}</a></td></tr>
-          ${phone ? `<tr><td style="padding:8px; font-weight:bold;">Phone</td><td style="padding:8px;">${phone}</td></tr>` : ''}
-          <tr><td style="padding:8px; font-weight:bold;">Subject</td><td style="padding:8px;">${subject}</td></tr>
-          <tr><td style="padding:8px; font-weight:bold; vertical-align:top;">Message</td>
-              <td style="padding:8px; white-space:pre-wrap;">${message}</td></tr>
-        </table>
-        <hr style="margin-top:24px; border-color:#eee;" />
-        <p style="font-size:12px; color:#888;">Sent from aiqa-labs.com contact form</p>
-      </div>
-    `,
-  }
-
-  // Auto-reply to the sender
-  const autoReplyMail = {
-    from: `"AIQA Labs" <${process.env.SMTP_USER}>`,
-    to: email,
-    subject: 'We received your message — AIQA Labs',
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #AC6AFF;">Thanks for reaching out, ${name}!</h2>
-        <p>We've received your message and will get back to you within 1-2 business days.</p>
-        <blockquote style="border-left: 3px solid #AC6AFF; padding-left: 16px; color: #555;">
-          <strong>Your message:</strong><br/>
-          <em>${message}</em>
-        </blockquote>
-        <p style="margin-top:24px;">Best regards,<br/><strong>The AIQA Labs Team</strong></p>
-      </div>
-    `,
-  }
+  console.log('✓ Resend configured, preparing to send emails...')
 
   // Send response immediately - don't wait for email
   res.status(200).json({ 
@@ -158,37 +100,66 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
     message: 'Your message has been sent successfully!' 
   })
 
-  // Send emails asynchronously in background with 10s timeout
-  console.log('Sending emails to:', {
-    team: process.env.CONTACT_RECEIVER_EMAIL,
+  // Send emails asynchronously using Resend (reliable HTTP API)
+  console.log('Sending emails via Resend to:', {
+    team: process.env.CONTACT_RECEIVER_EMAIL || 'k.sabarish2005@gmail.com',
     customer: email
   })
   
   const startTime = Date.now()
   
-  // Create timeout promise (reduced to 5s for faster feedback)
-  const emailTimeout = new Promise((_, reject) => 
-    setTimeout(() => reject(new Error('Email timeout - SMTP connection hung')), 5000)
-  )
-  
-  Promise.race([
-    Promise.all([
-      transporter.sendMail(toTeamMail),
-      transporter.sendMail(autoReplyMail)
-    ]),
-    emailTimeout
+  Promise.all([
+    // Email to team
+    resend.emails.send({
+      from: 'AIQA Contact <onboarding@resend.dev>',  // Resend verified domain
+      to: process.env.CONTACT_RECEIVER_EMAIL || 'k.sabarish2005@gmail.com',
+      reply_to: email,
+      subject: `[Contact Form] ${subject}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #AC6AFF;">New Contact Form Submission</h2>
+          <table style="width:100%; border-collapse: collapse;">
+            <tr><td style="padding:8px; font-weight:bold; width:100px;">Name</td><td style="padding:8px;">${name}</td></tr>
+            <tr><td style="padding:8px; font-weight:bold;">Email</td><td style="padding:8px;"><a href="mailto:${email}">${email}</a></td></tr>
+            ${phone ? `<tr><td style="padding:8px; font-weight:bold;">Phone</td><td style="padding:8px;">${phone}</td></tr>` : ''}
+            <tr><td style="padding:8px; font-weight:bold;">Subject</td><td style="padding:8px;">${subject}</td></tr>
+            <tr><td style="padding:8px; font-weight:bold; vertical-align:top;">Message</td>
+                <td style="padding:8px; white-space:pre-wrap;">${message}</td></tr>
+          </table>
+          <hr style="margin-top:24px; border-color:#eee;" />
+          <p style="font-size:12px; color:#888;">Sent from aiqa-labs.com contact form</p>
+        </div>
+      `,
+    }),
+    // Auto-reply to customer
+    resend.emails.send({
+      from: 'AIQA Labs <onboarding@resend.dev>',
+      to: email,
+      subject: 'We received your message — AIQA Labs',
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #AC6AFF;">Thanks for reaching out, ${name}!</h2>
+          <p>We've received your message and will get back to you within 1-2 business days.</p>
+          <blockquote style="border-left: 3px solid #AC6AFF; padding-left: 16px; color: #555;">
+            <strong>Your message:</strong><br/>
+            <em>${message}</em>
+          </blockquote>
+          <p style="margin-top:24px;">Best regards,<br/><strong>The AIQA Labs Team</strong></p>
+        </div>
+      `,
+    })
   ])
-  .then(() => {
+  .then((results) => {
     const duration = Date.now() - startTime
     console.log(`✓ Both emails sent successfully in ${duration}ms`)
+    console.log('Email IDs:', results.map(r => r.data?.id))
   })
   .catch(err => {
     const duration = Date.now() - startTime
     console.error(`✗ Email failed after ${duration}ms:`, {
       error: err.message,
-      code: err.code,
-      command: err.command,
-      stack: err.stack?.split('\n')[0]
+      name: err.name,
+      statusCode: err.statusCode
     })
     
     // Log form data so you don't lose it
