@@ -158,12 +158,28 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
   })
 
   // Send emails asynchronously in background (fire and forget)
+  console.log('Sending emails to:', {
+    team: process.env.CONTACT_RECEIVER_EMAIL,
+    customer: email
+  })
+  
+  const startTime = Date.now()
   Promise.all([
     transporter.sendMail(toTeamMail),
     transporter.sendMail(autoReplyMail)
   ])
-  .then(() => console.log('✓ Emails sent successfully'))
-  .catch(err => console.error('✗ Email failed:', err.message))
+  .then(() => {
+    const duration = Date.now() - startTime
+    console.log(`✓ Both emails sent successfully in ${duration}ms`)
+  })
+  .catch(err => {
+    console.error('✗ Email send failed:', {
+      error: err.message,
+      code: err.code,
+      command: err.command,
+      response: err.response
+    })
+  })
 })
 
 export default router
