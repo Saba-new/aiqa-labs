@@ -165,9 +165,9 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
   
   const startTime = Date.now()
   
-  // Create timeout promise
+  // Create timeout promise (reduced to 5s for faster feedback)
   const emailTimeout = new Promise((_, reject) => 
-    setTimeout(() => reject(new Error('Email timeout after 10 seconds')), 10000)
+    setTimeout(() => reject(new Error('Email timeout - SMTP connection hung')), 5000)
   )
   
   Promise.race([
@@ -186,7 +186,17 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
     console.error(`✗ Email failed after ${duration}ms:`, {
       error: err.message,
       code: err.code,
-      command: err.command
+      command: err.command,
+      stack: err.stack?.split('\n')[0]
+    })
+    
+    // Log form data so you don't lose it
+    console.log('📋 Form data (email failed):', {
+      from: email,
+      name,
+      phone: phone || 'N/A',
+      subject,
+      messagePreview: message.substring(0, 100)
     })
   })
 })
