@@ -98,16 +98,17 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
 
   console.log('✓ SMTP configured, preparing to send emails...')
 
-  // Create transporter
+  // Create transporter with port 465 (SSL) for better compatibility
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT) || 587,
-    secure: process.env.SMTP_SECURE === 'true',
-    family: 4,
+    port: 465,  // Use 465 with SSL instead of 587
+    secure: true,  // Force SSL
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
+    connectionTimeout: 5000,
+    greetingTimeout: 5000,
   })
 
   // Email to AIQA team
