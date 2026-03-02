@@ -35,7 +35,7 @@ function Login() {
         const response = await axios.post(
           `${import.meta.env.VITE_API_URL}/auth/login`,
           formData,
-          { timeout: 30000 } // 30 second timeout
+          { timeout: 60000 } // 60 second timeout for Render wake-up
         )
 
         if (response.data.success) {
