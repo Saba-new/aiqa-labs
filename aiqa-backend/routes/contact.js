@@ -144,34 +144,19 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
     `,
   }
 
-  try {
-    console.log('Sending emails...')
-    
-    // Send both emails in parallel with 20s timeout
-    const emailPromises = [
-      transporter.sendMail(toTeamMail),
-      transporter.sendMail(autoReplyMail)
-    ]
-    
-    const timeout = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Email timeout after 20s')), 20000)
-    )
-    
-    await Promise.race([
-      Promise.all(emailPromises),
-      timeout
-    ])
-    
-    console.log('Emails sent successfully')
-    res.status(200).json({ success: true, message: 'Your message has been sent successfully!' })
-  } catch (err) {
-    console.error('Email failed:', err.message)
-    // Still return success to user even if email fails
-    res.status(200).json({ 
-      success: true, 
-      message: 'Your message has been received! We will contact you soon.' 
-    })
-  }
+  // Send response immediately - don't wait for email
+  res.status(200).json({ 
+    success: true, 
+    message: 'Your message has been sent successfully!' 
+  })
+
+  // Send emails asynchronously in background (fire and forget)
+  Promise.all([
+    transporter.sendMail(toTeamMail),
+    transporter.sendMail(autoReplyMail)
+  ])
+  .then(() => console.log('✓ Emails sent successfully'))
+  .catch(err => console.error('✗ Email failed:', err.message))
 })
 
 export default router
