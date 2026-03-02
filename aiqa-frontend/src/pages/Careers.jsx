@@ -130,63 +130,28 @@ function ApplyModal({ role, onClose }) {
     e.preventDefault()
     setLoading(true)
 
-    // Show initial loading message
-    toast.info('Waking up server and sending email... This may take up to 2 minutes.', {
-      autoClose: 5000
-    })
-
-    // Retry logic for backend wake-up
-    const maxRetries = 3
-    let lastError = null
-
-    for (let attempt = 1; attempt <= maxRetries; attempt++) {
-      try {
-        if (attempt > 1) {
-          toast.info(`Retry ${attempt}/${maxRetries} - Please wait...`, { autoClose: 3000 })
-        }
-
-        const payload = {
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          subject: `Job Application: ${role}`,
-          message: form.message || '(No cover note provided)',
-        }
-        const res = await sendContactForm(payload)
-        if (res.status === 200) {
-          toast.success('Application submitted! We will be in touch.')
-          onClose()
-          setLoading(false)
-          return
-        }
-      } catch (error) {
-        console.error(`Application submit attempt ${attempt} error:`, error)
-        console.error('Error details:', {
-          message: error.message,
-          code: error.code,
-          response: error.response?.data,
-          status: error.response?.status
-        })
-        lastError = error
-
-        // If timeout or network error and retries left, wait and retry
-        if ((error.code === 'ECONNABORTED' || error.message === 'Network Error') && attempt < maxRetries) {
-          await new Promise(resolve => setTimeout(resolve, 2000 * attempt))
-          continue
-        }
-
-        // If server error response, don't retry
-        if (error.response) {
-          const errorMsg = error.response.data?.error || error.response.data?.message || 'Failed to submit. Please try again.'
-          toast.error(errorMsg)
-          break
-        }
+    try {
+      const payload = {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        subject: `Job Application: ${role}`,
+        message: form.message || '(No cover note provided)',
       }
-    }
-
-    // All retries failed
-    if (lastError && !lastError.response) {
-      toast.error('Failed to submit. Please try again or email careers@aiqa.co.in')
+      const res = await sendContactForm(payload)
+      if (res.status === 200) {
+        toast.success('Application submitted successfully!')
+        onClose()
+      }
+    } catch (error) {
+      console.error('Application submit error:', error)
+      if (error.code === 'ECONNABORTED') {
+        toast.error('Server is starting up. Please try again in 30 seconds.')
+      } else if (error.response) {
+        toast.error(error.response.data?.error || 'Failed to submit. Please try again.')
+      } else {
+        toast.error('Network error. Please check your connection.')
+      }
     }
     
     setLoading(false)
