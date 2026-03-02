@@ -82,31 +82,20 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
     timestamp: new Date().toISOString()
   })
 
-  // TEMPORARY: Skip email sending to fix timeout issue
-  // Email functionality disabled until SMTP is properly configured on Render
-  console.log('Email sending temporarily disabled - form data logged above')
-  
-  return res.status(200).json({ 
-    success: true, 
-    message: 'Your message has been received! We will contact you soon.' 
-  })
+  // Check if SMTP is configured
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.warn('SMTP not configured - skipping email sending')
+    return res.status(200).json({ 
+      success: true, 
+      message: 'Your message has been received! We will contact you soon.' 
+    })
+  }
 
-  /* EMAIL SENDING DISABLED - UNCOMMENT AFTER FIXING SMTP ON RENDER
-  // Log SMTP configuration (without password)
-  console.log('SMTP Config:', {
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    secure: process.env.SMTP_SECURE,
-    user: process.env.SMTP_USER,
-    receiver: process.env.CONTACT_RECEIVER_EMAIL,
-    hasPassword: !!process.env.SMTP_PASS
-  })
-
-  // Create transporter — family:4 forces IPv4 to avoid ::1 ECONNREFUSED on some systems
+  // Create transporter
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT) || 587,
-    secure: process.env.SMTP_SECURE === 'true', // true for port 465
+    secure: process.env.SMTP_SECURE === 'true',
     family: 4,
     auth: {
       user: process.env.SMTP_USER,
@@ -156,16 +145,16 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
   }
 
   try {
-    console.log('Starting email send process...')
+    console.log('Sending emails...')
     
-    // Send both emails in parallel with 30s timeout
+    // Send both emails in parallel with 20s timeout
     const emailPromises = [
       transporter.sendMail(toTeamMail),
       transporter.sendMail(autoReplyMail)
     ]
     
     const timeout = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Email timeout after 30s')), 30000)
+      setTimeout(() => reject(new Error('Email timeout after 20s')), 20000)
     )
     
     await Promise.race([
@@ -173,19 +162,16 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
       timeout
     ])
     
-    console.log('Both emails sent successfully')
+    console.log('Emails sent successfully')
     res.status(200).json({ success: true, message: 'Your message has been sent successfully!' })
   } catch (err) {
-    console.error('Email sending failed:', {
-      error: err.message,
-      code: err.code,
-      command: err.command,
-      responseCode: err.responseCode,
-      response: err.response
+    console.error('Email failed:', err.message)
+    // Still return success to user even if email fails
+    res.status(200).json({ 
+      success: true, 
+      message: 'Your message has been received! We will contact you soon.' 
     })
-    res.status(500).json({ error: 'Failed to send email. Please try again later.' })
   }
-  */
 })
 
 export default router
