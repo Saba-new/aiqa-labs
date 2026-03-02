@@ -1753,6 +1753,95 @@ html {
   transform: translateY(-3px);
 }
 
+/* ========== Mobile Responsive Fixes ========== */
+@media (max-width: 768px) {
+  /* Make feat-grid single column on mobile */
+  .feat-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Force all feat-cards to full width on mobile */
+  .feat-card {
+    grid-column: span 1 !important;
+    min-height: auto !important;
+    padding: 24px 20px !important;
+  }
+
+  /* Adjust grid to single column */
+  [style*="gridTemplateColumns: 'repeat(12, 1fr)'"],
+  [style*="grid-template-columns: repeat(12, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Make images responsive */
+  .feat-card img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Fix text overflow */
+  .feat-card h3, .feat-card p {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Adjust padding in cards */
+  [style*="padding: '36px 40px'"],
+  [style*="padding: '30px 32px'"] {
+    padding: 24px 20px !important;
+  }
+
+  /* Fix flex items */
+  [style*="flex: '1 1 340px'"],
+  [style*="flex: '1 1 300px'"] {
+    flex: 1 1 100% !important;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Fix section padding */
+  section {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+  
+  /* Responsive heading sizes */
+  h1 {
+    font-size: 1.8rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  h3 {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .feat-card {
+    padding: 20px 16px !important;
+  }
+
+  .feat-card h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .feat-card p {
+    font-size: 0.85rem !important;
+  }
+}
+
+
 
 
 

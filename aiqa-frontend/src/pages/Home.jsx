@@ -40,7 +40,7 @@ function Home() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '140px 10% 80px',
+          padding: 'clamp(100px, 20vh, 140px) clamp(5%, 10vw, 10%) 80px',
           overflow: 'hidden',
           textAlign: 'center',
         }}
@@ -240,7 +240,7 @@ function Home() {
         </motion.div>
 
         {/* Platform cards — each card has a distinct personality and density */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 14 }}>
+        <div className="feat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 14 }}>
 
           {/* 01 — PROTOCOL: full width, editorial typography left + icon grid right */}
           <motion.div
