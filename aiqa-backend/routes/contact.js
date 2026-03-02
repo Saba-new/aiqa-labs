@@ -157,27 +157,36 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
     message: 'Your message has been sent successfully!' 
   })
 
-  // Send emails asynchronously in background (fire and forget)
+  // Send emails asynchronously in background with 10s timeout
   console.log('Sending emails to:', {
     team: process.env.CONTACT_RECEIVER_EMAIL,
     customer: email
   })
   
   const startTime = Date.now()
-  Promise.all([
-    transporter.sendMail(toTeamMail),
-    transporter.sendMail(autoReplyMail)
+  
+  // Create timeout promise
+  const emailTimeout = new Promise((_, reject) => 
+    setTimeout(() => reject(new Error('Email timeout after 10 seconds')), 10000)
+  )
+  
+  Promise.race([
+    Promise.all([
+      transporter.sendMail(toTeamMail),
+      transporter.sendMail(autoReplyMail)
+    ]),
+    emailTimeout
   ])
   .then(() => {
     const duration = Date.now() - startTime
     console.log(`✓ Both emails sent successfully in ${duration}ms`)
   })
   .catch(err => {
-    console.error('✗ Email send failed:', {
+    const duration = Date.now() - startTime
+    console.error(`✗ Email failed after ${duration}ms:`, {
       error: err.message,
       code: err.code,
-      command: err.command,
-      response: err.response
+      command: err.command
     })
   })
 })
