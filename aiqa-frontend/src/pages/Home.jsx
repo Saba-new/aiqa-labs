@@ -412,7 +412,7 @@ function Home() {
               <div style={{ width: 1, alignSelf: 'stretch', background: `linear-gradient(180deg, transparent, ${svc.color}50, transparent)`, flexShrink: 0 }} />
               {/* content block */}
               <div style={{ flex: 1, minWidth: 0, paddingTop: 2 }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${svc.color}12`, border: `1px solid ${svc.color}28`, borderRadius: 100, padding: '3px 10px', marginBottom: 10 }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${svc.color}12`, border: 'none', borderRadius: 100, padding: '3px 10px', marginBottom: 10 }}>
                   <span style={{ width: 5, height: 5, borderRadius: '50%', background: svc.color, flexShrink: 0 }} />
                   <span style={{ fontSize: '0.62rem', fontWeight: 700, color: svc.textColor, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{svc.tag}</span>
                 </div>
@@ -707,7 +707,7 @@ function TestiSpotlight() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 28 }}>
               <img src={t.avatar} alt={t.name} style={{
                 width: 52, height: 52, borderRadius: '50%', objectFit: 'cover', flexShrink: 0,
-                border: `2px solid ${t.color}50`,
+                border: 'none',
                 boxShadow: `0 0 18px ${t.color}28`,
               }} />
               <div>
@@ -775,7 +775,7 @@ function TestiSpotlight() {
             }}>
               <img src={item.avatar} alt={item.name} style={{
                 width: 36, height: 36, borderRadius: '50%', objectFit: 'cover',
-                border: i === active ? `2px solid ${item.color}` : '2px solid transparent',
+                border: 'none',
                 boxShadow: i === active ? `0 0 12px ${item.color}50` : 'none',
                 transition: 'all 0.3s',
               }} />
