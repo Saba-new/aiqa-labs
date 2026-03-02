@@ -129,24 +129,55 @@ function ApplyModal({ role, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    try {
-      const payload = {
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        subject: `Job Application: ${role}`,
-        message: form.message || '(No cover note provided)',
+
+    // Retry logic for backend wake-up
+    const maxRetries = 3
+    let lastError = null
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        if (attempt > 1) {
+          toast.info(`Connecting to server... Attempt ${attempt}/${maxRetries}`)
+        }
+
+        const payload = {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          subject: `Job Application: ${role}`,
+          message: form.message || '(No cover note provided)',
+        }
+        const res = await sendContactForm(payload)
+        if (res.status === 200) {
+          toast.success('Application submitted! We will be in touch.')
+          onClose()
+          setLoading(false)
+          return
+        }
+      } catch (error) {
+        console.error(`Application submit attempt ${attempt} error:`, error)
+        lastError = error
+
+        // If timeout or network error and retries left, wait and retry
+        if ((error.code === 'ECONNABORTED' || error.message === 'Network Error') && attempt < maxRetries) {
+          await new Promise(resolve => setTimeout(resolve, 2000 * attempt))
+          continue
+        }
+
+        // If server error response, don't retry
+        if (error.response) {
+          toast.error(error.response.data?.message || 'Failed to submit. Please try again.')
+          break
+        }
       }
-      const res = await sendContactForm(payload)
-      if (res.status === 200) {
-        toast.success('Application submitted! We will be in touch.')
-        onClose()
-      }
-    } catch {
-      toast.error('Failed to submit. Please try again or email careers@aiqa.co.in')
-    } finally {
-      setLoading(false)
     }
+
+    // All retries failed
+    if (lastError && !lastError.response) {
+      toast.error('Failed to submit. Please try again or email careers@aiqa.co.in')
+    }
+    
+    setLoading(false)
   }
 
   return (

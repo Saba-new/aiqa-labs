@@ -16,18 +16,48 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    try {
-      const response = await sendContactForm(formData)
-      if (response.status === 200) {
-        toast.success('Details submitted successfully.')
-        setFormData({ name: '', email: '', phone: '', message: '' })
+
+    // Retry logic for backend wake-up
+    const maxRetries = 3
+    let lastError = null
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        if (attempt > 1) {
+          toast.info(`Connecting to server... Attempt ${attempt}/${maxRetries}`)
+        }
+
+        const response = await sendContactForm(formData)
+        if (response.status === 200) {
+          toast.success('Details submitted successfully.')
+          setFormData({ name: '', email: '', phone: '', message: '' })
+          setLoading(false)
+          return
+        }
+      } catch (error) {
+        console.error(`Contact submit attempt ${attempt} error:`, error)
+        lastError = error
+
+        // If timeout or network error and retries left, wait and retry
+        if ((error.code === 'ECONNABORTED' || error.message === 'Network Error') && attempt < maxRetries) {
+          await new Promise(resolve => setTimeout(resolve, 2000 * attempt))
+          continue
+        }
+
+        // If server error response, don't retry
+        if (error.response) {
+          toast.error(error.response.data?.message || 'Failed to submit. Please try again.')
+          break
+        }
       }
-    } catch (error) {
-      toast.error('Failed to submit the details. Please try again later.')
-      console.error('Error:', error)
-    } finally {
-      setLoading(false)
     }
+
+    // All retries failed
+    if (lastError && !lastError.response) {
+      toast.error('Server is waking up. Please try again in 30 seconds or email careers@aiqa.co.in')
+    }
+    
+    setLoading(false)
   }
 
   const stats = [

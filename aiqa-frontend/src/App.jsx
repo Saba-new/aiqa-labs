@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import axios from 'axios'
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -17,6 +18,19 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 
 function App() {
+  // Wake up backend on app load to prevent form submission failures
+  useEffect(() => {
+    const wakeUpBackend = async () => {
+      try {
+        await axios.get(`${import.meta.env.VITE_API_URL}/health`, { timeout: 60000 })
+        console.log('✅ Backend is awake and ready')
+      } catch (error) {
+        console.log('⚠️ Backend waking up...', error.message)
+      }
+    }
+    wakeUpBackend()
+  }, [])
+
   return (
     <div className="relative min-h-screen">
       <ParticleHoverBg />
