@@ -5,10 +5,10 @@ import rateLimit from 'express-rate-limit'
 
 const router = express.Router()
 
-// Strict rate limit for contact form — 5 submissions per 15 min per IP
+// Rate limit for contact form — 20 submissions per 15 min per IP
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 5,
+  max: 20,
   message: { error: 'Too many messages sent. Please try again in 15 minutes.' },
 })
 
