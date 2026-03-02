@@ -130,6 +130,11 @@ function ApplyModal({ role, onClose }) {
     e.preventDefault()
     setLoading(true)
 
+    // Show initial loading message
+    toast.info('Waking up server and sending email... This may take up to 2 minutes.', {
+      autoClose: 5000
+    })
+
     // Retry logic for backend wake-up
     const maxRetries = 3
     let lastError = null
@@ -137,7 +142,7 @@ function ApplyModal({ role, onClose }) {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
         if (attempt > 1) {
-          toast.info(`Connecting to server... Attempt ${attempt}/${maxRetries}`)
+          toast.info(`Retry ${attempt}/${maxRetries} - Please wait...`, { autoClose: 3000 })
         }
 
         const payload = {
