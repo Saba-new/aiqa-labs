@@ -37,6 +37,30 @@ const validateContact = [
     .isLength({ min: 2, max: 2000 }).withMessage('Message must be under 2000 characters.'),
 ]
 
+// ── GET /api/contact/test - Test SMTP configuration ──────────────────────
+router.get('/test', async (req, res) => {
+  try {
+    const config = {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      user: process.env.SMTP_USER,
+      hasPassword: !!process.env.SMTP_PASS,
+      receiver: process.env.CONTACT_RECEIVER_EMAIL
+    }
+    
+    if (!config.host || !config.user || !config.hasPassword) {
+      return res.status(500).json({ 
+        error: 'SMTP not configured',
+        config: { ...config, hasPassword: config.hasPassword }
+      })
+    }
+    
+    res.json({ success: true, message: 'SMTP appears configured', config })
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // ── POST /api/contact ─────────────────────────────────────────────────────
 router.post('/', contactLimiter, validateContact, async (req, res) => {
   // Check validation errors
@@ -112,14 +136,24 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
   }
 
   try {
-    console.log('Attempting to send email to team...')
-    await transporter.sendMail(toTeamMail)
-    console.log('Team email sent successfully')
+    console.log('Starting email send process...')
     
-    console.log('Attempting to send auto-reply...')
-    await transporter.sendMail(autoReplyMail)
-    console.log('Auto-reply sent successfully')
+    // Send both emails in parallel with 30s timeout
+    const emailPromises = [
+      transporter.sendMail(toTeamMail),
+      transporter.sendMail(autoReplyMail)
+    ]
     
+    const timeout = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Email timeout after 30s')), 30000)
+    )
+    
+    await Promise.race([
+      Promise.all(emailPromises),
+      timeout
+    ])
+    
+    console.log('Both emails sent successfully')
     res.status(200).json({ success: true, message: 'Your message has been sent successfully!' })
   } catch (err) {
     console.error('Email sending failed:', {
