@@ -459,12 +459,8 @@ function Home() {
               transition={{ duration: 0.5, delay: i * 0.09 }}
               onClick={() => navigate('/services')}
             >
-              {/* oversized faded number — editorial anchor */}
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '3.8rem', fontWeight: 900, lineHeight: 1, color: 'rgba(255,255,255,0.05)', letterSpacing: '-0.04em', flexShrink: 0, width: 64, userSelect: 'none' }}>
-                {svc.num}
-              </div>
               {/* colored gradient divider */}
-              <div style={{ width: 1, alignSelf: 'stretch', background: `linear-gradient(180deg, transparent, ${svc.color}50, transparent)`, flexShrink: 0 }} />
+              <div style={{ width: 1, alignSelf: 'stretch', background: `linear-gradient(180deg, transparent, ${svc.color}50, transparent)`, flexShrink: 0, marginRight: 24 }} />
               {/* content block */}
               <div style={{ flex: 1, minWidth: 0, paddingTop: 2 }}>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${svc.color}12`, border: 'none', borderRadius: 100, padding: '3px 10px', marginBottom: 10 }}>
