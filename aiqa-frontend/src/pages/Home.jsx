@@ -250,7 +250,7 @@ function Home() {
             style={{
               gridColumn: 'span 5',
               gridRow: 'span 2',
-              background: 'rgba(30, 25, 50, 0.7)',
+              background: 'rgba(15, 17, 30, 0.6)',
               backdropFilter: 'blur(20px)',
               border: '1px solid rgba(139,92,246,0.25)',
               borderRadius: 24,
@@ -291,7 +291,7 @@ function Home() {
             style={{
               gridColumn: 'span 7',
               gridRow: 'span 1',
-              background: 'rgba(30, 25, 50, 0.7)',
+              background: 'rgba(15, 17, 30, 0.6)',
               backdropFilter: 'blur(20px)',
               border: '1px solid rgba(172,106,255,0.25)',
               borderRadius: 24,
@@ -327,7 +327,7 @@ function Home() {
             style={{
               gridColumn: 'span 7',
               gridRow: 'span 1',
-              background: 'rgba(30, 25, 50, 0.7)',
+              background: 'rgba(15, 17, 30, 0.6)',
               backdropFilter: 'blur(20px)',
               border: '1px solid rgba(7,180,235,0.25)',
               borderRadius: 24,
@@ -363,7 +363,7 @@ function Home() {
             style={{
               gridColumn: 'span 12',
               gridRow: 'span 1',
-              background: 'rgba(30, 25, 50, 0.7)',
+              background: 'rgba(15, 17, 30, 0.6)',
               backdropFilter: 'blur(20px)',
               border: '1px solid rgba(16,185,129,0.25)',
               borderRadius: 24,
