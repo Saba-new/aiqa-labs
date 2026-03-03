@@ -269,7 +269,7 @@ function Home() {
             <div style={{ position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, background: 'rgba(139,92,246,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(139,92,246,0.25)' }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#8B5CF6', color: '#8B5CF6', flexShrink: 0 }} />
-                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'rgba(196,181,253,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Protocol Layer</span>
+                <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'rgba(196,181,253,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>01 — Protocol Layer</span>
               </div>
               <h3 style={{ fontSize: 'clamp(1.5rem, 2.2vw, 1.85rem)', fontWeight: 800, color: '#fff', margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>
                 Flexible Protocol<br />Integration
@@ -388,7 +388,7 @@ function Home() {
             <div style={{ maxWidth: 480, position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 12, background: 'rgba(16,185,129,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(16,185,129,0.25)' }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', color: '#10B981', flexShrink: 0 }} />
-                <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(110,231,183,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Green Tech</span>
+                <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(110,231,183,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>04 — Green Tech</span>
               </div>
               <h3 style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.85rem)', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.18 }}>Sustainable Energy<br />Optimization</h3>
               <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.72, fontSize: '0.9rem', maxWidth: 440 }}>
