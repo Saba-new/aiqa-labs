@@ -254,7 +254,7 @@ function Home() {
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(139,92,246,0.2)',
               borderRadius: 20,
-              boxShadow: '0 8px 32px rgba(139,92,246,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
+              boxShadow: 'none',
               padding: '40px',
               display: 'flex',
               flexDirection: 'column',
@@ -267,9 +267,9 @@ function Home() {
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at top left, rgba(139,92,246,0.08) 0%, transparent 60%)', pointerEvents: 'none' }} />
             
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '4rem', fontWeight: 900, lineHeight: 0.85, color: 'rgba(139,92,246,0.12)', letterSpacing: '-0.05em', marginBottom: 16, userSelect: 'none', textShadow: '0 0 40px rgba(139,92,246,0.3)' }}>01</div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '4rem', fontWeight: 900, lineHeight: 0.85, color: 'rgba(139,92,246,0.2)', letterSpacing: '-0.05em', marginBottom: 16, userSelect: 'none' }}>01</div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, background: 'rgba(139,92,246,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(139,92,246,0.25)' }}>
-                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#8B5CF6', color: '#8B5CF6', flexShrink: 0, boxShadow: '0 0 8px #8B5CF6' }} />
+                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#8B5CF6', color: '#8B5CF6', flexShrink: 0 }} />
                 <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'rgba(196,181,253,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Protocol Layer</span>
               </div>
               <h3 style={{ fontSize: 'clamp(1.5rem, 2.2vw, 1.85rem)', fontWeight: 800, color: '#fff', margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>
@@ -282,7 +282,7 @@ function Home() {
             </div>
             
             <div style={{ position: 'relative', zIndex: 1, marginTop: 24, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src={content} alt="Protocol Integration" style={{ width: '100%', maxWidth: 280, height: 'auto', borderRadius: 16, opacity: 0.92, boxShadow: '0 8px 24px rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.2)' }} />
+              <img src={content} alt="Protocol Integration" style={{ width: '100%', maxWidth: 280, height: 'auto', borderRadius: 16, opacity: 0.85, border: '1px solid rgba(139,92,246,0.2)' }} />
             </div>
           </motion.div>
 
@@ -298,7 +298,7 @@ function Home() {
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(172,106,255,0.2)',
               borderRadius: 20,
-              boxShadow: '0 8px 32px rgba(172,106,255,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
+              boxShadow: 'none',
               overflow: 'hidden',
               position: 'relative',
               display: 'flex',
@@ -312,7 +312,7 @@ function Home() {
             
             <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 12, background: 'rgba(172,106,255,0.15)', padding: '5px 12px', borderRadius: 20, border: '1px solid rgba(172,106,255,0.25)' }}>
-                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#AC6AFF', color: '#AC6AFF', flexShrink: 0, boxShadow: '0 0 8px #AC6AFF' }} />
+                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#AC6AFF', color: '#AC6AFF', flexShrink: 0 }} />
                 <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(196,181,253,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>02 — AI Engine</span>
               </div>
               <h3 style={{ fontSize: 'clamp(1.3rem, 2vw, 1.6rem)', fontWeight: 800, color: '#fff', margin: '0 0 8px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>AI-Powered Predictions</h3>
@@ -320,7 +320,7 @@ function Home() {
             </div>
             
             <div style={{ flexShrink: 0, position: 'relative', zIndex: 1 }}>
-              <img src={star} alt="" style={{ width: 140, height: 140, opacity: 0.95, filter: 'drop-shadow(0 0 36px rgba(172,106,255,0.7))' }} />
+              <img src={star} alt="" style={{ width: 140, height: 140, opacity: 0.85 }} />
             </div>
           </motion.div>
 
@@ -336,7 +336,7 @@ function Home() {
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(7,180,235,0.2)',
               borderRadius: 20,
-              boxShadow: '0 8px 32px rgba(7,180,235,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
+              boxShadow: 'none',
               overflow: 'hidden',
               position: 'relative',
               display: 'flex',
@@ -350,7 +350,7 @@ function Home() {
             
             <div style={{ maxWidth: 380, position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 12, background: 'rgba(7,180,235,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(7,180,235,0.25)' }}>
-                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#07B4EB', color: '#07B4EB', flexShrink: 0, boxShadow: '0 0 8px #07B4EB' }} />
+                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#07B4EB', color: '#07B4EB', flexShrink: 0 }} />
                 <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(103,232,249,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>03 — Live Data</span>
               </div>
               <h3 style={{ fontSize: 'clamp(1.3rem, 2vw, 1.65rem)', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.18 }}>Real-Time<br />Insights</h3>
@@ -358,7 +358,7 @@ function Home() {
             </div>
             
             <div style={{ position: 'relative', width: 240, height: 140, flexShrink: 0, zIndex: 1 }}>
-              <img src={graph} alt="" style={{ position: 'absolute', right: 0, bottom: 0, height: '100%', width: '100%', objectFit: 'contain', objectPosition: 'right center', opacity: 0.92, filter: 'drop-shadow(0 0 24px rgba(7,180,235,0.45))' }} />
+              <img src={graph} alt="" style={{ position: 'absolute', right: 0, bottom: 0, height: '100%', width: '100%', objectFit: 'contain', objectPosition: 'right center', opacity: 0.8 }} />
             </div>
           </motion.div>
 
@@ -374,7 +374,7 @@ function Home() {
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(16,185,129,0.2)',
               borderRadius: 20,
-              boxShadow: '0 8px 32px rgba(16,185,129,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
+              boxShadow: 'none',
               overflow: 'hidden',
               position: 'relative',
               display: 'flex',
@@ -387,9 +387,9 @@ function Home() {
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, rgba(16,185,129,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
             
             <div style={{ maxWidth: 480, position: 'relative', zIndex: 1 }}>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '3.5rem', fontWeight: 900, lineHeight: 0.9, color: 'rgba(16,185,129,0.12)', letterSpacing: '-0.05em', marginBottom: 14, userSelect: 'none', textShadow: '0 0 40px rgba(16,185,129,0.3)' }}>04</div>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '3.5rem', fontWeight: 900, lineHeight: 0.9, color: 'rgba(16,185,129,0.2)', letterSpacing: '-0.05em', marginBottom: 14, userSelect: 'none' }}>04</div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 12, background: 'rgba(16,185,129,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(16,185,129,0.25)' }}>
-                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', color: '#10B981', flexShrink: 0, boxShadow: '0 0 8px #10B981' }} />
+                <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', color: '#10B981', flexShrink: 0 }} />
                 <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(110,231,183,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Green Tech</span>
               </div>
               <h3 style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.85rem)', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.18 }}>Sustainable Energy<br />Optimization</h3>
@@ -399,7 +399,7 @@ function Home() {
             </div>
             
             <div style={{ position: 'relative', zIndex: 1, flexShrink: 0 }}>
-              <img src={circleIcon} alt="" style={{ width: 180, opacity: 0.92, filter: 'drop-shadow(0 0 48px rgba(16,185,129,0.5))' }} />
+              <img src={circleIcon} alt="" style={{ width: 180, opacity: 0.8 }} />
             </div>
           </motion.div>
 
