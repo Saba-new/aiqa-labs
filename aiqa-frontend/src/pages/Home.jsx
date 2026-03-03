@@ -239,129 +239,134 @@ function Home() {
           </button>
         </motion.div>
 
-        {/* Platform cards — new asymmetric masonry layout */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        {/* Platform cards — bento-box grid layout */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 24, gridAutoRows: 'minmax(200px, auto)' }}>
 
-          {/* 01 — PROTOCOL: full width, editorial typography left + icon grid right */}
+          {/* 01 — PROTOCOL: Left column, spans 2 rows */}
           <motion.div
             className="feat-card"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
             whileHover={{ y: -4, transition: { duration: 0.3 } }}
             style={{
+              gridColumn: 'span 5',
+              gridRow: 'span 2',
               background: 'linear-gradient(135deg, rgba(139,92,246,0.05) 0%, rgba(139,92,246,0.02) 100%)',
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(139,92,246,0.2)',
               borderRadius: 20,
               boxShadow: '0 8px 32px rgba(139,92,246,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
-              display: 'flex', flexWrap: 'wrap', gap: 0,
+              padding: '40px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
               overflow: 'hidden',
               position: 'relative',
             }}
           >
             {/* Gradient overlay */}
-            <div style={{ position: 'absolute', top: 0, right: 0, width: '40%', height: '100%', background: 'linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.03) 100%)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at top left, rgba(139,92,246,0.08) 0%, transparent 60%)', pointerEvents: 'none' }} />
             
-            <div style={{ flex: '1 1 340px', padding: '40px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '5rem', fontWeight: 900, lineHeight: 0.85, color: 'rgba(139,92,246,0.12)', letterSpacing: '-0.05em', marginBottom: 14, userSelect: 'none', textShadow: '0 0 40px rgba(139,92,246,0.3)' }}>01</div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 12, background: 'rgba(139,92,246,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(139,92,246,0.25)' }}>
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '4rem', fontWeight: 900, lineHeight: 0.85, color: 'rgba(139,92,246,0.12)', letterSpacing: '-0.05em', marginBottom: 16, userSelect: 'none', textShadow: '0 0 40px rgba(139,92,246,0.3)' }}>01</div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, background: 'rgba(139,92,246,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(139,92,246,0.25)' }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#8B5CF6', color: '#8B5CF6', flexShrink: 0, boxShadow: '0 0 8px #8B5CF6' }} />
                 <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'rgba(196,181,253,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Protocol Layer</span>
               </div>
-              <h3 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 800, color: '#fff', margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>
+              <h3 style={{ fontSize: 'clamp(1.5rem, 2.2vw, 1.85rem)', fontWeight: 800, color: '#fff', margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>
                 Flexible Protocol<br />Integration
               </h3>
-              <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.72, fontSize: '0.88rem', maxWidth: 380 }}>
+              <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, fontSize: '0.9rem', maxWidth: 420 }}>
                 TwinV works with any communication protocol — BACnet/IP, Modbus TCP, OPC UA —
                 connecting diverse IoT devices without ripping out existing infrastructure.
               </p>
             </div>
-            <div style={{ flex: '0 0 auto', padding: '40px 44px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+            
+            <div style={{ position: 'relative', zIndex: 1, marginTop: 24 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
                 {[group1, group2, group3, group4, group5, group6].map((icon, i) => (
-                  <div key={i} style={{ width: 60, height: 60, borderRadius: 16, background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)', boxShadow: '0 4px 12px rgba(139,92,246,0.08)', transition: 'all 0.3s' }}>
-                    <img src={icon} alt="" style={{ width: 32, height: 32, objectFit: 'contain', opacity: 0.9 }} />
+                  <div key={i} style={{ width: 56, height: 56, borderRadius: 14, background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)', boxShadow: '0 4px 12px rgba(139,92,246,0.08)', transition: 'all 0.3s' }}>
+                    <img src={icon} alt="" style={{ width: 30, height: 30, objectFit: 'contain', opacity: 0.9 }} />
                   </div>
                 ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Row container for cards 02 and 03 side-by-side */}
-          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-            
-            {/* 02 — AI: image-first, text footer */}
-            <motion.div
-              className="feat-card"
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.08 }}
-              whileHover={{ y: -4, transition: { duration: 0.3 } }}
-              style={{
-                flex: '1 1 280px',
-                minHeight: 400, 
-                display: 'flex', 
-                flexDirection: 'column',
-                background: 'linear-gradient(135deg, rgba(172,106,255,0.05) 0%, rgba(172,106,255,0.02) 100%)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(172,106,255,0.2)',
-                borderRadius: 20,
-                boxShadow: '0 8px 32px rgba(172,106,255,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
-                overflow: 'hidden',
-                position: 'relative',
-              }}
-            >
+          {/* 02 — AI: Top right, compact card */}
+          <motion.div
+            className="feat-card"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.08 }}
+            whileHover={{ y: -4, transition: { duration: 0.3 } }}
+            style={{
+              gridColumn: 'span 7',
+              gridRow: 'span 1',
+              background: 'linear-gradient(135deg, rgba(172,106,255,0.05) 0%, rgba(172,106,255,0.02) 100%)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(172,106,255,0.2)',
+              borderRadius: 20,
+              boxShadow: '0 8px 32px rgba(172,106,255,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
+              overflow: 'hidden',
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 32,
+              padding: '32px 40px',
+            }}
+          >
             {/* Gradient overlay */}
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '60%', background: 'radial-gradient(ellipse at top, rgba(172,106,255,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at right, rgba(172,106,255,0.1) 0%, transparent 65%)', pointerEvents: 'none' }} />
             
-            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px 24px 0', position: 'relative', zIndex: 1 }}>
-              <img src={star} alt="" style={{ width: '80%', maxWidth: 170, opacity: 0.95, filter: 'drop-shadow(0 0 40px rgba(172,106,255,0.7))' }} />
-            </div>
-            <div style={{ padding: '20px 28px 30px', position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 10, background: 'rgba(172,106,255,0.15)', padding: '5px 12px', borderRadius: 20, border: '1px solid rgba(172,106,255,0.25)' }}>
+            <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 12, background: 'rgba(172,106,255,0.15)', padding: '5px 12px', borderRadius: 20, border: '1px solid rgba(172,106,255,0.25)' }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#AC6AFF', color: '#AC6AFF', flexShrink: 0, boxShadow: '0 0 8px #AC6AFF' }} />
                 <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(196,181,253,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>02 — AI Engine</span>
               </div>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#fff', margin: '0 0 6px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>AI-Powered Predictions</h3>
-              <p style={{ color: 'rgba(255,255,255,0.38)', lineHeight: 1.65, fontSize: '0.82rem' }}>Advanced ML models predict failures before they happen.</p>
-              </div>
-            </motion.div>
-
-            {/* 03 — INSIGHTS: graph edge-bleeds right side */}
-            <motion.div
-              className="feat-card"
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.12 }}
-              whileHover={{ y: -4, transition: { duration: 0.3 } }}
-              style={{
-                flex: '2 1 480px',
-                minHeight: 400, 
-                display: 'flex', 
-                flexDirection: 'column', 
-                justifyContent: 'space-between',
-                background: 'linear-gradient(135deg, rgba(7,180,235,0.05) 0%, rgba(7,180,235,0.02) 100%)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(7,180,235,0.2)',
-                borderRadius: 20,
-                boxShadow: '0 8px 32px rgba(7,180,235,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
-                overflow: 'hidden',
-                position: 'relative',
-              }}
-            >
-            {/* Gradient overlay */}
-            <div style={{ position: 'absolute', top: 0, left: 0, width: '50%', height: '100%', background: 'radial-gradient(ellipse at left, rgba(7,180,235,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+              <h3 style={{ fontSize: 'clamp(1.3rem, 2vw, 1.6rem)', fontWeight: 800, color: '#fff', margin: '0 0 8px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>AI-Powered Predictions</h3>
+              <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.65, fontSize: '0.88rem', maxWidth: 380 }}>Advanced ML models predict failures before they happen.</p>
+            </div>
             
-            <div style={{ padding: '34px 36px 0', maxWidth: 440, position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, background: 'rgba(7,180,235,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(7,180,235,0.25)' }}>
+            <div style={{ flexShrink: 0, position: 'relative', zIndex: 1 }}>
+              <img src={star} alt="" style={{ width: 140, height: 140, opacity: 0.95, filter: 'drop-shadow(0 0 36px rgba(172,106,255,0.7))' }} />
+            </div>
+          </motion.div>
+
+          {/* 03 — INSIGHTS: Bottom right, wide card */}
+          <motion.div
+            className="feat-card"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.12 }}
+            whileHover={{ y: -4, transition: { duration: 0.3 } }}
+            style={{
+              gridColumn: 'span 7',
+              gridRow: 'span 1',
+              background: 'linear-gradient(135deg, rgba(7,180,235,0.05) 0%, rgba(7,180,235,0.02) 100%)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(7,180,235,0.2)',
+              borderRadius: 20,
+              boxShadow: '0 8px 32px rgba(7,180,235,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
+              overflow: 'hidden',
+              position: 'relative',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '32px 40px',
+            }}
+          >
+            {/* Gradient overlay */}
+            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at left, rgba(7,180,235,0.1) 0%, transparent 65%)', pointerEvents: 'none' }} />
+            
+            <div style={{ maxWidth: 380, position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 12, background: 'rgba(7,180,235,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(7,180,235,0.25)' }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#07B4EB', color: '#07B4EB', flexShrink: 0, boxShadow: '0 0 8px #07B4EB' }} />
                 <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(103,232,249,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>03 — Live Data</span>
               </div>
-              <h3 style={{ fontSize: 'clamp(1.3rem, 2vw, 1.75rem)', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.18 }}>Real-Time<br />Insights</h3>
+              <h3 style={{ fontSize: 'clamp(1.3rem, 2vw, 1.65rem)', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.18 }}>Real-Time<br />Insights</h3>
               <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, fontSize: '0.88rem' }}>Live visibility into asset performance. Proactive maintenance before failures occur.</p>
             </div>
-            <div style={{ position: 'relative', height: 170, overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 140, background: 'linear-gradient(90deg, rgba(6,6,18,0.98) 0%, rgba(6,6,18,0.7) 50%, transparent 100%)', zIndex: 1 }} />
-              <img src={graph} alt="" style={{ position: 'absolute', right: 0, bottom: 0, height: '100%', maxWidth: '80%', objectFit: 'contain', objectPosition: 'right bottom', opacity: 0.92, filter: 'drop-shadow(0 0 24px rgba(7,180,235,0.45))' }} />
-              </div>
-            </motion.div>
-
-          </div>
+            
+            <div style={{ position: 'relative', width: 240, height: 140, flexShrink: 0, zIndex: 1 }}>
+              <img src={graph} alt="" style={{ position: 'absolute', right: 0, bottom: 0, height: '100%', width: '100%', objectFit: 'contain', objectPosition: 'right center', opacity: 0.92, filter: 'drop-shadow(0 0 24px rgba(7,180,235,0.45))' }} />
+            </div>
+          </motion.div>
 
           {/* 04 — ENERGY: full width, big display number left, circle image right */}
           <motion.div
@@ -369,7 +374,8 @@ function Home() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.18 }}
             whileHover={{ y: -4, transition: { duration: 0.3 } }}
             style={{
-              display: 'flex', flexWrap: 'wrap', gap: 0,
+              gridColumn: 'span 12',
+              gridRow: 'span 1',
               background: 'linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(16,185,129,0.02) 100%)',
               backdropFilter: 'blur(10px)',
               border: '1px solid rgba(16,185,129,0.2)',
@@ -377,24 +383,29 @@ function Home() {
               boxShadow: '0 8px 32px rgba(16,185,129,0.12), inset 0 1px 0 rgba(255,255,255,0.05)',
               overflow: 'hidden',
               position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '40px 48px',
             }}
           >
             {/* Gradient overlay */}
-            <div style={{ position: 'absolute', top: 0, right: 0, width: '50%', height: '100%', background: 'radial-gradient(ellipse at right, rgba(16,185,129,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, rgba(16,185,129,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
             
-            <div style={{ flex: '1 1 300px', padding: '40px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 1 }}>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '4.5rem', fontWeight: 900, lineHeight: 0.9, color: 'rgba(16,185,129,0.12)', letterSpacing: '-0.05em', marginBottom: 14, userSelect: 'none', textShadow: '0 0 40px rgba(16,185,129,0.3)' }}>04</div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 12, background: 'rgba(16,185,129,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(16,185,129,0.25)', width: 'fit-content' }}>
+            <div style={{ maxWidth: 480, position: 'relative', zIndex: 1 }}>
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '3.5rem', fontWeight: 900, lineHeight: 0.9, color: 'rgba(16,185,129,0.12)', letterSpacing: '-0.05em', marginBottom: 14, userSelect: 'none', textShadow: '0 0 40px rgba(16,185,129,0.3)' }}>04</div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 12, background: 'rgba(16,185,129,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(16,185,129,0.25)' }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', color: '#10B981', flexShrink: 0, boxShadow: '0 0 8px #10B981' }} />
                 <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(110,231,183,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Green Tech</span>
               </div>
-              <h3 style={{ fontSize: 'clamp(1.3rem, 2vw, 1.75rem)', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.18 }}>Sustainable Energy<br />Optimization</h3>
-              <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.72, fontSize: '0.88rem', maxWidth: 400 }}>
+              <h3 style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.85rem)', fontWeight: 800, color: '#fff', margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.18 }}>Sustainable Energy<br />Optimization</h3>
+              <p style={{ color: 'rgba(255,255,255,0.4)', lineHeight: 1.72, fontSize: '0.9rem', maxWidth: 440 }}>
                 Optimize energy consumption and reduce carbon footprint with TwinV’s advanced sustainability insights and predictive controls.
               </p>
             </div>
-            <div style={{ flex: '1 1 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '28px 44px', position: 'relative', zIndex: 1 }}>
-              <img src={circleIcon} alt="" style={{ width: 190, opacity: 0.92, filter: 'drop-shadow(0 0 48px rgba(16,185,129,0.5))' }} />
+            
+            <div style={{ position: 'relative', zIndex: 1, flexShrink: 0 }}>
+              <img src={circleIcon} alt="" style={{ width: 180, opacity: 0.92, filter: 'drop-shadow(0 0 48px rgba(16,185,129,0.5))' }} />
             </div>
           </motion.div>
 
