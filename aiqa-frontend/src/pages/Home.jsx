@@ -250,11 +250,11 @@ function Home() {
             style={{
               gridColumn: 'span 5',
               gridRow: 'span 2',
-              background: 'linear-gradient(135deg, rgba(139,92,246,0.03) 0%, rgba(139,92,246,0.01) 100%)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(139,92,246,0.12)',
-              borderRadius: 20,
-              boxShadow: 'none',
+              background: 'rgba(139,92,246,0.04)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(139,92,246,0.15)',
+              borderRadius: 24,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
               padding: '40px',
               display: 'flex',
               flexDirection: 'column',
@@ -263,8 +263,6 @@ function Home() {
               position: 'relative',
             }}
           >
-            {/* Gradient overlay */}
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at top left, rgba(139,92,246,0.04) 0%, transparent 65%)', pointerEvents: 'none' }} />
             
             <div style={{ position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, background: 'rgba(139,92,246,0.1)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(139,92,246,0.18)' }}>
@@ -293,11 +291,11 @@ function Home() {
             style={{
               gridColumn: 'span 7',
               gridRow: 'span 1',
-              background: 'linear-gradient(135deg, rgba(172,106,255,0.05) 0%, rgba(172,106,255,0.02) 100%)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(172,106,255,0.2)',
-              borderRadius: 20,
-              boxShadow: 'none',
+              background: 'rgba(172,106,255,0.04)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(172,106,255,0.15)',
+              borderRadius: 24,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
               overflow: 'hidden',
               position: 'relative',
               display: 'flex',
@@ -306,8 +304,6 @@ function Home() {
               padding: '32px 40px',
             }}
           >
-            {/* Gradient overlay */}
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at right, rgba(172,106,255,0.1) 0%, transparent 65%)', pointerEvents: 'none' }} />
             
             <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 12, background: 'rgba(172,106,255,0.15)', padding: '5px 12px', borderRadius: 20, border: '1px solid rgba(172,106,255,0.25)' }}>
@@ -331,11 +327,11 @@ function Home() {
             style={{
               gridColumn: 'span 7',
               gridRow: 'span 1',
-              background: 'linear-gradient(135deg, rgba(7,180,235,0.05) 0%, rgba(7,180,235,0.02) 100%)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(7,180,235,0.2)',
-              borderRadius: 20,
-              boxShadow: 'none',
+              background: 'rgba(7,180,235,0.04)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(7,180,235,0.15)',
+              borderRadius: 24,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
               overflow: 'hidden',
               position: 'relative',
               display: 'flex',
@@ -344,8 +340,6 @@ function Home() {
               padding: '32px 40px',
             }}
           >
-            {/* Gradient overlay */}
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at left, rgba(7,180,235,0.1) 0%, transparent 65%)', pointerEvents: 'none' }} />
             
             <div style={{ maxWidth: 380, position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 12, background: 'rgba(7,180,235,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(7,180,235,0.25)' }}>
@@ -369,11 +363,11 @@ function Home() {
             style={{
               gridColumn: 'span 12',
               gridRow: 'span 1',
-              background: 'linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(16,185,129,0.02) 100%)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(16,185,129,0.2)',
-              borderRadius: 20,
-              boxShadow: 'none',
+              background: 'rgba(16,185,129,0.04)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(16,185,129,0.15)',
+              borderRadius: 24,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
               overflow: 'hidden',
               position: 'relative',
               display: 'flex',
@@ -382,8 +376,6 @@ function Home() {
               padding: '40px 48px',
             }}
           >
-            {/* Gradient overlay */}
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, rgba(16,185,129,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
             
             <div style={{ maxWidth: 480, position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 12, background: 'rgba(16,185,129,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(16,185,129,0.25)' }}>
