@@ -289,8 +289,8 @@ function Home() {
             style={{
               gridColumn: 'span 7',
               gridRow: 'span 1',
-              background: 'rgba(139,92,246,0.07)',
-              border: '1px solid rgba(139,92,246,0.22)',
+              background: 'rgba(7,180,235,0.05)',
+              border: '1px solid rgba(7,180,235,0.18)',
               borderRadius: 20,
               overflow: 'hidden',
               position: 'relative',
@@ -323,8 +323,8 @@ function Home() {
             style={{
               gridColumn: 'span 7',
               gridRow: 'span 1',
-              background: 'rgba(7,180,235,0.05)',
-              border: '1px solid rgba(7,180,235,0.18)',
+              background: 'rgba(16,185,129,0.05)',
+              border: '1px solid rgba(16,185,129,0.15)',
               borderRadius: 20,
               overflow: 'hidden',
               position: 'relative',

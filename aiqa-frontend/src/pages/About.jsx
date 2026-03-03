@@ -92,7 +92,7 @@ const About = () => {
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, fontSize: '0.97rem', marginBottom: 16 }}>
             After years of working in IoT and software development, the founders of AIQA realized there was
-            a significant gap in the industryâ€”many companies were still using fragmented, outdated systems to
+            a significant gap in the industry many companies were still using fragmented, outdated systems to
             manage their IoT devices and solutions. While hardware had advanced, the software to manage it hadn't kept pace.
           </p>
           <p style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, fontSize: '0.97rem', marginBottom: 16 }}>

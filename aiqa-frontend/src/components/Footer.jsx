@@ -16,7 +16,7 @@ function Footer() {
                     </div>
 
                     <div className='footer-inner-class-1'>
-                        ©2024 AIQA · Pastry policy · "Do we peek at you?" policy
+                        ©2026 AIQA . All rights reserved.
                     </div>
                 </Col>
                 <Col className='footer-class-2' xl={12} md={12} lg={12} xs={24} sm={24}>

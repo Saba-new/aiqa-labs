@@ -1655,15 +1655,12 @@ html {
   position: relative;
   overflow: hidden;
   border-radius: 20px;
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(148, 163, 184, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Background and border are now set inline per card */
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
 }
 .feat-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25), 0 4px 8px rgba(96, 165, 250, 0.15);
-  border-color: rgba(96, 165, 250, 0.3);
+  /* Hover effects handled by inline styles */
 }
 
 /* Industry featured tile — large editorial hero tile */
