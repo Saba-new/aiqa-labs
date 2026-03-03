@@ -239,8 +239,8 @@ function Home() {
           </button>
         </motion.div>
 
-        {/* Platform cards — each card has a distinct personality and density */}
-        <div className="feat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 14 }}>
+        {/* Platform cards — new asymmetric masonry layout */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
           {/* 01 — PROTOCOL: full width, editorial typography left + icon grid right */}
           <motion.div
