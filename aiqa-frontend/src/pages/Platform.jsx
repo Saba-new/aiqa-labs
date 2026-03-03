@@ -127,7 +127,7 @@ const Platform = () => {
       </section>
 
       {/* â”€â”€ DARK TWINV BANNER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <div style={{ backgroundColor: '#000151', padding: '64px 10%', margin: '0' }}>
+      <div style={{ padding: '64px 10%', margin: '0' }}>
         <div style={{ display: 'flex', gap: 48, flexWrap: 'wrap', maxWidth: 1100, margin: '0 auto' }}>
           <motion.div
             initial={{ opacity: 0, x: -30 }}
