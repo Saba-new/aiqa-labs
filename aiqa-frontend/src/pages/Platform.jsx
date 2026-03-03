@@ -143,7 +143,7 @@ const Platform = () => {
             viewport={{ once: true }}
             style={{ flex: 1, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, fontSize: '0.97rem', minWidth: 260 }}
           >
-            We don't disrupt your systemsâ€”we connect them into a smarter, data-driven network.
+            We don't disrupt your systems we connect them into a smarter, data-driven network.
             TwinV seamlessly connects with your IoT devices, sensory platforms, and business
             applications, transforming them into a unified, data-driven ecosystem. Unlock new
             possibilities to optimize operations and drive efficiency.
