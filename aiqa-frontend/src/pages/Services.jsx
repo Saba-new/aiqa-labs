@@ -104,8 +104,6 @@ const Services = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               style={{ borderBottom: i < overview.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}
             >
-              <div className="numbered-row-digit">{String(i + 1).padStart(2, '0')}</div>
-              <div className="numbered-row-divider" />
               <div style={{ flex: 1 }}>
                 <h3 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#fff', marginBottom: 10 }}>{item.title}</h3>
                 <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.72, fontSize: '0.91rem' }}>{item.description}</p>
