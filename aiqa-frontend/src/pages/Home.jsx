@@ -267,7 +267,6 @@ function Home() {
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at top left, rgba(139,92,246,0.08) 0%, transparent 60%)', pointerEvents: 'none' }} />
             
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '4rem', fontWeight: 900, lineHeight: 0.85, color: 'rgba(139,92,246,0.2)', letterSpacing: '-0.05em', marginBottom: 16, userSelect: 'none' }}>01</div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, background: 'rgba(139,92,246,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(139,92,246,0.25)' }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#8B5CF6', color: '#8B5CF6', flexShrink: 0 }} />
                 <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'rgba(196,181,253,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Protocol Layer</span>
@@ -387,7 +386,6 @@ function Home() {
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, rgba(16,185,129,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
             
             <div style={{ maxWidth: 480, position: 'relative', zIndex: 1 }}>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '3.5rem', fontWeight: 900, lineHeight: 0.9, color: 'rgba(16,185,129,0.2)', letterSpacing: '-0.05em', marginBottom: 14, userSelect: 'none' }}>04</div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 12, background: 'rgba(16,185,129,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(16,185,129,0.25)' }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', color: '#10B981', flexShrink: 0 }} />
                 <span style={{ fontSize: '0.63rem', fontWeight: 700, color: 'rgba(110,231,183,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>Green Tech</span>
