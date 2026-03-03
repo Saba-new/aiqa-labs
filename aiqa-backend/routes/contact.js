@@ -4,7 +4,14 @@ import { body, validationResult } from 'express-validator'
 import rateLimit from 'express-rate-limit'
 
 const router = express.Router()
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy-load Resend to ensure env vars are loaded first
+let resend = null
+const getResend = () => {
+  if (!resend) {
+    resend = new Resend(process.env.RESEND_API_KEY)
+  }
+  return resend
+}
 
 // Rate limit for contact form — 20 submissions per 15 min per IP
 const contactLimiter = rateLimit({
@@ -110,7 +117,7 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
   
   Promise.all([
     // Email to team
-    resend.emails.send({
+    getResend().emails.send({
       from: 'AIQA Contact <onboarding@resend.dev>',  // Resend verified domain
       to: process.env.CONTACT_RECEIVER_EMAIL || 'k.sabarish2005@gmail.com',
       reply_to: email,
@@ -132,7 +139,7 @@ router.post('/', contactLimiter, validateContact, async (req, res) => {
       `,
     }),
     // Auto-reply to customer
-    resend.emails.send({
+    getResend().emails.send({
       from: 'AIQA Labs <onboarding@resend.dev>',
       to: email,
       subject: 'We received your message — AIQA Labs',

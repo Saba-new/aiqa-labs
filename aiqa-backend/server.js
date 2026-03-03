@@ -1,19 +1,20 @@
+import dotenv from 'dotenv'
+import { fileURLToPath } from 'url'
+import path from 'path'
+
+// Load .env FIRST before any other imports
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: path.join(__dirname, '.env') })
+
 import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
-import dotenv from 'dotenv'
 import rateLimit from 'express-rate-limit'
-import { fileURLToPath } from 'url'
-import path from 'path'
 
 import connectDB from './config/db.js'
 import contactRouter from './routes/contact.js'
 import contentRouter from './routes/content.js'
 import authRouter from './routes/auth.js'
-
-// Load .env from the same directory as server.js, regardless of cwd
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-dotenv.config({ path: path.join(__dirname, '.env') })
 
 // Connect to MongoDB
 connectDB()
