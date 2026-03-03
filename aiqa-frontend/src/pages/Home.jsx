@@ -250,9 +250,9 @@ function Home() {
             style={{
               gridColumn: 'span 5',
               gridRow: 'span 2',
-              background: 'linear-gradient(135deg, rgba(139,92,246,0.05) 0%, rgba(139,92,246,0.02) 100%)',
+              background: 'linear-gradient(135deg, rgba(139,92,246,0.03) 0%, rgba(139,92,246,0.01) 100%)',
               backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(139,92,246,0.2)',
+              border: '1px solid rgba(139,92,246,0.12)',
               borderRadius: 20,
               boxShadow: 'none',
               padding: '40px',
@@ -264,10 +264,10 @@ function Home() {
             }}
           >
             {/* Gradient overlay */}
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at top left, rgba(139,92,246,0.08) 0%, transparent 60%)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at top left, rgba(139,92,246,0.04) 0%, transparent 65%)', pointerEvents: 'none' }} />
             
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, background: 'rgba(139,92,246,0.15)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(139,92,246,0.25)' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 14, background: 'rgba(139,92,246,0.1)', padding: '6px 14px', borderRadius: 20, border: '1px solid rgba(139,92,246,0.18)' }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#8B5CF6', color: '#8B5CF6', flexShrink: 0 }} />
                 <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'rgba(196,181,253,0.85)', letterSpacing: '0.13em', textTransform: 'uppercase' }}>01 — Protocol Layer</span>
               </div>
