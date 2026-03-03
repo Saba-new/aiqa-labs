@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import starBg from '../assets/starBg.png'
-import rectangleLogo from '../assets/content.png'
 
 const About = () => {
   const navigate = useNavigate()
@@ -52,14 +51,6 @@ const About = () => {
               Our expertise, products, and collaborative approach have positioned us as leaders in delivering
               tailored technology solutions across industries.
             </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            style={{ flex: '0 0 240px', display: 'flex', alignItems: 'flex-end' }}
-          >
-            <img src={rectangleLogo} alt="AIQA" style={{ width: '100%', borderRadius: 20, opacity: 0.88, border: '1px solid rgba(255,255,255,0.08)' }} />
           </motion.div>
         </div>
       </section>

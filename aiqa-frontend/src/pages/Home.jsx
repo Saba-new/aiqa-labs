@@ -281,14 +281,8 @@ function Home() {
               </p>
             </div>
             
-            <div style={{ position: 'relative', zIndex: 1, marginTop: 24 }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
-                {[group1, group2, group3, group4, group5, group6].map((icon, i) => (
-                  <div key={i} style={{ width: 56, height: 56, borderRadius: 14, background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)', boxShadow: '0 4px 12px rgba(139,92,246,0.08)', transition: 'all 0.3s' }}>
-                    <img src={icon} alt="" style={{ width: 30, height: 30, objectFit: 'contain', opacity: 0.9 }} />
-                  </div>
-                ))}
-              </div>
+            <div style={{ position: 'relative', zIndex: 1, marginTop: 24, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <img src={content} alt="Protocol Integration" style={{ width: '100%', maxWidth: 280, height: 'auto', borderRadius: 16, opacity: 0.92, boxShadow: '0 8px 24px rgba(139,92,246,0.15)', border: '1px solid rgba(139,92,246,0.2)' }} />
             </div>
           </motion.div>
 
