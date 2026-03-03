@@ -247,7 +247,6 @@ function Home() {
             className="feat-card"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
             style={{
-              gridColumn: 'span 12',
               background: 'rgba(255,255,255,0.015)',
               border: '1px solid rgba(139,92,246,0.13)',
               display: 'flex', flexWrap: 'wrap', gap: 0,
@@ -278,15 +277,20 @@ function Home() {
             </div>
           </motion.div>
 
-          {/* 02 — AI: narrow, image-first, text footer */}
-          <motion.div
-            className="feat-card"
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.08 }}
-            style={{
-              gridColumn: 'span 4',
-              minHeight: 340, display: 'flex', flexDirection: 'column',
-            }}
-          >
+          {/* Row container for cards 02 and 03 side-by-side */}
+          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            
+            {/* 02 — AI: image-first, text footer */}
+            <motion.div
+              className="feat-card"
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.08 }}
+              style={{
+                flex: '1 1 280px',
+                minHeight: 380, 
+                display: 'flex', 
+                flexDirection: 'column',
+              }}
+            >
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '28px 24px 0' }}>
               <img src={star} alt="" style={{ width: '80%', maxWidth: 160, opacity: 0.92, filter: 'drop-shadow(0 0 36px rgba(139,92,246,0.65))' }} />
             </div>
@@ -297,18 +301,21 @@ function Home() {
               </div>
               <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#fff', margin: '0 0 6px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>AI-Powered Predictions</h3>
               <p style={{ color: 'rgba(255,255,255,0.38)', lineHeight: 1.65, fontSize: '0.82rem' }}>Advanced ML models predict failures before they happen.</p>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
 
-          {/* 03 — INSIGHTS: wide, graph edge-bleeds right side */}
-          <motion.div
-            className="feat-card"
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.12 }}
-            style={{
-              gridColumn: 'span 8',
-              minHeight: 340, display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-            }}
-          >
+            {/* 03 — INSIGHTS: graph edge-bleeds right side */}
+            <motion.div
+              className="feat-card"
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.12 }}
+              style={{
+                flex: '2 1 480px',
+                minHeight: 380, 
+                display: 'flex', 
+                flexDirection: 'column', 
+                justifyContent: 'space-between',
+              }}
+            >
             <div style={{ padding: '30px 32px 0', maxWidth: 420 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
                 <span className="live-dot" style={{ width: 6, height: 6, borderRadius: '50%', background: '#07B4EB', color: '#07B4EB', flexShrink: 0 }} />
@@ -320,15 +327,16 @@ function Home() {
             <div style={{ position: 'relative', height: 160, overflow: 'hidden' }}>
               <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(90deg, rgba(6,6,18,0.97) 0%, transparent 100%)', zIndex: 1 }} />
               <img src={graph} alt="" style={{ position: 'absolute', right: 0, bottom: 0, height: '100%', maxWidth: '80%', objectFit: 'contain', objectPosition: 'right bottom', opacity: 0.9, filter: 'drop-shadow(0 0 18px rgba(7,180,235,0.35))' }} />
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+
+          </div>
 
           {/* 04 — ENERGY: full width, big display number left, circle image right */}
           <motion.div
             className="feat-card"
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.18 }}
             style={{
-              gridColumn: 'span 12',
               display: 'flex', flexWrap: 'wrap', gap: 0,
             }}
           >
