@@ -282,7 +282,7 @@ function Home() {
             </div>
             
             <div style={{ position: 'relative', zIndex: 1, marginTop: 24, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <img src={content} alt="Protocol Integration" style={{ width: '100%', maxWidth: 280, height: 'auto', borderRadius: 16, opacity: 0.85, border: '1px solid rgba(139,92,246,0.2)' }} />
+              <img src={content} alt="Protocol Integration" style={{ width: '100%', maxWidth: 280, height: 'auto', borderRadius: 16, opacity: 0.85 }} />
             </div>
           </motion.div>
 
