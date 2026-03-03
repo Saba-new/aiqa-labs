@@ -171,18 +171,26 @@ const Platform = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
           {/* Integrations */}
           <motion.div
+            className="terminal-card"
             initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
-            style={{ position: 'relative', overflow: 'hidden', borderRadius: 20, padding: '32px', background: 'rgba(139,92,246,0.06)', border: '1px solid rgba(139,92,246,0.18)' }}
           >
-            <div style={{ position: 'absolute', top: -16, right: -8, fontSize: '6rem', fontWeight: 900, color: 'rgba(139,92,246,0.06)', fontFamily: "'Space Grotesk', sans-serif", lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>01</div>
-            <span className="card-num">01 — INTEGRATIONS</span>
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#fff', margin: '14px 0 12px' }}>Integrations</h3>
-            <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.9rem', marginBottom: 20 }}>
-              TwinV allows seamless integration with both your existing systems and external platforms,
-              providing out-of-the-box solutions that reduce capital expenditure and simplify IoT project implementation.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <img src={contentImg} alt="Integrations" style={{ width: '80%', borderRadius: 12, opacity: 0.88 }} />
+            <div className="terminal-header">
+              <div className="terminal-dot" style={{ background: '#8B5CF6' }} />
+              <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.15)' }} />
+              <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.08)' }} />
+              <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.32)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>01 / Integrations</span>
+            </div>
+            <div className="terminal-body" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              <div>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#C4B5FD', marginBottom: 10 }}>Integrations</h3>
+                <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.88rem', marginBottom: 20 }}>
+                  TwinV allows seamless integration with both your existing systems and external platforms,
+                  providing out-of-the-box solutions that reduce capital expenditure and simplify IoT project implementation.
+                </p>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <img src={contentImg} alt="Integrations" style={{ width: '80%', borderRadius: 12, opacity: 0.88 }} />
+              </div>
             </div>
           </motion.div>
 
