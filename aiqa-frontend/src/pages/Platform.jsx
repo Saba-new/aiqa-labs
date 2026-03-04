@@ -169,11 +169,12 @@ const Platform = () => {
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: 16, alignItems: 'stretch' }}>
           {/* Integrations */}
           <motion.div
             className="terminal-card"
             initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
+            style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
           >
             <div className="terminal-header">
               <div className="terminal-dot" style={{ background: '#8B5CF6' }} />
@@ -181,25 +182,26 @@ const Platform = () => {
               <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.08)' }} />
               <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.32)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>01 / Integrations</span>
             </div>
-            <div className="terminal-body" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <div className="terminal-body" style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '20px 26px', flex: 1, justifyContent: 'space-between' }}>
               <div>
                 <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#C4B5FD', marginBottom: 10 }}>Integrations</h3>
-                <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.88rem', marginBottom: 20 }}>
+                <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.88rem' }}>
                   TwinV allows seamless integration with both your existing systems and external platforms,
                   providing out-of-the-box solutions that reduce capital expenditure and simplify IoT project implementation.
                 </p>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <img src={contentImg} alt="Integrations" style={{ width: '80%', borderRadius: 12, opacity: 0.88 }} />
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
+                <img src={contentImg} alt="Integrations" style={{ width: '90%', borderRadius: 12, opacity: 0.88 }} />
               </div>
             </div>
           </motion.div>
 
           {/* Right column â€” Commissioning + O&M */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24, flex: 1 }}>
             <motion.div
               className="terminal-card"
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
+              style={{ display: 'flex', flexDirection: 'column', flex: 1 }}
             >
               <div className="terminal-header">
                 <div className="terminal-dot" style={{ background: '#07B4EB' }} />
@@ -207,21 +209,24 @@ const Platform = () => {
                 <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.08)' }} />
                 <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.32)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>02 / Commissioning</span>
               </div>
-              <div className="terminal-body" style={{ display: 'flex', gap: 24, alignItems: 'center', justifyContent: 'space-between' }}>
+              <div className="terminal-body" style={{ display: 'flex', gap: 24, alignItems: 'flex-start', justifyContent: 'space-between', padding: '18px 26px' }}>
                 <div style={{ flex: 1 }}>
                   <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#67E8F9', marginBottom: 10 }}>Commissioning</h3>
                   <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.88rem' }}>
-                    What typically takes months is simplified with our platform's cloud-based setup,
-                    enabling seamless commissioning in just a few days.
+                    What typically takes months is simplified with our platform's <br></br>cloud-based setup,
+                    enabling seamless commissioning <br></br>in just a few days.
                   </p>
                 </div>
-                <img src={timerLogo} alt="Commissioning" style={{ width: 85, height: 85, objectFit: 'contain', opacity: 0.85, flexShrink: 0 }} />
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', flexShrink: 0, paddingTop: 4 }}>
+                  <img src={timerLogo} alt="Commissioning" style={{ width: 95, height: 95, objectFit: 'contain', opacity: 0.85 }} />
+                </div>
               </div>
             </motion.div>
 
             <motion.div
               className="terminal-card"
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }}
+              style={{ display: 'flex', flexDirection: 'column', flex: 1 }}
             >
               <div className="terminal-header">
                 <div className="terminal-dot" style={{ background: '#8B5CF6' }} />
@@ -229,15 +234,17 @@ const Platform = () => {
                 <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.08)' }} />
                 <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.32)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>03 / O&amp;M Applications</span>
               </div>
-              <div className="terminal-body" style={{ display: 'flex', gap: 24, alignItems: 'center', justifyContent: 'space-between' }}>
+              <div className="terminal-body" style={{ display: 'flex', gap: 24, alignItems: 'flex-start', justifyContent: 'space-between', padding: '18px 26px' }}>
                 <div style={{ flex: 1 }}>
                   <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#C4B5FD', marginBottom: 10 }}>O&amp;M Applications</h3>
                   <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.88rem' }}>
                     Enhance agility and decision-making in operations and maintenance with real-time
-                    insights through our platform's comprehensive suite of tools.
+                    insights through our platform's comprehensive suite of tools. 
                   </p>
                 </div>
-                <img src={graphLogo} alt="Analytics" style={{ width: 85, height: 85, objectFit: 'contain', opacity: 0.85, flexShrink: 0 }} />
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', flexShrink: 0, paddingTop: 4 }}>
+                  <img src={graphLogo} alt="Analytics" style={{ width: 100, height: 100, objectFit: 'contain', opacity: 0.85 }} />
+                </div>
               </div>
             </motion.div>
           </div>
