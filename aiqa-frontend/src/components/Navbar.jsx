@@ -90,15 +90,8 @@ function Header() {
             <button
               className="btn-neo desktop-only"
               onClick={() => navigate('/contact')}
-              style={{ opacity: 0.85 }}
             >
               Get Started
-            </button>
-            <button
-              className="btn-neo desktop-only"
-              onClick={() => navigate('/register')}
-            >
-              Sign Up
             </button>
           </>
         )}
@@ -156,17 +149,10 @@ function Header() {
             <>
               <button
                 className="get-started-button"
-                style={{ marginTop: 28, width: '100%', opacity: 0.85 }}
+                style={{ marginTop: 28, width: '100%' }}
                 onClick={() => { setDrawerVisible(false); navigate('/contact') }}
               >
                 Get Started
-              </button>
-              <button
-                className="get-started-button"
-                style={{ marginTop: 12, width: '100%' }}
-                onClick={() => { setDrawerVisible(false); navigate('/register') }}
-              >
-                Sign Up
               </button>
             </>
           )}
