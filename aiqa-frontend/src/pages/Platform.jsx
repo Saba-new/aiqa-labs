@@ -11,6 +11,7 @@ import group5 from '../assets/Group5.png'
 import group6 from '../assets/Group6.png'
 import contentImg from '../assets/content.png'
 import graphLogo from '../assets/graph.png'
+import timerLogo from '../assets/timerLogo.png'
 
 const Platform = () => {
   const navigate = useNavigate()
@@ -206,7 +207,7 @@ const Platform = () => {
                 <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.08)' }} />
                 <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.32)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>02 / Commissioning</span>
               </div>
-              <div className="terminal-body" style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+              <div className="terminal-body" style={{ display: 'flex', gap: 24, alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ flex: 1 }}>
                   <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#67E8F9', marginBottom: 10 }}>Commissioning</h3>
                   <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.88rem' }}>
@@ -214,7 +215,7 @@ const Platform = () => {
                     enabling seamless commissioning in just a few days.
                   </p>
                 </div>
-                <img src={graphLogo} alt="Commissioning" style={{ width: 52, height: 52, objectFit: 'contain', opacity: 0.8, flexShrink: 0 }} />
+                <img src={timerLogo} alt="Commissioning" style={{ width: 85, height: 85, objectFit: 'contain', opacity: 0.85, flexShrink: 0 }} />
               </div>
             </motion.div>
 
@@ -228,7 +229,7 @@ const Platform = () => {
                 <div className="terminal-dot" style={{ background: 'rgba(255,255,255,0.08)' }} />
                 <span style={{ marginLeft: 10, fontSize: '0.67rem', fontWeight: 700, color: 'rgba(255,255,255,0.32)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>03 / O&amp;M Applications</span>
               </div>
-              <div className="terminal-body" style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+              <div className="terminal-body" style={{ display: 'flex', gap: 24, alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ flex: 1 }}>
                   <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#C4B5FD', marginBottom: 10 }}>O&amp;M Applications</h3>
                   <p style={{ color: 'rgba(255,255,255,0.48)', lineHeight: 1.7, fontSize: '0.88rem' }}>
@@ -236,7 +237,7 @@ const Platform = () => {
                     insights through our platform's comprehensive suite of tools.
                   </p>
                 </div>
-                <img src={graphLogo} alt="Analytics" style={{ width: 52, height: 52, objectFit: 'contain', opacity: 0.8, flexShrink: 0 }} />
+                <img src={graphLogo} alt="Analytics" style={{ width: 85, height: 85, objectFit: 'contain', opacity: 0.85, flexShrink: 0 }} />
               </div>
             </motion.div>
           </div>

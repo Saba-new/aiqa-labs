@@ -245,13 +245,13 @@ function Home() {
           {/* 01 — PROTOCOL: Left column, spans 2 rows */}
           <motion.div
             className="feat-card"
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
             whileHover={{ y: -4, transition: { duration: 0.3 } }}
             style={{
               gridColumn: 'span 5',
               gridRow: 'span 2',
-              background: 'rgba(139,92,246,0.07)',
-              border: '1px solid rgba(139,92,246,0.22)',
+              background: 'rgba(139,92,246,0.03)',
+              border: '1px solid rgba(139,92,246,0.08)',
               borderRadius: 20,
               padding: '40px',
               display: 'flex',
@@ -289,8 +289,8 @@ function Home() {
             style={{
               gridColumn: 'span 7',
               gridRow: 'span 1',
-              background: 'rgba(7,180,235,0.05)',
-              border: '1px solid rgba(7,180,235,0.18)',
+              background: 'rgba(7,180,235,0.02)',
+              border: '1px solid rgba(7,180,235,0.06)',
               borderRadius: 20,
               overflow: 'hidden',
               position: 'relative',
@@ -323,8 +323,8 @@ function Home() {
             style={{
               gridColumn: 'span 7',
               gridRow: 'span 1',
-              background: 'rgba(16,185,129,0.05)',
-              border: '1px solid rgba(16,185,129,0.15)',
+              background: 'rgba(16,185,129,0.02)',
+              border: '1px solid rgba(16,185,129,0.06)',
               borderRadius: 20,
               overflow: 'hidden',
               position: 'relative',
@@ -357,8 +357,8 @@ function Home() {
             style={{
               gridColumn: 'span 12',
               gridRow: 'span 1',
-              background: 'rgba(16,185,129,0.05)',
-              border: '1px solid rgba(16,185,129,0.15)',
+              background: 'rgba(16,185,129,0.02)',
+              border: '1px solid rgba(16,185,129,0.06)',
               borderRadius: 20,
               overflow: 'hidden',
               position: 'relative',
