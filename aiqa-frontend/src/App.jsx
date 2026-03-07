@@ -7,6 +7,7 @@ import axios from 'axios'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ParticleHoverBg from './components/ParticleHoverBg'
+import NeuralBackground from './components/NeuralBackground'
 import Home from './pages/Home'
 import Platform from './pages/Platform'
 import Services from './pages/Services'
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <div className="relative min-h-screen">
+      <NeuralBackground />
       <ParticleHoverBg />
       <Navbar />
       <Routes>
