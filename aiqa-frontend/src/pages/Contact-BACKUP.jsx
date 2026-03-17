@@ -71,9 +71,7 @@ const Contact = () => {
             <div style={{ display: 'flex', gap: 0, marginBottom: 32, border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, overflow: 'hidden' }}>
               {stats.map((s, i) => (
                 <div key={i} style={{ flex: 1, padding: '20px 22px', borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none', background: 'rgba(255,255,255,0.02)' }}>
-                  <div style={{ fontSize: '2rem', fontWeight: 700, background: 'linear-gradient(135deg,#fff 30%,#C4B5FD 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', lineHeight: 1 }}>
-                    {s.value}
-                  </div>
+                  <div className="contact-stat-value">{s.value}</div>
                   <div style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>{s.unit} {s.label}</div>
                   <div style={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.3)', marginTop: 5, lineHeight: 1.5 }}>{s.desc}</div>
                 </div>

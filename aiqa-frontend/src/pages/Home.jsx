@@ -30,7 +30,7 @@ function Home() {
   const navigate = useNavigate()
 
   return (
-    <>
+    <div className="home-page">
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section
         style={{
@@ -63,11 +63,11 @@ function Home() {
           fontWeight: 900,
           letterSpacing: '-0.05em',
           lineHeight: 1,
-          color: 'rgba(255,255,255,0.013)',
+          color: 'rgba(17,24,39,0.06)',
           userSelect: 'none',
           pointerEvents: 'none',
           whiteSpace: 'nowrap',
-          zIndex: 0,
+          zIndex: -1,
         }}>TWINV</div>
 
 
@@ -639,7 +639,7 @@ function Home() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

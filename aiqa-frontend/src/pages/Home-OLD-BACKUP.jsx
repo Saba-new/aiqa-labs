@@ -83,62 +83,6 @@ function Home() {
               Intelligent IoT Solutions
             </span>
           </h1>
-
-          <p style={{
-            fontSize: '1.1rem',
-            color: 'rgba(255,255,255,0.6)',
-            lineHeight: 1.8,
-            marginBottom: '40px',
-            maxWidth: '540px'
-          }}>
-            Harness the power of digital twins and IoT integration to optimize operations, 
-            predict outcomes, and drive innovation across your entire organization.
-          </p>
-
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-            <button className="get-started-button" onClick={() => navigate('/contact')}>
-              Start Your Journey
-            </button>
-            <button className="btn-neo" onClick={() => navigate('/platform')}>
-              View Platform
-            </button>
-          </div>
-
-          {/* Protocol badges - Horizontal row */}
-          <div style={{ marginTop: '50px' }}>
-            <div style={{
-              fontSize: '0.7rem',
-              color: 'rgba(255,255,255,0.4)',
-              letterSpacing: '0.12em',
-              marginBottom: '16px',
-              textTransform: 'uppercase'
-            }}>
-              Supported Protocols
-            </div>
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              {[
-                { icon: group1, label: 'BACnet/IP' },
-                { icon: group2, label: 'Modbus' },
-                { icon: group3, label: 'OPC UA' },
-                { icon: group4, label: 'MQTT' },
-              ].map((p) => (
-                <div key={p.label} style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 16px',
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(139,92,246,0.2)',
-                  borderRadius: '8px',
-                  fontSize: '0.8rem',
-                  color: 'rgba(255,255,255,0.7)'
-                }}>
-                  <img src={p.icon} alt={p.label} style={{ width: '20px', height: '20px' }} />
-                  {p.label}
-                </div>
-              ))}
-            </div>
-          </div>
         </motion.div>
 
         {/* RIGHT - Visual */}
@@ -249,13 +193,37 @@ function Home() {
                 background: `linear-gradient(180deg, ${stat.color}08 0%, transparent 50%)`,
                 pointerEvents: 'none'
               }} />
-              <div style={{
-                fontSize: '3rem',
-                fontWeight: 900,
-                color: stat.color,
-                marginBottom: '8px',
-                position: 'relative'
-              }}>
+              <div
+                style={{
+                  fontSize: '3rem',
+                  fontWeight: 900,
+                  marginBottom: '8px',
+                  position: 'relative',
+                  background: 'linear-gradient(90deg, #3B46FF 0%, #8B5CF6 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  color: '#3B46FF',
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1,
+                  filter: 'none',
+                  textShadow: '0 1px 8px #e0e7ff',
+                  MozBackgroundClip: 'text',
+                  msBackgroundClip: 'text',
+                  OBackgroundClip: 'text',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: '100%',
+                  WebkitTextStroke: '0.5px #3B46FF',
+                  WebkitTextFillColor: 'transparent',
+                  WebkitFontSmoothing: 'antialiased',
+                  fontFamily: 'inherit',
+                  zIndex: 2,
+                  // Fallback for browsers that don't support background-clip:text
+                  display: 'inline-block',
+                  // Force !important for recovery CSS
+                  pointerEvents: 'auto',
+                }}
+              >
                 {stat.value}
               </div>
               <div style={{
@@ -1009,28 +977,28 @@ function Home() {
           {[
             {
               q: 'What industries does AIQA Labs specialize in?',
-              a: 'We work across FinTech, Healthcare, Real Estate, Transport & Mobility, Manufacturing, Smart Home, and Software/SaaS with dedicated domain expertise in each vertical.',
+              a: 'We work across FinTech, Healthcare, Real Estate, Transport & Mobility, Manufacturing, Smart Home, and Software/SaaS with dedicated domain expertise in each vertical.'
             },
             {
               q: 'How is AIQA different from a standard software agency?',
-              a: 'We start with strategy, not just execution. Our process begins with understanding your operational problem, then designing the right architecture for outcomes, not just deliverables.',
+              a: 'We start with strategy, not just execution. Our process begins with understanding your operational problem, then designing the right architecture for outcomes, not just deliverables.'
             },
             {
               q: 'Can AIQA handle both hardware integration and software development?',
-              a: 'Yes. We bridge embedded firmware, edge devices, IoT protocols (MQTT, CoAP, OPC-UA), and cloud backends into unified products without managing separate vendors.',
+              a: 'Yes. We bridge embedded firmware, edge devices, IoT protocols (MQTT, CoAP, OPC-UA), and cloud backends into unified products without managing separate vendors.'
             },
             {
               q: 'What does the engagement process look like?',
-              a: 'We start with a no-cost discovery call, move into scoping with architecture recommendations, then phased delivery with weekly demos and dedicated point of contact.',
+              a: 'We start with a no-cost discovery call, move into scoping with architecture recommendations, then phased delivery with weekly demos and dedicated point of contact.'
             },
             {
               q: 'Do you offer post-launch support?',
-              a: 'Absolutely. We offer tiered SLA-based support, proactive monitoring, feature iteration, and on-call engineering. We're long-term technology partners.',
+              a: "Absolutely. We offer tiered SLA-based support, proactive monitoring, feature iteration, and on-call engineering. We're long-term technology partners."
             },
             {
               q: 'What is the typical timeline for a project?',
-              a: 'A well-scoped mid-scale product typically ships in 10–14 weeks using agile sprints with fortnightly reviews for full visibility.',
-            },
+              a: 'A well-scoped mid-scale product typically ships in 10–14 weeks using agile sprints with fortnightly reviews for full visibility.'
+            }
           ].map((item, i) => (
             <FaqItem key={i} item={item} index={i} />
           ))}

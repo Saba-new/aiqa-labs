@@ -6,8 +6,7 @@ import axios from 'axios'
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import ParticleHoverBg from './components/ParticleHoverBg'
-import NeuralBackground from './components/NeuralBackground'
+import HexBackground from './components/HexBackground'
 import Home from './pages/Home'
 import Platform from './pages/Platform'
 import Services from './pages/Services'
@@ -19,7 +18,6 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 
 function App() {
-  // Wake up backend on app load to prevent form submission failures
   useEffect(() => {
     const wakeUpBackend = async () => {
       try {
@@ -33,23 +31,24 @@ function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen">
-      <NeuralBackground />
-      <ParticleHoverBg />
+    <div style={{ position: 'relative', minHeight: '100vh' }}>
+      <HexBackground />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/platform" element={<Platform />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/industries" element={<Industries />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/platform" element={<Platform />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/industries" element={<Industries />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </div>
       <Footer />
-      <ToastContainer theme="dark" />
+      <ToastContainer theme="dark" toastStyle={{ background: '#0D0F16', border: '1px solid rgba(245,158,11,0.2)', color: '#E8EAF0' }} />
     </div>
   )
 }

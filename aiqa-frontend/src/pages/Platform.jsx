@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import starBg from '../assets/starBg.png'
@@ -44,9 +44,7 @@ const Platform = () => {
             optimize operations and drive innovation.
           </p>
           <button className="get-started-button" onClick={() => navigate('/contact')}>Try TwinV</button>
-          <div style={{ marginTop: 40 }}>
-            <img src={starBg} alt="" style={{ width: '60%', maxWidth: 480, margin: '0 auto', opacity: 0.75, display: 'block' }} />
-          </div>
+          <img src={starBg} alt="" style={{ width: '60%', maxWidth: 480, margin: '24px auto 0', opacity: 0.75, display: 'block' }} />
         </motion.div>
       </section>
 
@@ -93,7 +91,7 @@ const Platform = () => {
             IoT Intelligence that seamlessly fits into your existing stack
           </h2>
         </motion.div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 12 }}>
+        <div className="platform-feature-grid" style={{ display: 'grid', gap: 12 }}>
           {features.map((feature, i) => {
             const hudAccents = [
               { iconBg: 'rgba(139,92,246,0.1)', iconBorder: 'rgba(139,92,246,0.18)' },
@@ -128,7 +126,7 @@ const Platform = () => {
       </section>
 
       {/* ── DARK TWINV BANNER ───────────────────────────────────── */}
-      <div style={{ padding: '64px 10%', margin: '0' }}>
+      <div style={{ padding: '64px 10%', margin: '0', background: 'linear-gradient(90deg, #232B5D 0%, #3B46FF 60%, #8B5CF6 100%)', borderRadius: 18 }}>
         <div style={{ display: 'flex', gap: 48, flexWrap: 'wrap', maxWidth: 1100, margin: '0 auto' }}>
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -142,7 +140,7 @@ const Platform = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            style={{ flex: 1, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, fontSize: '0.97rem', minWidth: 260 }}
+            style={{ flex: 1, color: '#fff', lineHeight: 1.8, fontSize: '0.97rem', minWidth: 260 }}
           >
             We don't disrupt your systems we connect them into a smarter, data-driven network.
             TwinV seamlessly connects with your IoT devices, sensory platforms, and business

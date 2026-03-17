@@ -206,14 +206,14 @@ const Services = () => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
               {techStack.map((tech, i) => {
                 const chipAccent = i % 4 === 0
-                  ? { bg: 'rgba(139,92,246,0.09)', border: 'rgba(139,92,246,0.22)', dot: '#8B5CF6', text: 'rgba(196,181,253,0.85)' }
+                  ? { bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)', dot: '#8B5CF6', text: '#6D28D9' }
                   : i % 4 === 1
-                  ? { bg: 'rgba(7,180,235,0.06)', border: 'rgba(7,180,235,0.2)', dot: '#07B4EB', text: 'rgba(103,232,249,0.8)' }
+                  ? { bg: 'rgba(7,180,235,0.08)', border: 'rgba(7,180,235,0.25)', dot: '#07B4EB', text: '#0E7490' }
                   : i % 4 === 2
-                  ? { bg: 'rgba(16,185,129,0.06)', border: 'rgba(16,185,129,0.16)', dot: '#10B981', text: 'rgba(110,231,183,0.75)' }
-                  : { bg: 'rgba(255,255,255,0.03)', border: 'rgba(255,255,255,0.08)', dot: 'rgba(255,255,255,0.3)', text: 'rgba(255,255,255,0.52)' }
+                  ? { bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.22)', dot: '#10B981', text: '#047857' }
+                  : { bg: '#F8FAFC', border: '#DCE3EE', dot: '#64748B', text: '#334155' }
                 return (
-                  <div key={i} style={{ background: chipAccent.bg, border: `1px solid ${chipAccent.border}`, borderRadius: 10, padding: '9px 12px', textAlign: 'center', fontSize: '0.8rem', color: chipAccent.text, transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+                  <div key={i} style={{ background: chipAccent.bg, border: `1px solid ${chipAccent.border}`, borderRadius: 10, padding: '9px 12px', textAlign: 'center', fontSize: '0.8rem', color: chipAccent.text, transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, minHeight: 38, fontWeight: 600 }}>
                     <span style={{ width: 5, height: 5, borderRadius: '50%', background: chipAccent.dot, flexShrink: 0, boxShadow: `0 0 4px ${chipAccent.dot}` }} />
                     {tech}
                   </div>

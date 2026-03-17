@@ -43,7 +43,7 @@ const Contact = () => {
   ]
 
   return (
-    <>
+    <div className="contact-page">
       <section style={{ padding: '140px 10% 100px', position: 'relative', overflow: 'hidden' }}>
         <div className="hero-grid" />
         <div className="aurora-orb aurora-orb-1" />
@@ -153,7 +153,7 @@ const Contact = () => {
 
         </div>
       </section>
-    </>
+    </div>
   )
 }
 
