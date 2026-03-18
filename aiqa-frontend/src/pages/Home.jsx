@@ -229,7 +229,7 @@ function Home() {
           <button className="btn-neo" onClick={() => navigate('/industries')}>Unlock Innovation</button>
         </motion.div>
 
-        <div style={{ border: '1px solid rgba(255,255,255,0.06)', borderRadius: 18, overflow: 'hidden', background: 'rgba(18,15,24,0.35)' }}>
+        <div className="industry-list-container" style={{ border: '1px solid rgba(255,255,255,0.06)', borderRadius: 18, overflow: 'hidden', background: 'rgba(18,15,24,0.35)' }}>
           {[
             { num: '01', title: 'FinTech', color: '#FB923C', tags: ['Finance', 'Banking', 'Payments'] },
             { num: '02', title: 'Real Estate', color: '#F472B6', tags: ['PropTech', 'CRM', 'Analytics'] },
@@ -239,18 +239,18 @@ function Home() {
             { num: '06', title: 'Manufacturing', color: '#22D3EE', tags: ['Industry 4.0', 'IoT', 'ERP'] },
             { num: '07', title: 'Smart Home', color: '#34D399', tags: ['IoT', 'Appliances', 'UX'] },
           ].map((ind, i, arr) => (
-            <motion.div key={i} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.06 }} onClick={() => navigate('/industries')}
+            <motion.div key={i} className="industry-list-item-home" initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.06 }} onClick={() => navigate('/industries')}
               style={{ display: 'flex', alignItems: 'center', gap: 0, padding: '18px 28px', cursor: 'pointer', borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', transition: 'background 0.2s' }}
               onMouseEnter={e => e.currentTarget.style.background = `${ind.color}06`}
               onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
             >
-              <div style={{ fontSize: '0.62rem', fontWeight: 700, color: `${ind.color}45`, fontFamily: "'Space Grotesk',sans-serif", letterSpacing: '0.1em', minWidth: 32 }}>{ind.num}</div>
-              <div style={{ width: 1, alignSelf: 'stretch', background: 'rgba(255,255,255,0.04)', margin: '0 20px', flexShrink: 0 }} />
-              <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: '0.95rem', fontWeight: 700, color: '#FFF7ED', flex: '0 0 180px' }}>{ind.title}</div>
-              <div style={{ display: 'flex', gap: 6, flex: 1, flexWrap: 'wrap', padding: '0 20px' }}>
+              <div className="industry-num" style={{ fontSize: '0.62rem', fontWeight: 700, color: `${ind.color}45`, fontFamily: "'Space Grotesk',sans-serif", letterSpacing: '0.1em', minWidth: 32 }}>{ind.num}</div>
+              <div className="industry-divider" style={{ width: 1, alignSelf: 'stretch', background: 'rgba(255,255,255,0.04)', margin: '0 20px', flexShrink: 0 }} />
+              <div className="industry-title" style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: '0.95rem', fontWeight: 700, color: '#FFF7ED', flex: '0 0 180px' }}>{ind.title}</div>
+              <div className="industry-tags" style={{ display: 'flex', gap: 6, flex: 1, flexWrap: 'wrap', padding: '0 20px' }}>
                 {ind.tags.map((t, ti) => <span key={ti} style={{ fontSize: '0.6rem', padding: '3px 9px', borderRadius: 20, background: `${ind.color}10`, border: `1px solid ${ind.color}28`, color: ind.color, fontWeight: 600, fontFamily: "'Space Grotesk',sans-serif" }}>{t}</span>)}
               </div>
-              <span style={{ color: ind.color, fontSize: '0.95rem', opacity: 0.45 }}>→</span>
+              <span className="industry-arrow" style={{ color: ind.color, fontSize: '0.95rem', opacity: 0.45 }}>→</span>
             </motion.div>
           ))}
         </div>
@@ -261,14 +261,14 @@ function Home() {
 
       {/* ── FAQ ─────────────────────────────────────────────── */}
       <section style={{ padding: '90px 10% 120px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} style={{ position: 'sticky', top: 120 }}>
+        <div className="faq-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="faq-info" style={{ position: 'sticky', top: 120 }}>
             <div className="section-label">FAQ</div>
             <h2 style={{ fontSize: 'clamp(1.8rem,3vw,2.5rem)', fontWeight: 800, color: '#FFF7ED', margin: '16px 0 18px', letterSpacing: '-0.025em', lineHeight: 1.18, fontFamily: "'Space Grotesk',sans-serif" }}>Every Question,<br />Answered.</h2>
             <p style={{ color: 'rgba(255,225,190,0.38)', fontSize: '0.9rem', lineHeight: 1.72, maxWidth: 300 }}>Still curious? These are the questions we hear most from new clients and partners.</p>
             <button className="btn-neo" onClick={() => navigate('/contact')} style={{ marginTop: 32 }}>Ask Us Directly</button>
           </motion.div>
-          <div>
+          <div className="faq-list">
             {[
               { q: 'What industries does AIQA Labs specialize in?', a: 'We work across FinTech, Healthcare, Real Estate, Transport & Mobility, Manufacturing, Smart Home, and Software/SaaS — with dedicated teams that carry real domain experience in each vertical.' },
               { q: 'How is AIQA different from a standard software agency?', a: "Most agencies execute what you hand them. We start with strategy. Our process begins with understanding your operational problem deeply, then designing the right architecture." },

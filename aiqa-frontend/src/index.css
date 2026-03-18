@@ -225,6 +225,22 @@ body::before {
   .footer-links-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
 }
 
+  /* Home Page Specifics */
+  .industry-list-item-home { 
+    flex-direction: column !important; 
+    align-items: flex-start !important; 
+    gap: 12px !important; 
+    padding: 20px !important;
+  }
+  .industry-list-item-home .industry-divider { display: none !important; }
+  .industry-list-item-home .industry-title { flex: none !important; width: 100% !important; }
+  .industry-list-item-home .industry-tags { padding: 0 !important; }
+  .industry-list-item-home .industry-arrow { display: none !important; }
+
+  .faq-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .faq-info { position: relative !important; top: 0 !important; }
+}
+
 @media (max-width: 480px) {
   .footer-links-grid { grid-template-columns: 1fr !important; }
 }
