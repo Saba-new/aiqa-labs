@@ -172,93 +172,35 @@ const PlatformAIDashboard = () => {
             <p className="text-gray-400 text-lg">Powered by cutting-edge machine learning</p>
           </motion.div>
 
-          {/* Feature Selection */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {/* Grid Feature Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {aiFeatures.map((feature, index) => (
-              <motion.button
+              <motion.div
                 key={feature.id}
-                onClick={() => setActiveFeature(index)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all ${
-                  activeFeature === index
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg shadow-cyan-500/50'
-                    : 'bg-slate-800/50 text-gray-400 hover:bg-slate-800 border border-slate-700'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl rounded-3xl p-8 border shadow-lg flex flex-col items-center"
+                style={{ borderColor: feature.color + '40', borderWidth: 2, minHeight: 420 }}
               >
-                <span className="text-2xl mr-2">{feature.icon}</span>
-                {feature.title}
-              </motion.button>
+                <div className="relative mb-6">
+                  <div className="absolute inset-0 rounded-full opacity-20 blur-2xl" style={{ background: feature.color }}></div>
+                  <div className="relative w-24 h-24 flex items-center justify-center text-6xl" style={{ color: feature.color }}>{feature.icon}</div>
+                </div>
+                <h3 className="text-2xl font-bold mb-2" style={{ color: feature.color }}>{feature.title}</h3>
+                <p className="text-gray-400 mb-2">{feature.subtitle}</p>
+                <p className="text-gray-300 text-base leading-relaxed mb-6 text-center">{feature.description}</p>
+                <div className="grid grid-cols-3 gap-4 w-full">
+                  {Object.entries(feature.metrics).map(([key, value]) => (
+                    <div key={key} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 text-center">
+                      <div className="text-xl font-bold" style={{ color: feature.color }}>{value}</div>
+                      <div className="text-sm text-gray-400 capitalize">{key}</div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             ))}
           </div>
-
-          {/* Feature Display */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeFeature}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-              className="bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl rounded-3xl p-8 md:p-12 border"
-              style={{ borderColor: aiFeatures[activeFeature].color + '40' }}
-            >
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-6xl">{aiFeatures[activeFeature].icon}</span>
-                    <div>
-                      <h3 className="text-3xl font-bold" style={{ color: aiFeatures[activeFeature].color }}>
-                        {aiFeatures[activeFeature].title}
-                      </h3>
-                      <p className="text-gray-400">{aiFeatures[activeFeature].subtitle}</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                    {aiFeatures[activeFeature].description}
-                  </p>
-
-                  {/* Metrics */}
-                  <div className="grid grid-cols-3 gap-4">
-                    {Object.entries(aiFeatures[activeFeature].metrics).map(([key, value]) => (
-                      <div key={key} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
-                        <div className="text-2xl font-bold" style={{ color: aiFeatures[activeFeature].color }}>
-                          {value}
-                        </div>
-                        <div className="text-sm text-gray-400 capitalize">{key}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Visualization */}
-                <div className="relative h-80">
-                  <div
-                    className="absolute inset-0 rounded-2xl opacity-20 blur-3xl"
-                    style={{ background: aiFeatures[activeFeature].color }}
-                  ></div>
-                  <div className="relative h-full bg-slate-900/50 rounded-2xl border border-slate-700 p-6 flex items-center justify-center">
-                    <motion.div
-                      animate={{
-                        rotate: 360,
-                        scale: [1, 1.1, 1],
-                      }}
-                      transition={{
-                        rotate: { duration: 20, repeat: Infinity, ease: 'linear' },
-                        scale: { duration: 2, repeat: Infinity },
-                      }}
-                      className="w-48 h-48 rounded-full border-4 border-dashed"
-                      style={{ borderColor: aiFeatures[activeFeature].color }}
-                    >
-                      <div className="w-full h-full flex items-center justify-center text-8xl">
-                        {aiFeatures[activeFeature].icon}
-                      </div>
-                    </motion.div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
         </div>
       </section>
 

@@ -2,61 +2,56 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../assets/logo.png'
 
-const cols = [
-  { h: 'Product', links: [{ l: 'Platform', to: '/platform' }, { l: 'Services', to: '/services' }, { l: 'Industries', to: '/industries' }] },
-  { h: 'Company', links: [{ l: 'About', to: '/about' }, { l: 'Careers', to: '/careers' }, { l: 'Contact', to: '/contact' }] },
-  { h: 'Legal', links: [{ l: 'Privacy Policy', href: '#' }, { l: 'Terms of Service', href: '#' }, { l: 'Security', href: '#' }] },
-]
-
 export default function Footer() {
   return (
-    <footer style={{ background: 'linear-gradient(90deg, #232B5D 0%, #3B46FF 60%, #8B5CF6 100%)', color: '#fff', padding: 0, borderTop: 'none' }}>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        padding: '56px clamp(32px,8vw,120px) 32px clamp(32px,8vw,120px)',
-        minHeight: 320,
-        gap: 32
+    <footer style={{ background: '#05030A', color: '#FFF7ED', padding: 0, borderTop: '1px solid rgba(251,146,60,0.08)', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: 0, left: '10%', right: '10%', height: 1, background: 'linear-gradient(90deg, transparent, rgba(251,146,60,0.35), rgba(244,114,182,0.25), transparent)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: -120, left: '50%', transform: 'translateX(-50%)', width: 600, height: 300, background: 'radial-gradient(ellipse, rgba(251,146,60,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+      <div className="footer-main" style={{
+        padding: '64px clamp(32px,8vw,120px) 40px clamp(32px,8vw,120px)',
+        minHeight: 320, position: 'relative', zIndex: 1,
       }}>
-        {/* Left: Headline and CTA */}
-        <div style={{ flex: 2, minWidth: 320, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: 32 }}>
-          <div style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: 24, fontFamily: 'Inter, sans-serif', color: '#fff', maxWidth: 520 }}>
+        <div style={{ flex: 2, minWidth: 280, display: 'flex', flexDirection: 'column', gap: 28 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+            <img src={Logo} alt="AIQA" style={{ height: 28, width: 'auto', opacity: 0.85 }} />
+
+          </div>
+          <div style={{ fontSize: '1.3rem', fontWeight: 600, lineHeight: 1.4, color: 'rgba(255,225,190,0.75)', maxWidth: 440 }}>
             Discover how our solutions and products deliver exceptional value.
           </div>
-          <a href="#contact" style={{ fontSize: '1.25rem', color: '#fff', textDecoration: 'underline', fontWeight: 500, fontFamily: 'Inter, sans-serif', display: 'inline-flex', alignItems: 'center', gap: 8, width: 'fit-content', borderBottom: '2px solid #fff', paddingBottom: 2, transition: 'color 0.2s' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#3B46FF'}
-            onMouseLeave={e => e.currentTarget.style.color = '#fff'}
-          >Work with us <span style={{ fontSize: 22, marginLeft: 2 }}>→</span></a>
-          <div style={{ fontSize: '0.95rem', color: '#9CA3AF', marginTop: 64 }}>©2026 AIQA . All rights reserved.</div>
+          <a href="/contact" style={{ fontSize: '1rem', color: '#FB923C', textDecoration: 'none', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8, width: 'fit-content', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#F472B6'}
+            onMouseLeave={e => e.currentTarget.style.color = '#FB923C'}
+          >Work with us <span style={{ fontSize: 18 }}>→</span></a>
+          <div className="desktop-only" style={{ fontSize: '0.82rem', color: 'rgba(255,225,190,0.2)', marginTop: 40 }}>©2026 AIQA Labs. All rights reserved.</div>
         </div>
 
-        {/* Center: Navigation columns */}
-        <div style={{ flex: 3, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32, minWidth: 360 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <div style={{ fontWeight: 700, color: '#fff', fontSize: '1.05rem', marginBottom: 8 }}>Services</div>
-            <Link to="/services" style={{ color: '#fff', textDecoration: 'none', fontSize: '1rem', marginBottom: 2 }}>Services</Link>
-            <Link to="/industries" style={{ color: '#fff', textDecoration: 'none', fontSize: '1rem', marginBottom: 2 }}>Industries</Link>
-            <Link to="/platform" style={{ color: '#fff', textDecoration: 'none', fontSize: '1rem', marginBottom: 2 }}>Platform</Link>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <div style={{ fontWeight: 700, color: '#fff', fontSize: '1.05rem', marginBottom: 8 }}>About</div>
-            <Link to="/about" style={{ color: '#fff', textDecoration: 'none', fontSize: '1rem', marginBottom: 2 }}>About</Link>
-            <Link to="/careers" style={{ color: '#fff', textDecoration: 'none', fontSize: '1rem', marginBottom: 2 }}>Careers</Link>
-            <Link to="/contact" style={{ color: '#fff', textDecoration: 'none', fontSize: '1rem', marginBottom: 2 }}>Contact</Link>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <div style={{ fontWeight: 700, color: '#fff', fontSize: '1.05rem', marginBottom: 8 }}>Social</div>
-            <a href="#" style={{ color: '#fff', textDecoration: 'none', fontSize: '1rem', marginBottom: 2 }}>LinkedIn</a>
-            <a href="#" style={{ color: '#fff', textDecoration: 'none', fontSize: '1rem', marginBottom: 2 }}>Facebook</a>
-            <a href="#" style={{ color: '#fff', textDecoration: 'none', fontSize: '1rem', marginBottom: 2 }}>Instagram</a>
-          </div>
+        <div className="footer-links-grid" style={{ flex: 3, minWidth: 340 }}>
+          {[
+            { label: 'Services', links: [{ to: '/services', text: 'Services' }, { to: '/industries', text: 'Industries' }, { to: '/platform', text: 'Platform' }] },
+            { label: 'Company', links: [{ to: '/about', text: 'About' }, { to: '/careers', text: 'Careers' }, { to: '/contact', text: 'Contact' }] },
+            { label: 'Social', links: [{ href: '#', text: 'LinkedIn' }, { href: '#', text: 'Facebook' }, { href: '#', text: 'Instagram' }] },
+          ].map((col, ci) => (
+            <div key={ci} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <div style={{ fontWeight: 700, color: 'rgba(255,225,190,0.35)', fontSize: '0.68rem', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 4, fontFamily: "'Space Grotesk', sans-serif" }}>{col.label}</div>
+              {col.links.map((l, li) => {
+                const Tag = l.to ? Link : 'a'
+                const props = l.to ? { to: l.to } : { href: l.href }
+                return (
+                  <Tag key={li} {...props} style={{ color: 'rgba(255,225,190,0.55)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}
+                    onMouseEnter={e => e.currentTarget.style.color = '#FFF7ED'}
+                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,225,190,0.55)'}
+                  >{l.text}</Tag>
+                )
+              })}
+            </div>
+          ))}
         </div>
 
-        {/* Right: Logo */}
-        <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end', minWidth: 120 }}>
-          <img src={Logo} alt="AIQA" style={{ height: 64, width: 'auto', opacity: 0.95, filter: 'drop-shadow(0 2px 16px #0B1120)' }} />
+        <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'flex-end', flexDirection: 'column', gap: 20 }}>
+          <img src={Logo} alt="AIQA" style={{ height: 48, opacity: 0.12, filter: 'brightness(0) invert(1)' }} />
+          <div className="mobile-only" style={{ fontSize: '0.82rem', color: 'rgba(255,225,190,0.2)', textAlign: 'center', width: '100%' }}>©2026 AIQA Labs. All rights reserved.</div>
         </div>
       </div>
     </footer>
