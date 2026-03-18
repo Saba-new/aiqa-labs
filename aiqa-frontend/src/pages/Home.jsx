@@ -240,17 +240,17 @@ function Home() {
             { num: '07', title: 'Smart Home', color: '#34D399', tags: ['IoT', 'Appliances', 'UX'] },
           ].map((ind, i, arr) => (
             <motion.div key={i} className="industry-list-item-home" initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.06 }} onClick={() => navigate('/industries')}
-              style={{ display: 'flex', alignItems: 'center', gap: 0, padding: '18px 28px', cursor: 'pointer', borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', transition: 'background 0.2s' }}
+              style={{ display: 'flex', alignItems: 'center', gap: 0, padding: '18px 28px', cursor: 'pointer', borderBottom: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', transition: 'background 0.2s', width: '100%' }}
               onMouseEnter={e => e.currentTarget.style.background = `${ind.color}06`}
               onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
             >
-              <div className="industry-num" style={{ fontSize: '0.62rem', fontWeight: 700, color: `${ind.color}45`, fontFamily: "'Space Grotesk',sans-serif", letterSpacing: '0.1em', minWidth: 32 }}>{ind.num}</div>
+              <div className="industry-num" style={{ fontSize: '0.62rem', fontWeight: 700, color: `${ind.color}45`, fontFamily: "'Space Grotesk',sans-serif", letterSpacing: '0.1em', minWidth: 32, flexShrink: 0 }}>{ind.num}</div>
               <div className="industry-divider" style={{ width: 1, alignSelf: 'stretch', background: 'rgba(255,255,255,0.04)', margin: '0 20px', flexShrink: 0 }} />
-              <div className="industry-title" style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: '0.95rem', fontWeight: 700, color: '#FFF7ED', flex: '0 0 180px' }}>{ind.title}</div>
-              <div className="industry-tags" style={{ display: 'flex', gap: 6, flex: 1, flexWrap: 'wrap', padding: '0 20px' }}>
-                {ind.tags.map((t, ti) => <span key={ti} style={{ fontSize: '0.6rem', padding: '3px 9px', borderRadius: 20, background: `${ind.color}10`, border: `1px solid ${ind.color}28`, color: ind.color, fontWeight: 600, fontFamily: "'Space Grotesk',sans-serif" }}>{t}</span>)}
+              <div className="industry-title" style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: '0.95rem', fontWeight: 700, color: '#FFF7ED' }}>{ind.title}</div>
+              <div className="industry-tags" style={{ display: 'flex', gap: 6, flex: 1, flexWrap: 'wrap', padding: '0 20px', justifyContent: 'flex-start' }}>
+                {ind.tags.map((t, ti) => <span key={ti} style={{ fontSize: '0.6rem', padding: '3px 9px', borderRadius: 20, background: `${ind.color}10`, border: `1px solid ${ind.color}28`, color: ind.color, fontWeight: 600, fontFamily: "'Space Grotesk',sans-serif", whiteSpace: 'nowrap' }}>{t}</span>)}
               </div>
-              <span className="industry-arrow" style={{ color: ind.color, fontSize: '0.95rem', opacity: 0.45 }}>→</span>
+              <span className="industry-arrow" style={{ color: ind.color, fontSize: '0.95rem', opacity: 0.45, flexShrink: 0 }}>→</span>
             </motion.div>
           ))}
         </div>
