@@ -124,7 +124,7 @@ const Industries = () => {
               {/* index + separator */}
               <div style={{ display:'flex', alignItems:'center', gap:16, minWidth:60 }}>
                 <span style={{ fontSize:'0.75rem', fontWeight:700, color:`${industry.color}60`, fontFamily:"'Space Grotesk',sans-serif", letterSpacing:'0.05em' }}>{String(i+1).padStart(2,'0')}</span>
-                <div style={{ width:1, height:20, background:'rgba(255,255,255,0.08)' }} />
+                <div style={{ width:1, height:20, background:'rgba(255,255,255,0.08)' }} className="industry-divider" />
               </div>
 
               {/* name */}

@@ -307,7 +307,7 @@ input::placeholder, textarea::placeholder { color: rgba(255,225,190,0.25) !impor
 
 /* ── PAGE SPECIFIC RESPONSIVE ───────────────────────── */
 @media (max-width: 768px) {
-  .home-hero { padding-top: 180px !important; min-height: auto !important; padding-bottom: 80px !important; }
+  .home-hero, .about-hero, .services-hero, .industries-hero, .platform-hero { padding-top: 200px !important; min-height: auto !important; padding-bottom: 60px !important; }
   .hero-title { font-size: 2.2rem !important; margin-top: 10px !important; }
   .hero-desc { font-size: 0.9rem !important; margin-bottom: 24px !important; }
   .hero-img { width: 80% !important; }
@@ -319,6 +319,29 @@ input::placeholder, textarea::placeholder { color: rgba(255,225,190,0.25) !impor
   .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
   /* Services Page */
   .services-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+
+  /* Industry List Mobile Overrides */
+  .industry-list-item, .industry-list-item-home { 
+    flex-direction: column !important; 
+    align-items: flex-start !important; 
+    gap: 12px !important; 
+    padding: 24px 20px !important;
+  }
+  .industry-list-item .industry-divider, .industry-list-item-home .industry-divider { display: none !important; }
+  .industry-list-item h3, .industry-list-item-home .industry-title { 
+    flex: none !important; 
+    width: 100% !important; 
+    min-width: 0 !important; 
+    margin-bottom: 4px !important;
+    font-size: 1.1rem !important;
+  }
+  .industry-list-item .industry-tags, .industry-list-item-home .industry-tags { 
+    padding: 0 !important; 
+    justify-content: flex-start !important;
+    width: 100% !important;
+    flex: none !important;
+  }
+  .industry-list-item .arrow-icon, .industry-list-item-home .industry-arrow { display: none !important; }
 }
 
 @media (max-width: 900px) {
@@ -337,6 +360,21 @@ input::placeholder, textarea::placeholder { color: rgba(255,225,190,0.25) !impor
   .industry-list-item .arrow-icon {
     display: none !important;
   }
+
+  /* Home Page Specifics */
+  .industry-list-item-home { 
+    flex-direction: column !important; 
+    align-items: flex-start !important; 
+    gap: 12px !important; 
+    padding: 20px !important;
+  }
+  .industry-list-item-home .industry-divider { display: none !important; }
+  .industry-list-item-home .industry-title { flex: none !important; width: 100% !important; min-width: 0 !important; }
+  .industry-list-item-home .industry-tags { padding: 0 !important; }
+  .industry-list-item-home .industry-arrow { display: none !important; }
+
+  .faq-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .faq-info { position: relative !important; top: 0 !important; }
 }
 
 @media (max-width: 480px) {

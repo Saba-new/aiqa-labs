@@ -33,7 +33,7 @@ function Home() {
   return (
     <div>
       {/* ── HERO ───────────────────────────────────────────── */}
-      <section className="home-hero" style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 'clamp(100px,20vh,140px) clamp(5%,10vw,10%) 80px', overflow: 'hidden', textAlign: 'center' }}>
+      <section className="home-hero" style={{ padding: '150px 10% 80px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
         <div className="hero-grid" />
         <div className="aurora-orb aurora-orb-1" />
         <div className="aurora-orb aurora-orb-2" />
