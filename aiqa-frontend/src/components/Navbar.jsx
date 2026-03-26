@@ -38,7 +38,7 @@ export default function Navbar() {
     <>
       <nav className="navbar-neo" style={{
         background: scrolled ? 'rgba(8,6,8,0.95)' : 'rgba(8,6,8,0.7)',
-        borderBottom: scrolled ? '1px solid rgba(251,146,60,0.1)' : '1px solid rgba(255,255,255,0.05)',
+        borderBottom: scrolled ? '1px solid rgba(6,182,212,0.1)' : '1px solid rgba(255,255,255,0.05)',
         boxShadow: scrolled ? '0 1px 24px rgba(0,0,0,0.6)' : 'none',
       }}>
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>

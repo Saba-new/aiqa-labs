@@ -4,9 +4,9 @@ import Logo from '../assets/logo.png'
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#05030A', color: '#FFF7ED', padding: 0, borderTop: '1px solid rgba(251,146,60,0.08)', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', top: 0, left: '10%', right: '10%', height: 1, background: 'linear-gradient(90deg, transparent, rgba(251,146,60,0.35), rgba(244,114,182,0.25), transparent)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: -120, left: '50%', transform: 'translateX(-50%)', width: 600, height: 300, background: 'radial-gradient(ellipse, rgba(251,146,60,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
+    <footer style={{ background: '#05030A', color: '#FFF7ED', padding: 0, borderTop: '1px solid rgba(6,182,212,0.08)', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: 0, left: '10%', right: '10%', height: 1, background: 'linear-gradient(90deg, transparent, rgba(6,182,212,0.35), rgba(217,70,239,0.25), transparent)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: -120, left: '50%', transform: 'translateX(-50%)', width: 600, height: 300, background: 'radial-gradient(ellipse, rgba(6,182,212,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <div className="footer-main" style={{
         padding: '64px clamp(32px,8vw,120px) 40px clamp(32px,8vw,120px)',
@@ -20,9 +20,9 @@ export default function Footer() {
           <div style={{ fontSize: '1.3rem', fontWeight: 600, lineHeight: 1.4, color: 'rgba(255,225,190,0.75)', maxWidth: 440 }}>
             Discover how our solutions and products deliver exceptional value.
           </div>
-          <a href="/contact" style={{ fontSize: '1rem', color: '#FB923C', textDecoration: 'none', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8, width: 'fit-content', transition: 'color 0.2s' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#F472B6'}
-            onMouseLeave={e => e.currentTarget.style.color = '#FB923C'}
+          <a href="/contact" style={{ fontSize: '1rem', color: '#06B6D4', textDecoration: 'none', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8, width: 'fit-content', transition: 'color 0.2s' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#D946EF'}
+            onMouseLeave={e => e.currentTarget.style.color = '#06B6D4'}
           >Work with us <span style={{ fontSize: 18 }}>→</span></a>
           <div className="desktop-only" style={{ fontSize: '0.82rem', color: 'rgba(255,225,190,0.2)', marginTop: 40 }}>©2026 AIQA Labs. All rights reserved.</div>
         </div>
